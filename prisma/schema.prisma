@@ -1,0 +1,147 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Product {
+  id                    String      @id @default(cuid())
+  slug                  String      @unique
+  nameEn                String
+  nameAr                String
+  shortDescriptionEn    String
+  shortDescriptionAr    String
+  descriptionEn         String
+  descriptionAr         String
+  pricePiasters         Int
+  compareAtPricePiasters Int?
+  images                String      // JSON array of image URLs
+  category              String      // GRILL, CHAIR, TABLE, ACCESSORY, BUNDLE
+  materialEn            String
+  materialAr            String
+  foldedDimensions      String
+  openDimensions        String
+  weight                String
+  weightKg              Float
+  stock                 Int         @default(50)
+  isFeatured            Boolean     @default(false)
+  isBestSeller          Boolean     @default(false)
+  whatsIncludedEn       String      // JSON array of strings
+  whatsIncludedAr       String      // JSON array of strings
+  specsEn               String      // JSON object of key-value pairs
+  specsAr               String      // JSON object of key-value pairs
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+  reviews               Review[]
+  orderItems            OrderItem[]
+}
+
+model Bundle {
+  id                    String      @id @default(cuid())
+  slug                  String      @unique
+  nameEn                String
+  nameAr                String
+  descriptionEn         String
+  descriptionAr         String
+  discountPercentage    Float       @default(15.0)
+  bundlePricePiasters   Int
+  compareAtPricePiasters Int
+  itemProductSlugs      String      // JSON array of product slugs
+  badgeEn               String?
+  badgeAr               String?
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+}
+
+model Customer {
+  id                    String      @id @default(cuid())
+  name                  String
+  email                 String
+  phone                 String
+  createdAt             DateTime    @default(now())
+  orders                Order[]
+}
+
+model Order {
+  id                    String      @id @default(cuid())
+  orderNumber           String      @unique
+  customerId            String?
+  customer              Customer?   @relation(fields: [customerId], references: [id])
+  customerName          String
+  customerEmail         String
+  customerPhone         String
+  shippingAddress       String
+  city                  String
+  governorate           String
+  subtotalPiasters      Int
+  discountPiasters      Int         @default(0)
+  shippingPiasters      Int         @default(0)
+  totalPiasters         Int
+  status                String      @default("PENDING") // PENDING, PAID, SHIPPED, DELIVERED, CANCELLED
+  paymentMethod         String      @default("COD") // COD, CARD_PLACEHOLDER
+  notes                 String?
+  items                 OrderItem[]
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+}
+
+model OrderItem {
+  id                    String      @id @default(cuid())
+  orderId               String
+  order                 Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId             String?
+  product               Product?    @relation(fields: [productId], references: [id])
+  productNameEn         String
+  productNameAr         String
+  quantity              Int
+  unitPricePiasters     Int
+  totalPiasters         Int
+}
+
+model Review {
+  id                    String      @id @default(cuid())
+  productId             String
+  product               Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  author                String
+  rating                Int         @default(5)
+  commentEn             String
+  commentAr             String
+  verifiedPurchase      Boolean     @default(true)
+  createdAt             DateTime    @default(now())
+}
+
+model ContactInquiry {
+  id                    String      @id @default(cuid())
+  name                  String
+  email                 String
+  phone                 String?
+  subject               String
+  message               String
+  createdAt             DateTime    @default(now())
+}
+
+model NewsletterSubscriber {
+  id                    String      @id @default(cuid())
+  email                 String      @unique
+  createdAt             DateTime    @default(now())
+}
+
+model BlogPost {
+  id                    String      @id @default(cuid())
+  slug                  String      @unique
+  titleEn               String
+  titleAr               String
+  excerptEn             String
+  excerptAr             String
+  contentEn             String
+  contentAr             String
+  categoryEn            String
+  categoryAr            String
+  readTimeEn            String
+  readTimeAr            String
+  coverImage            String
+  publishedAt           DateTime    @default(now())
+}
