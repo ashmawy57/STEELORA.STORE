@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { Play, Pause, Volume2, VolumeX, Sparkles } from "lucide-react";
+import { Reveal } from "@/components/ui/reveal";
 import type { Locale } from "@/lib/dictionaries";
 
 interface VideoShowcaseProps {
@@ -39,7 +40,7 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ locale }) => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
+        <Reveal animation="fade-up" duration={600} className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-gold/10 text-gold border border-gold/30">
             <Sparkles className="w-3.5 h-3.5" />
             <span>
@@ -58,10 +59,10 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ locale }) => {
               ? "أداء شواء استثنائي، فتح سريع في ثوانٍ معدودة، وهيكل ستانلس ستيل ٣٠٤ مصمم ليدوم مدى الحياة."
               : "Unrivaled pitmaster performance, instant tool-free folding, and 100% pure marine-grade 304 stainless steel."}
           </p>
-        </div>
+        </Reveal>
 
         {/* Video Player Container */}
-        <div className="relative rounded-3xl overflow-hidden bg-charcoal-900 border border-gold/30 shadow-2xl shadow-gold/10 group">
+        <Reveal animation="scale-up" duration={750} delay={150} className="relative rounded-3xl overflow-hidden bg-charcoal-900 border border-gold/30 shadow-2xl shadow-gold/10 group">
           <video
             ref={videoRef}
             src="/videos/grill-video.mp4"
@@ -104,7 +105,7 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ locale }) => {
               )}
             </button>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

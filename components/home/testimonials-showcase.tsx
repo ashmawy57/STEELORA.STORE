@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Star, Sparkles, CheckCircle2, Quote, Award, ShieldCheck, ThumbsUp } from "lucide-react";
+import { Reveal } from "@/components/ui/reveal";
 import type { Locale } from "@/lib/dictionaries";
 
 interface TestimonialsShowcaseProps {
@@ -70,7 +71,7 @@ export const TestimonialsShowcase: React.FC<TestimonialsShowcaseProps> = ({ loca
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-14">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <Reveal animation="fade-up" duration={600} className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-heading font-bold uppercase tracking-[0.2em] shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-gold" />
             <span>
@@ -109,7 +110,7 @@ export const TestimonialsShowcase: React.FC<TestimonialsShowcaseProps> = ({ loca
               {isArabic ? "أكثر من ١٥٠ تقييم ٥ نجوم موثق" : "Over 150+ Verified 5-Star Reviews"}
             </span>
           </div>
-        </div>
+        </Reveal>
 
         {/* 3 Luxury Review Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
@@ -121,8 +122,11 @@ export const TestimonialsShowcase: React.FC<TestimonialsShowcaseProps> = ({ loca
             const date = isArabic ? review.dateAr : review.dateEn;
 
             return (
-              <div
+              <Reveal
                 key={idx}
+                animation="fade-up"
+                delay={idx * 140}
+                duration={650}
                 className="relative rounded-2xl bg-gradient-to-b from-charcoal-900/90 via-charcoal-900/80 to-charcoal-950/90 p-7 lg:p-8 border border-steel-gray/30 hover:border-gold/60 shadow-luxury backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between group overflow-hidden"
               >
                 {/* Decorative background quote mark */}
@@ -171,7 +175,7 @@ export const TestimonialsShowcase: React.FC<TestimonialsShowcaseProps> = ({ loca
                     <span className="text-[9px] text-steel-gray mt-1">{date}</span>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>

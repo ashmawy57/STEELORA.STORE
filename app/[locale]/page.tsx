@@ -21,6 +21,7 @@ import { TrustPillars } from "@/components/home/trust-pillars";
 import { TestimonialsShowcase } from "@/components/home/testimonials-showcase";
 import { CtaShowcase } from "@/components/home/cta-showcase";
 import { TypewriterHeading } from "@/components/home/typewriter-heading";
+import { Reveal } from "@/components/ui/reveal";
 import { getDictionary, isValidLocale, type Locale } from "@/lib/dictionaries";
 import { formatEGP } from "@/lib/currency";
 
@@ -67,7 +68,7 @@ export default async function HomePage({
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 flex flex-col items-center text-center space-y-8">
           {/* Luxury Neon Glowing Eyebrow Badge */}
-          <div className="relative inline-flex items-center justify-center group animate-in slide-in-from-top duration-700">
+          <Reveal animation="fade-down" duration={600} className="relative inline-flex items-center justify-center group">
             {/* Outer Neon Halo */}
             <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-gold/50 via-gold-light/80 to-gold/50 opacity-75 blur-md group-hover:opacity-100 group-hover:blur-lg transition-all duration-500 animate-pulse" />
 
@@ -80,16 +81,16 @@ export default async function HomePage({
                 </span>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Animated Dynamic Typewriter Title */}
           <TypewriterHeading text={dict.hero.title} />
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 pt-4 w-full sm:w-auto">
+          <Reveal animation="fade-up" duration={650} delay={200} className="flex flex-col sm:flex-row items-center gap-4 pt-4 w-full sm:w-auto">
             <Link
               href={`/${locale}/shop`}
-              className="w-full sm:w-auto btn-gold px-8 py-4 text-sm font-bold flex items-center justify-center gap-2 shadow-goldGlow"
+              className="w-full sm:w-auto btn-gold px-8 py-4 text-sm font-bold flex items-center justify-center gap-2 shadow-goldGlow hover:scale-105 transition-transform"
             >
               <span>{dict.hero.primaryCta}</span>
               <ArrowIcon className="w-4 h-4" />
@@ -97,14 +98,14 @@ export default async function HomePage({
 
             <Link
               href={`/${locale}/shop/outdoor-luxury-set`}
-              className="w-full sm:w-auto btn-outline-gold px-8 py-4 text-sm font-bold flex items-center justify-center gap-2 bg-charcoal-900/60 backdrop-blur-sm"
+              className="w-full sm:w-auto btn-outline-gold px-8 py-4 text-sm font-bold flex items-center justify-center gap-2 bg-charcoal-900/60 backdrop-blur-sm hover:scale-105 transition-transform"
             >
               <span>{dict.hero.secondaryCta}</span>
               <span className="text-[10px] px-1.5 py-0.5 rounded bg-gold text-charcoal font-black">
                 15% OFF
               </span>
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -115,7 +116,7 @@ export default async function HomePage({
       {bundleProduct && (
         <section className="py-20 bg-charcoal-950 text-white relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="p-8 sm:p-12 rounded-2xl bg-charcoal-900 border border-gold/40 shadow-luxury relative overflow-hidden">
+            <Reveal animation="scale-up" duration={700} className="p-8 sm:p-12 rounded-2xl bg-charcoal-900 border border-gold/40 shadow-luxury relative overflow-hidden">
               {/* Background ambient glow */}
               <div className="absolute -top-24 -right-24 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -184,7 +185,7 @@ export default async function HomePage({
 
                     <Link
                       href={`/${locale}/shop/outdoor-luxury-set`}
-                      className="btn-gold px-8 py-4 text-sm font-bold flex items-center justify-center gap-2 shadow-goldGlow shrink-0"
+                      className="btn-gold px-8 py-4 text-sm font-bold flex items-center justify-center gap-2 shadow-goldGlow shrink-0 hover:scale-105 transition-transform"
                     >
                       <span>{dict.bundleSpotlight.cta}</span>
                       <ArrowIcon className="w-4 h-4" />
@@ -192,7 +193,7 @@ export default async function HomePage({
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
       )}
@@ -201,7 +202,7 @@ export default async function HomePage({
       <section className="py-20 bg-ivory-300 text-charcoal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-steel-gray/20 pb-6">
+          <Reveal animation="fade-up" duration={600} className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-steel-gray/20 pb-6">
             <div className="space-y-2">
               <span className="text-xs uppercase tracking-widest font-heading font-bold text-gold-dark block">
                 {dict.hero.eyebrow}
@@ -218,16 +219,22 @@ export default async function HomePage({
               <span>{dict.common.learnMore}</span>
               <ArrowIcon className="w-4 h-4" />
             </Link>
-          </div>
+          </Reveal>
 
           {/* 4-Card Product Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {gridProducts.map((product) => (
-              <ProductCard
+            {gridProducts.map((product, idx) => (
+              <Reveal
                 key={product.id}
-                product={product}
-                locale={locale}
-              />
+                animation="fade-up"
+                delay={idx * 100}
+                duration={600}
+              >
+                <ProductCard
+                  product={product}
+                  locale={locale}
+                />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -236,12 +243,10 @@ export default async function HomePage({
       {/* 5. CINEMATIC VIDEO DEMONSTRATION */}
       <VideoShowcase locale={locale} />
 
-
-
-      {/* 7. VERIFIED REVIEWS & TESTIMONIALS */}
+      {/* 6. VERIFIED REVIEWS & TESTIMONIALS */}
       <TestimonialsShowcase locale={locale} />
 
-      {/* 8. LUXURY CTA SHOWCASE */}
+      {/* 7. LUXURY CTA SHOWCASE */}
       <CtaShowcase locale={locale} />
     </div>
   );

@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Sparkles, ShieldCheck, Truck, ArrowRight, ArrowLeft, Headphones, CheckCircle2 } from "lucide-react";
+import { Reveal } from "@/components/ui/reveal";
 import type { Locale } from "@/lib/dictionaries";
 
 interface CtaShowcaseProps {
@@ -24,7 +25,7 @@ export const CtaShowcase: React.FC<CtaShowcaseProps> = ({ locale }) => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Luxury Glass Frame Card */}
-        <div className="relative rounded-3xl bg-gradient-to-b from-charcoal-900/90 via-charcoal-900/80 to-charcoal-950/95 p-8 sm:p-14 lg:p-18 border border-gold/35 shadow-luxury backdrop-blur-xl overflow-hidden text-center">
+        <Reveal animation="scale-up" duration={750} className="relative rounded-3xl bg-gradient-to-b from-charcoal-900/90 via-charcoal-900/80 to-charcoal-950/95 p-8 sm:p-14 lg:p-18 border border-gold/35 shadow-luxury backdrop-blur-xl overflow-hidden text-center">
           {/* Subtle Top Gold Highlight Bar */}
           <div className="absolute top-0 inset-x-12 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
 
@@ -91,7 +92,7 @@ export const CtaShowcase: React.FC<CtaShowcaseProps> = ({ locale }) => {
               <span>{isArabic ? "تواصل مع الاستشارات الفنية" : "Concierge & Support"}</span>
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

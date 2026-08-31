@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/footer";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 import { UpsellModal } from "@/components/product/upsell-modal";
 import { CartProvider } from "@/context/cart-context";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { getDictionary, isValidLocale, type Locale } from "@/lib/dictionaries";
 import "@/app/globals.css";
 
@@ -110,6 +111,7 @@ export default function LocaleLayout({
           <Footer locale={locale} />
           <CartDrawer locale={locale} />
           <UpsellModal locale={locale} />
+          <WhatsAppButton locale={locale} />
         </CartProvider>
       </body>
     </html>

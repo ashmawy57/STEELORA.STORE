@@ -53,7 +53,7 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
             </p>
             <div className="pt-2 text-xs text-steel-gray space-y-1">
               <p>📍 {dict.contact.address}</p>
-              <p>📞 +20 100 000 7833 | concierge@steelora.com</p>
+              <p>📞 +20 110 775 4111 | concierge@steelora.com</p>
             </div>
           </div>
 

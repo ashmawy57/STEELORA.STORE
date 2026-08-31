@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ShieldCheck, Truck, Headphones, Sparkles, CheckCircle2 } from "lucide-react";
+import { Reveal } from "@/components/ui/reveal";
 import type { Locale } from "@/lib/dictionaries";
 
 interface TrustPillarsProps {
@@ -69,8 +70,11 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ locale }) => {
             const highlight = isArabic ? pillar.highlightAr : pillar.highlightEn;
 
             return (
-              <div
+              <Reveal
                 key={idx}
+                animation="fade-up"
+                delay={idx * 120}
+                duration={650}
                 className="py-8 md:py-6 px-6 lg:px-10 text-center group flex flex-col items-center justify-between transition-all duration-500 hover:-translate-y-1"
               >
                 {/* Glowing Metallic Circular Icon Badge */}
@@ -111,7 +115,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ locale }) => {
                   <CheckCircle2 className="w-3.5 h-3.5 text-gold shrink-0" />
                   <span>{highlight}</span>
                 </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>
