@@ -18,9 +18,10 @@ interface ProductCardProps {
     subCategory?: string | null;
   };
   locale: Locale;
+  priority?: boolean;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, locale }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, locale, priority = false }) => {
   const dict = getDictionary(locale);
   const { addToCart, items } = useCart();
 
@@ -56,6 +57,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale }) => 
           src={mainImage}
           alt={productName}
           fill
+          priority={priority}
           className="object-contain p-2 transition-transform duration-500 ease-out group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />

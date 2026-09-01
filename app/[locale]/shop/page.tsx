@@ -365,11 +365,12 @@ export default async function ShopPage({
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
+            {products.map((product, idx) => (
               <ProductCard
                 key={product.id}
                 product={product}
                 locale={locale}
+                priority={idx < 4}
               />
             ))}
           </div>

@@ -237,6 +237,7 @@ export default async function HomePage({
                 <ProductCard
                   product={product}
                   locale={locale}
+                  priority={idx < 4}
                 />
               </Reveal>
             ))}
