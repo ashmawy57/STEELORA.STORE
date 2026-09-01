@@ -381,21 +381,6 @@ const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-3.5 h-3
                 <span className="absolute inset-0 rounded-md bg-white/0 group-hover:bg-white/[0.04] transition-colors duration-300" />
               </Link>
 
-              {/* Brand Story */}
-              <Link
-                href={`/${locale}/about`}
-                className={`nav-link-underline relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-heading font-semibold px-3 xl:px-4 py-2 rounded-md transition-all duration-300 group ${
-                  pathname === `/${locale}/about`
-                    ? "active text-gold"
-                    : "text-steel-200 hover:text-white"
-                }`}
-              >
-                <span className="relative z-10 flex items-center gap-1.5">
-                  {dict.nav.about}
-                </span>
-                <span className="absolute inset-0 rounded-md bg-white/0 group-hover:bg-white/[0.04] transition-colors duration-300" />
-              </Link>
-
               {/* Journal */}
               <Link
                 href={`/${locale}/blog`}
