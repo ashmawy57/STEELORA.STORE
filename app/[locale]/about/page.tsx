@@ -94,7 +94,7 @@ export default function AboutPage({
 
           <div className="lg:col-span-6 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-luxury border border-steel-gray/30">
             <Image
-              src="/images/products/bundle-main.jpg"
+              src="/pro-max.jpg"
               alt="STEELORA Gear in the Wild"
               fill
               className="object-cover"

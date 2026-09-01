@@ -53,7 +53,7 @@ export default async function HomePage({
         {/* Background Image with Crisp Clarity & Bottom Transition Shadow Only */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
           <Image
-            src="/images/hero/hero-bg.png"
+            src="/hero-bg.jpg"
             alt="STEELORA Luxury Outdoor Gear"
             fill
             priority
@@ -127,7 +127,7 @@ export default async function HomePage({
                 {/* Bundle Imagery */}
                 <div className="lg:col-span-6 relative aspect-square rounded-2xl overflow-hidden bg-charcoal-950 border border-gold/30 shadow-2xl">
                   <Image
-                    src="/images/products/bundle-main.jpg"
+                    src="/pro-max.jpg"
                     alt="STEELORA Outdoor Luxury Set"
                     fill
                     priority
