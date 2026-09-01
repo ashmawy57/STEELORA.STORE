@@ -721,15 +721,17 @@ const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-3.5 h-3
               style={{ animationDelay: `${(navLinks.length + 2) * 60}ms` }}
             >
               <a
-                href="tel:+201107754111"
+                href="https://wa.me/201107754111"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 text-sm text-steel-300 hover:text-gold transition-colors group"
               >
-                <div className="p-2.5 rounded-lg bg-gold/10 group-hover:bg-gold/20 transition-colors">
-                  <Phone className="w-4 h-4 text-gold" />
+                <div className="p-2.5 rounded-lg bg-gold/10 group-hover:bg-gold/20 transition-colors text-gold">
+                  <WhatsAppIcon className="w-4 h-4" />
                 </div>
                 <div>
                   <span className="text-[10px] uppercase tracking-wider text-steel-500 block font-semibold">
-                    {isArabic ? "اتصل بنا" : "Call Us"}
+                    {isArabic ? "واتساب فقط" : "WhatsApp Only"}
                   </span>
                   <span className="text-steel-200 font-medium">
                     +20 110 775 4111
@@ -746,10 +748,12 @@ const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-3.5 h-3
               </div>
               <div className="flex items-center gap-3 text-sm text-steel-400">
                 <div className="p-2.5 rounded-lg bg-gold/10">
-                  <ShieldCheck className="w-4 h-4 text-gold" />
+                  <Sparkles className="w-4 h-4 text-gold" />
                 </div>
                 <span className="text-xs leading-relaxed">
-                  {dict.topbar.guarantee}
+                  {isArabic
+                    ? "صنع يدوي في مصر بضمان ١٠ سنوات"
+                    : "Handcrafted in Egypt — 10-Year Guarantee"}
                 </span>
               </div>
             </div>
