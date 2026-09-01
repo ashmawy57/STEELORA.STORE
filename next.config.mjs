@@ -17,6 +17,25 @@ const nextConfig = {
       "/**": ["./prisma/**/*"],
     },
   },
+  async redirects() {
+    return [
+      {
+        source: "/:locale/about",
+        destination: "/:locale",
+        permanent: true,
+      },
+      {
+        source: "/about",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/:locale/brand-story",
+        destination: "/:locale",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
