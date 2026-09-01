@@ -2,6 +2,11 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+// Helper to create products without strict client-generation type bottlenecks on Windows
+async function createProduct(data: Record<string, unknown>) {
+  return (prisma.product.create as Function)({ data }) as Promise<{ id: string }>;
+}
+
 async function main() {
   console.log("Seeding STEELORA database with bilingual EGP luxury data...");
 
@@ -16,8 +21,7 @@ async function main() {
   await prisma.contactInquiry.deleteMany();
 
   // Products
-  const grill = await prisma.product.create({
-    data: {
+  const grill = await createProduct({
       slug: "foldable-charcoal-bbq-grill",
       nameEn: "Foldable Charcoal BBQ Grill",
       nameAr: "شواية فحم فاخرة قابلة للطي",
@@ -96,291 +100,279 @@ Featuring our patented instant-fold chassis, this grill transitions from a full-
         "زمن الطي": "أقل من ١٠ ثوانٍ",
         "بلد المنشأ": "تصنيع وهندسة متطورة في القاهرة، مصر",
       }),
-    },
   });
 
-  const chair = await prisma.product.create({
-    data: {
-      slug: "foldable-outdoor-chair",
-      nameEn: "Foldable Outdoor Luxury Chair",
-      nameAr: "كرسي تخييم فاخر قابل للطي",
-      shortDescriptionEn:
-        "Ergonomic luxury outdoor chair with tubular 304 stainless steel frame and water-repellent heavy canvas.",
-      shortDescriptionAr:
-        "كرسي تخييم مريح ومصمم هندسياً بهيكل أنبوبي من الستانلس ستيل ٣٠٤ وقماش معزز عالي المتانة.",
-      descriptionEn: `Engineered for ultimate comfort under the stars. The STEELORA Foldable Outdoor Chair utilizes a high-tensile 304 stainless steel tubular architecture paired with double-layered 1000D waterproof ballistic canvas.
+  const chair = await createProduct({
+    slug: "foldable-outdoor-chair",
+    nameEn: "Foldable Outdoor Luxury Chair",
+    nameAr: "كرسي تخييم فاخر قابل للطي",
+    shortDescriptionEn:
+      "Ergonomic luxury outdoor chair with tubular 304 stainless steel frame and water-repellent heavy canvas.",
+    shortDescriptionAr:
+      "كرسي تخييم مريح ومصمم هندسياً بهيكل أنبوبي من الستانلس ستيل ٣٠٤ وقماش معزز عالي المتانة.",
+    descriptionEn: `Engineered for ultimate comfort under the stars. The STEELORA Foldable Outdoor Chair utilizes a high-tensile 304 stainless steel tubular architecture paired with double-layered 1000D waterproof ballistic canvas.
 
 Designed with an ergonomic reclining angle and reinforced mechanical pivot joints, it supports up to 180kg while folding into a compact cylindrical form factor.`,
-      descriptionAr: `صُمم ليمنحك أقصى درجات الراحة والاسترخاء تحت السماء المفتوحة. يعتمد كرسي ستيلورا الخارجي القابل للطي على هيكل أنبوبي صلب من الستانلس ستيل ٣٠٤ مع طبقتين من قماش الكوردورا ١٠٠٠ دي المقاوم للماء والتآكل.
+    descriptionAr: `صُمم ليمنحك أقصى درجات الراحة والاسترخاء تحت السماء المفتوحة. يعتمد كرسي ستيلورا الخارجي القابل للطي على هيكل أنبوبي صلب من الستانلس ستيل ٣٠٤ مع طبقتين من قماش الكوردورا ١٠٠٠ دي المقاوم للماء والتآكل.
 
 يوفر زاوية جلوس مريحة مدروسة ومفاصل تثبيت ميكانيكية تتحمل حتى ١٨٠ كجم مع إمكانية طيه لحجم مدمج للغاية.`,
-      pricePiasters: 395000, // 3,950 EGP
-      compareAtPricePiasters: 460000, // 4,600 EGP
-      images: JSON.stringify([
-        "/images/products/chair-1.png",
-        "/images/products/chair-2.png",
-      ]),
-      category: "CHAIR",
-      mainCategory: "OUTDOOR_FURNITURE",
-      subCategory: "CHAIR",
-      materialEn: "304 Stainless Steel Tubular Frame + 1000D Waterproof Cordura Canvas",
-      materialAr: "هيكل أنبوبي من الستانلس ستيل ٣٠٤ + قماش كوردورا عسكري مضاد للماء",
-      foldedDimensions: "58 x 12 x 12 cm",
-      openDimensions: "55 x 58 x 82 cm (Seat Height: 42 cm)",
-      weight: "3.4 kg",
-      weightKg: 3.4,
-      stock: 45,
-      isFeatured: true,
-      isBestSeller: true,
-      whatsIncludedEn: JSON.stringify([
-        "Foldable 304 Stainless Steel Luxury Chair",
-        "Reinforced Heavy-Duty Shoulder Sling Carry Sleeve",
-        "4x Anti-Sink Sand Foot Guards",
-      ]),
-      whatsIncludedAr: JSON.stringify([
-        "كرسي تخييم فاخر قابل للطي من الستانلس ستيل ٣٠٤",
-        "جراب حمل مبطن مع حزام كتف مريح",
-        "٤ قواعد مانعة للغوص في الرمال الناعمة",
-      ]),
-      specsEn: JSON.stringify({
-        "Fabric": "1000D Ballistic PU-Coated Waterproof Cordura",
-        "Load Capacity": "180 kg (396 lbs)",
-        "Seat Height": "42 cm",
-        "UV Resistance": "Grade 5 UV-Proof",
-      }),
-      specsAr: JSON.stringify({
-        "مادة القماش": "نايلون كوردورا تكتيكي ١٠٠٠ دي مقاوم للماء",
-        "قدرة التحمل": "١٨٠ كجم",
-        "ارتفاع المقعد": "٤٢ سم",
-        "مقاومة أشعة الشمس": "درجة ٥ مقاومة للبهتان",
-      }),
-    },
+    pricePiasters: 395000, // 3,950 EGP
+    compareAtPricePiasters: 460000, // 4,600 EGP
+    images: JSON.stringify([
+      "/images/products/chair-1.png",
+      "/images/products/chair-2.png",
+    ]),
+    category: "CHAIR",
+    mainCategory: "OUTDOOR_FURNITURE",
+    subCategory: "CHAIR",
+    materialEn: "304 Stainless Steel Tubular Frame + 1000D Waterproof Cordura Canvas",
+    materialAr: "هيكل أنبوبي من الستانلس ستيل ٣٠٤ + قماش كوردورا عسكري مضاد للماء",
+    foldedDimensions: "58 x 12 x 12 cm",
+    openDimensions: "55 x 58 x 82 cm (Seat Height: 42 cm)",
+    weight: "3.4 kg",
+    weightKg: 3.4,
+    stock: 45,
+    isFeatured: true,
+    isBestSeller: true,
+    whatsIncludedEn: JSON.stringify([
+      "Foldable 304 Stainless Steel Luxury Chair",
+      "Reinforced Heavy-Duty Shoulder Sling Carry Sleeve",
+      "4x Anti-Sink Sand Foot Guards",
+    ]),
+    whatsIncludedAr: JSON.stringify([
+      "كرسي تخييم فاخر قابل للطي من الستانلس ستيل ٣٠٤",
+      "جراب حمل مبطن مع حزام كتف مريح",
+      "٤ قواعد مانعة للغوص في الرمال الناعمة",
+    ]),
+    specsEn: JSON.stringify({
+      "Fabric": "1000D Ballistic PU-Coated Waterproof Cordura",
+      "Load Capacity": "180 kg (396 lbs)",
+      "Seat Height": "42 cm",
+      "UV Resistance": "Grade 5 UV-Proof",
+    }),
+    specsAr: JSON.stringify({
+      "مادة القماش": "نايلون كوردورا تكتيكي ١٠٠٠ دي مقاوم للماء",
+      "قدرة التحمل": "١٨٠ كجم",
+      "ارتفاع المقعد": "٤٢ سم",
+      "مقاومة أشعة الشمس": "درجة ٥ مقاومة للبهتان",
+    }),
   });
 
-  const table = await prisma.product.create({
-    data: {
-      slug: "foldable-side-table-stool",
-      nameEn: "Foldable Side Table / Stool",
-      nameAr: "طاولة جانبية ومقعد قابل للطي",
-      shortDescriptionEn:
-        "Dual-function precision brushed 304 stainless steel surface. Serves as a campsite table or 150kg stool.",
-      shortDescriptionAr:
-        "طاولة جانبية ومقعد مزدوج الوظائف مصنوع من الستانلس ستيل ٣٠٤ المصقول والمخرم بالليزر بقدرة تحمل ١٥٠ كجم.",
-      descriptionEn: `Precision versatility at its finest. The STEELORA Foldable Side Table & Stool features a laser-cut geometric tabletop that allows heat dissipation and fluid drainage.
+  const table = await createProduct({
+    slug: "foldable-side-table-stool",
+    nameEn: "Foldable Side Table / Stool",
+    nameAr: "طاولة جانبية ومقعد قابل للطي",
+    shortDescriptionEn:
+      "Dual-function precision brushed 304 stainless steel surface. Serves as a campsite table or 150kg stool.",
+    shortDescriptionAr:
+      "طاولة جانبية ومقعد مزدوج الوظائف مصنوع من الستانلس ستيل ٣٠٤ المصقول والمخرم بالليزر بقدرة تحمل ١٥٠ كجم.",
+    descriptionEn: `Precision versatility at its finest. The STEELORA Foldable Side Table & Stool features a laser-cut geometric tabletop that allows heat dissipation and fluid drainage.
 
 The engineered X-brace folding legs lock rigidly into place, capable of serving as a drink & coffee table or supporting a 150kg adult as a sturdy stool.`,
-      descriptionAr: `قمة التنوع الهندسي العملي. تتميز طاولة ومقعد ستيلورا بسطح علوي مخرم بدقة الليزر لتصريف السوائل وتشتيت الحرارة.
+    descriptionAr: `قمة التنوع الهندسي العملي. تتميز طاولة ومقعد ستيلورا بسطح علوي مخرم بدقة الليزر لتصريف السوائل وتشتيت الحرارة.
 
 أرجل التثبيت المتقاطعة تمنح ثباتاً فائقاً، مما يجعلها مثالية كطاولة لتحضير القهوة والمشروبات أو كمقعد صلب يتحمل وزناً حتى ١٥٠ كجم.`,
-      pricePiasters: 285000, // 2,850 EGP
-      compareAtPricePiasters: 340000, // 3,400 EGP
-      images: JSON.stringify([
-        "/images/products/mini-chair.png",
-      ]),
-      category: "TABLE",
-      mainCategory: "OUTDOOR_FURNITURE",
-      subCategory: "TABLE",
-      materialEn: "Brushed 304 Stainless Steel (1.8mm plate + tubular legs)",
-      materialAr: "ستانلس ستيل ٣٠٤ مصقول بلمسة ساتان ناعمة (سماكة ١٫٨ ملم)",
-      foldedDimensions: "40 x 30 x 3.5 cm",
-      openDimensions: "40 x 30 x 42 cm",
-      weight: "2.6 kg",
-      weightKg: 2.6,
-      stock: 50,
-      isFeatured: true,
-      isBestSeller: false,
-      whatsIncludedEn: JSON.stringify([
-        "Foldable 304 Stainless Steel Table / Stool",
-        "Compact Protective Storage Sleeve",
-      ]),
-      whatsIncludedAr: JSON.stringify([
-        "طاولة ومقعد ستانلس ستيل ٣٠٤ قابل للطي",
-        "جراب حماية وتخزين مدمج",
-      ]),
-      specsEn: JSON.stringify({
-        "Material": "Brushed 304 Stainless Steel",
-        "Load Capacity": "150 kg (Stool function)",
-        "Folded Thickness": "3.5 cm Flat",
-        "Top Surface": "Laser-Perforated Thermal Mesh",
-      }),
-      specsAr: JSON.stringify({
-        "الخامة": "ستانلس ستيل ٣٠٤ عالي الجودة",
-        "قدرة التحمل": "١٥٠ كجم (كمقعد صلب)",
-        "سماكة الطي": "٣٫٥ سم فقط",
-        "السطح العلوي": "شبكة مخرمة بالليزر لتصريف الحرارة",
-      }),
-    },
+    pricePiasters: 285000, // 2,850 EGP
+    compareAtPricePiasters: 340000, // 3,400 EGP
+    images: JSON.stringify([
+      "/images/products/mini-chair.png",
+    ]),
+    category: "TABLE",
+    mainCategory: "OUTDOOR_FURNITURE",
+    subCategory: "TABLE",
+    materialEn: "Brushed 304 Stainless Steel (1.8mm plate + tubular legs)",
+    materialAr: "ستانلس ستيل ٣٠٤ مصقول بلمسة ساتان ناعمة (سماكة ١٫٨ ملم)",
+    foldedDimensions: "40 x 30 x 3.5 cm",
+    openDimensions: "40 x 30 x 42 cm",
+    weight: "2.6 kg",
+    weightKg: 2.6,
+    stock: 50,
+    isFeatured: true,
+    isBestSeller: false,
+    whatsIncludedEn: JSON.stringify([
+      "Foldable 304 Stainless Steel Table / Stool",
+      "Compact Protective Storage Sleeve",
+    ]),
+    whatsIncludedAr: JSON.stringify([
+      "طاولة ومقعد ستانلس ستيل ٣٠٤ قابل للطي",
+      "جراب حماية وتخزين مدمج",
+    ]),
+    specsEn: JSON.stringify({
+      "Material": "Brushed 304 Stainless Steel",
+      "Load Capacity": "150 kg (Stool function)",
+      "Folded Thickness": "3.5 cm Flat",
+      "Top Surface": "Laser-Perforated Thermal Mesh",
+    }),
+    specsAr: JSON.stringify({
+      "الخامة": "ستانلس ستيل ٣٠٤ عالي الجودة",
+      "قدرة التحمل": "١٥٠ كجم (كمقعد صلب)",
+      "سماكة الطي": "٣٫٥ سم فقط",
+      "السطح العلوي": "شبكة مخرمة بالليزر لتصريف الحرارة",
+    }),
   });
 
-  const bag = await prisma.product.create({
-    data: {
-      slug: "heavy-duty-tactical-carry-bag",
-      nameEn: "Reinforced Tactical Carry Bag",
-      nameAr: "حقيبة حمل تكتيكية معززة",
-      shortDescriptionEn:
-        "1000D ballistic Cordura gear transport bag with gold hardware, Molle straps, and reinforced interior padding.",
-      shortDescriptionAr:
-        "حقيبة نقل معدات فاخرة من قماش الكوردورا ١٠٠٠ دي مع بطانة داخلية سميكة وسحابات يابانية مزدوجة.",
-      descriptionEn: `Crafted to protect your investment. The STEELORA Tactical Carry Bag features military-grade 1000D Cordura fabric, heavy-duty interior thermal-resistant lining, and champagne gold metal hardware.
+  const bag = await createProduct({
+    slug: "heavy-duty-tactical-carry-bag",
+    nameEn: "Reinforced Tactical Carry Bag",
+    nameAr: "حقيبة حمل تكتيكية معززة",
+    shortDescriptionEn:
+      "1000D ballistic Cordura gear transport bag with gold hardware, Molle straps, and reinforced interior padding.",
+    shortDescriptionAr:
+      "حقيبة نقل معدات فاخرة من قماش الكوردورا ١٠٠٠ دي مع بطانة داخلية سميكة وسحابات يابانية مزدوجة.",
+    descriptionEn: `Crafted to protect your investment. The STEELORA Tactical Carry Bag features military-grade 1000D Cordura fabric, heavy-duty interior thermal-resistant lining, and champagne gold metal hardware.
 
 Equipped with dual exterior pockets for tongs, thermometer, and spices, plus ergonomic padded carrying handles and shoulder strap.`,
-      descriptionAr: `صُنعت لحماية تجهيزاتك الفولاذية الثمينة. تتميز الحقيبة بقماش كوردورا عسكري ١٠٠٠ دي المقاوم للتمزق، مع بطانة داخلية معززة لمقاومة الحرارة وسحابات معدنية متينة.
+    descriptionAr: `صُنعت لحماية تجهيزاتك الفولاذية الثمينة. تتميز الحقيبة بقماش كوردورا عسكري ١٠٠٠ دي المقاوم للتمزق، مع بطانة داخلية معززة لمقاومة الحرارة وسحابات معدنية متينة.
 
 مزودة بجيوب خارجية مخصصة لملاقط الشواء ومقاييس الحرارة، مع أحزمة كتف مبطنة مريحة للغاية.`,
-      pricePiasters: 120000, // 1,200 EGP
-      compareAtPricePiasters: 150000, // 1,500 EGP
-      images: JSON.stringify([
-        "/images/products/bag-1.png",
-      ]),
-      category: "BBQ_ACCESSORY",
-      mainCategory: "BBQ",
-      subCategory: "BBQ_ACCESSORY",
-      materialEn: "1000D Ballistic Cordura + YKK Dual Zippers + High-Density Foam",
-      materialAr: "قماش كوردورا ١٠٠٠ دي مضاد للماء + سحابات YKK مزدوجة + إسفنج عالي الكثافة",
-      foldedDimensions: "48 x 32 x 4 cm",
-      openDimensions: "48 x 32 x 18 cm",
-      weight: "0.7 kg",
-      weightKg: 0.7,
-      stock: 60,
-      isFeatured: false,
-      isBestSeller: false,
-      whatsIncludedEn: JSON.stringify([
-        "1000D Reinforced Tactical Carry Bag",
-        "Padded Adjustable Ergonomic Shoulder Strap",
-      ]),
-      whatsIncludedAr: JSON.stringify([
-        "حقيبة حمل تكتيكية معززة بقماش كوردورا ١٠٠٠ دي",
-        "حزام كتف مبطن وقابل للتعديل",
-      ]),
-      specsEn: JSON.stringify({
-        "Fabric": "1000D Ballistic PU-Coated Cordura",
-        "Zippers": "YKK #10 Heavy Duty Steel Dual Zippers",
-        "Hardware": "Champagne Gold Metal Alloy Buckles",
-        "Capacity": "Grill + Grate + Warming Rack + Accessories",
-      }),
-      specsAr: JSON.stringify({
-        "نوع القماش": "كوردورا ١٠٠٠ دي معالج لمقاومة الماء",
-        "نوع السحابات": "سحابات فولاذية مزدوجة YKK رقم ١٠",
-        "الإكسسوارات": "أبازيم وحلقات معدنية بلون الذهب الشامبانيا",
-        "السعة": "تستوعب الشواية والشبكة ورف التسخين والإكسسوارات بالكامل",
-      }),
-    },
+    pricePiasters: 120000, // 1,200 EGP
+    compareAtPricePiasters: 150000, // 1,500 EGP
+    images: JSON.stringify([
+      "/images/products/bag-1.png",
+    ]),
+    category: "BBQ_ACCESSORY",
+    mainCategory: "BBQ",
+    subCategory: "BBQ_ACCESSORY",
+    materialEn: "1000D Ballistic Cordura + YKK Dual Zippers + High-Density Foam",
+    materialAr: "قماش كوردورا ١٠٠٠ دي مضاد للماء + سحابات YKK مزدوجة + إسفنج عالي الكثافة",
+    foldedDimensions: "48 x 32 x 4 cm",
+    openDimensions: "48 x 32 x 18 cm",
+    weight: "0.7 kg",
+    weightKg: 0.7,
+    stock: 60,
+    isFeatured: false,
+    isBestSeller: false,
+    whatsIncludedEn: JSON.stringify([
+      "1000D Reinforced Tactical Carry Bag",
+      "Padded Adjustable Ergonomic Shoulder Strap",
+    ]),
+    whatsIncludedAr: JSON.stringify([
+      "حقيبة حمل تكتيكية معززة بقماش كوردورا ١٠٠٠ دي",
+      "حزام كتف مبطن وقابل للتعديل",
+    ]),
+    specsEn: JSON.stringify({
+      "Fabric": "1000D Ballistic PU-Coated Cordura",
+      "Zippers": "YKK #10 Heavy Duty Steel Dual Zippers",
+      "Hardware": "Champagne Gold Metal Alloy Buckles",
+      "Capacity": "Grill + Grate + Warming Rack + Accessories",
+    }),
+    specsAr: JSON.stringify({
+      "نوع القماش": "كوردورا ١٠٠٠ دي معالج لمقاومة الماء",
+      "نوع السحابات": "سحابات فولاذية مزدوجة YKK رقم ١٠",
+      "الإكسسوارات": "أبازيم وحلقات معدنية بلون الذهب الشامبانيا",
+      "السعة": "تستوعب الشواية والشبكة ورف التسخين والإكسسوارات بالكامل",
+    }),
   });
 
-  const tongs = await prisma.product.create({
-    data: {
-      slug: "precision-stainless-steel-bbq-tongs",
-      nameEn: "Precision 304 Stainless Steel Grilling Tongs",
-      nameAr: "ملقط شواء احترافي من الستانلس ستيل ٣٠٤",
-      shortDescriptionEn:
-        "Heavy-duty 304 food-grade stainless steel locking tongs with scalloped grip edges and ergonomic heat-safe reach.",
-      shortDescriptionAr:
-        "ملقط شواء متين واحترافي من الستانلس ستيل ٣٠٤ الغذائي مع حواف إحكام مسننة وآلية قفل سريعة.",
-      descriptionEn: `Engineered for mastery over the open flame. The STEELORA Precision Grilling Tongs are forged from 1.5mm thick food-grade 304 stainless steel, offering exceptional leverage and heat protection.
+  const tongs = await createProduct({
+    slug: "precision-stainless-steel-bbq-tongs",
+    nameEn: "Precision 304 Stainless Steel Grilling Tongs",
+    nameAr: "ملقط شواء احترافي من الستانلس ستيل ٣٠٤",
+    shortDescriptionEn:
+      "Heavy-duty 304 food-grade stainless steel locking tongs with scalloped grip edges and ergonomic heat-safe reach.",
+    shortDescriptionAr:
+      "ملقط شواء متين واحترافي من الستانلس ستيل ٣٠٤ الغذائي مع حواف إحكام مسننة وآلية قفل سريعة.",
+    descriptionEn: `Engineered for mastery over the open flame. The STEELORA Precision Grilling Tongs are forged from 1.5mm thick food-grade 304 stainless steel, offering exceptional leverage and heat protection.
 
 Featuring laser-cut scalloped grips that hold delicate seafood and heavy steaks securely without tearing, combined with an intuitive pull-lock mechanism and integrated hanging loop.`,
-      descriptionAr: `صُمم لتحكم فائق واحترافي فوق الجمر. ملقط شواء ستيلورا مصنوع من الفولاذ المقاوم للصدأ ٣٠٤ فائق النقاء بسماكة ١٫٥ ملم، ليمنحك قوة وثباتاً عالياً مع حماية يديك من حرارة الشواء.
+    descriptionAr: `صُمم لتحكم فائق واحترافي فوق الجمر. ملقط شواء ستيلورا مصنوع من الفولاذ المقاوم للصدأ ٣٠٤ فائق النقاء بسماكة ١٫٥ ملم، ليمنحك قوة وثباتاً عالياً مع حماية يديك من حرارة الشواء.
 
 تتميز الحواف بتسنن هندسي دقيق يمسك اللحوم والمأكولات دون تمزيقها، مع آلية قفل وفتح سريعة وحلقة تعليق مدمجة.`,
-      pricePiasters: 85000, // 850 EGP
-      compareAtPricePiasters: 110000, // 1,100 EGP
-      images: JSON.stringify([
-        "/images/products/tongs-main.png",
-      ]),
-      category: "BBQ_ACCESSORY",
-      mainCategory: "BBQ",
-      subCategory: "BBQ_ACCESSORY",
-      materialEn: "1.5mm Food-Grade 304 Stainless Steel + Brass Locking Pin",
-      materialAr: "ستانلس ستيل ٣٠٤ غذائي نقي سماكة ١٫٥ ملم + قفل نحاسي متين",
-      foldedDimensions: "42 x 4.5 x 2.5 cm",
-      openDimensions: "42 x 4.5 x 4 cm",
-      weight: "0.38 kg",
-      weightKg: 0.38,
-      stock: 80,
-      isFeatured: true,
-      isBestSeller: false,
-      whatsIncludedEn: JSON.stringify([
-        "Precision 304 Stainless Steel Grilling Tongs (42cm)",
-        "Protective Storage Sleeve",
-      ]),
-      whatsIncludedAr: JSON.stringify([
-        "ملقط شواء ستانلس ستيل ٣٠٤ احترافي (٤٢ سم)",
-        "جراب حماية وتخزين مدمج",
-      ]),
-      specsEn: JSON.stringify({
-        "Material": "Food-Grade 304 Stainless Steel",
-        "Length": "42 cm Heat-Deflecting Reach",
-        "Lock Mechanism": "Smooth Pull-Tab Lock",
-        "Dishwasher Safe": "100% Rust-Proof & Dishwasher Safe",
-      }),
-      specsAr: JSON.stringify({
-        "الخامة": "ستانلس ستيل ٣٠٤ غذائي نقي",
-        "الطول": "٤٢ سم لحماية اليد من الحرارة",
-        "آلية القفل": "قفل سحب ميكانيكي سريع",
-        "غسيل الأطباق": "آمن تماماً ومقاوم للصدأ مدى الحياة",
-      }),
-    },
+    pricePiasters: 85000, // 850 EGP
+    compareAtPricePiasters: 110000, // 1,100 EGP
+    images: JSON.stringify([
+      "/images/products/tongs-main.png",
+    ]),
+    category: "BBQ_ACCESSORY",
+    mainCategory: "BBQ",
+    subCategory: "BBQ_ACCESSORY",
+    materialEn: "1.5mm Food-Grade 304 Stainless Steel + Brass Locking Pin",
+    materialAr: "ستانلس ستيل ٣٠٤ غذائي نقي سماكة ١٫٥ ملم + قفل نحاسي متين",
+    foldedDimensions: "42 x 4.5 x 2.5 cm",
+    openDimensions: "42 x 4.5 x 4 cm",
+    weight: "0.38 kg",
+    weightKg: 0.38,
+    stock: 80,
+    isFeatured: true,
+    isBestSeller: false,
+    whatsIncludedEn: JSON.stringify([
+      "Precision 304 Stainless Steel Grilling Tongs (42cm)",
+      "Protective Storage Sleeve",
+    ]),
+    whatsIncludedAr: JSON.stringify([
+      "ملقط شواء ستانلس ستيل ٣٠٤ احترافي (٤٢ سم)",
+      "جراب حماية وتخزين مدمج",
+    ]),
+    specsEn: JSON.stringify({
+      "Material": "Food-Grade 304 Stainless Steel",
+      "Length": "42 cm Heat-Deflecting Reach",
+      "Lock Mechanism": "Smooth Pull-Tab Lock",
+      "Dishwasher Safe": "100% Rust-Proof & Dishwasher Safe",
+    }),
+    specsAr: JSON.stringify({
+      "الخامة": "ستانلس ستيل ٣٠٤ غذائي نقي",
+      "الطول": "٤٢ سم لحماية اليد من الحرارة",
+      "آلية القفل": "قفل سحب ميكانيكي سريع",
+      "غسيل الأطباق": "آمن تماماً ومقاوم للصدأ مدى الحياة",
+    }),
   });
 
-  const grillBrush = await prisma.product.create({
-    data: {
-      slug: "heavy-duty-stainless-grill-cleaning-brush",
-      nameEn: "Heavy-Duty Stainless Steel Grill Cleaning Brush",
-      nameAr: "فرشاة تنظيف شبكات الشواء الفولاذية الثقيلة",
-      shortDescriptionEn:
-        "Triple-helix stainless steel wire brush with integrated laser scraper blade. Cleans grates 360 degrees without bristles shedding.",
-      shortDescriptionAr:
-        "فرشاة تنظيف شبكات الشواء الفاخرة بشعيرات ثلاثية حلزونية وشفرة كشط لإزالة الدهون والكربون بكل أمان وسهولة.",
-      descriptionEn: `Maintain your grill grates in pristine showroom condition. The STEELORA Heavy-Duty Grill Cleaning Brush features a triple-helix stainless steel coil architecture that cleans 360 degrees around each grate wire without shedding bristle fragments.
+  const grillBrush = await createProduct({
+    slug: "heavy-duty-stainless-grill-cleaning-brush",
+    nameEn: "Heavy-Duty Stainless Steel Grill Cleaning Brush",
+    nameAr: "فرشاة تنظيف شبكات الشواء الفولاذية الثقيلة",
+    shortDescriptionEn:
+      "Triple-helix stainless steel wire brush with integrated laser scraper blade. Cleans grates 360 degrees without bristles shedding.",
+    shortDescriptionAr:
+      "فرشاة تنظيف شبكات الشواء الفاخرة بشعيرات ثلاثية حلزونية وشفرة كشط لإزالة الدهون والكربون بكل أمان وسهولة.",
+    descriptionEn: `Maintain your grill grates in pristine showroom condition. The STEELORA Heavy-Duty Grill Cleaning Brush features a triple-helix stainless steel coil architecture that cleans 360 degrees around each grate wire without shedding bristle fragments.
 
 Equipped with a thick stainless steel scraper for burnt-on residues and an ergonomic heat-deflecting handle.`,
-      descriptionAr: `حافظ على نظافة ولمعان شبكة الشواء كأنها جديدة تماماً. صُممت فرشاة ستيلورا الثقيلة بنظام الأسلاك الحلزونية الثلاثية المصنوعة من الستانلس ستيل لتنظيف الأسلاك بزاوية ٣٦٠ درجة بكل أمان دون تساقط الشعيرات.
+    descriptionAr: `حافظ على نظافة ولمعان شبكة الشواء كأنها جديدة تماماً. صُممت فرشاة ستيلورا الثقيلة بنظام الأسلاك الحلزونية الثلاثية المصنوعة من الستانلس ستيل لتنظيف الأسلاك بزاوية ٣٦٠ درجة بكل أمان دون تساقط الشعيرات.
 
 مزودة بشفرة كشط أمامية حادة لإزالة الدهون المتفحمة المستعصية مع مقبض متين وطويل لعزل الحرارة.`,
-      pricePiasters: 75000, // 750 EGP
-      compareAtPricePiasters: 95000, // 950 EGP
-      images: JSON.stringify([
-        "/images/products/grill-brush-main.png",
-      ]),
-      category: "BBQ_ACCESSORY",
-      mainCategory: "BBQ",
-      subCategory: "BBQ_ACCESSORY",
-      materialEn: "Heavy-Duty 304 Stainless Steel Wire + Reinforced Polymer Handle",
-      materialAr: "أسلاك فولاذية صلبة من الستانلس ستيل ٣٠٤ + مقبض مريح معزز وعازل للحرارة",
-      foldedDimensions: "45 x 16 x 7 cm",
-      openDimensions: "45 x 16 x 7 cm",
-      weight: "0.42 kg",
-      weightKg: 0.42,
-      stock: 75,
-      isFeatured: false,
-      isBestSeller: false,
-      whatsIncludedEn: JSON.stringify([
-        "360° Heavy-Duty Grill Cleaning Brush with Scraper",
-        "Leather Hanging Loop",
-      ]),
-      whatsIncludedAr: JSON.stringify([
-        "فرشاة تنظيف الشوايات ٣٦٠ درجة مع شفرة كشط فولاذية",
-        "حزام جلدي مدمج للتعليق",
-      ]),
-      specsEn: JSON.stringify({
-        "Wire Material": "High-Tensile 304 Stainless Steel",
-        "Head Design": "3-in-1 Triple Spiral Head",
-        "Scraper": "Laser-Cut Stainless Blade",
-        "Total Length": "45 cm Heavy Reach",
-      }),
-      specsAr: JSON.stringify({
-        "مادة الأسلاك": "ستانلس ستيل ٣٠٤ عالي الشد",
-        "رأس الفرشاة": "تصميم حلزوني ثلاثي ٣ في ١",
-        "شفرة الكشط": "شفرة ستانلس ستيل مقطوعة بالليزر",
-        "الطول الإجمالي": "٤٥ سم للوصول لجميع الزوايا",
-      }),
-    },
+    pricePiasters: 75000, // 750 EGP
+    compareAtPricePiasters: 95000, // 950 EGP
+    images: JSON.stringify([
+      "/images/products/grill-brush-main.png",
+    ]),
+    category: "BBQ_ACCESSORY",
+    mainCategory: "BBQ",
+    subCategory: "BBQ_ACCESSORY",
+    materialEn: "Heavy-Duty 304 Stainless Steel Wire + Reinforced Polymer Handle",
+    materialAr: "أسلاك فولاذية صلبة من الستانلس ستيل ٣٠٤ + مقبض مريح معزز وعازل للحرارة",
+    foldedDimensions: "45 x 16 x 7 cm",
+    openDimensions: "45 x 16 x 7 cm",
+    weight: "0.42 kg",
+    weightKg: 0.42,
+    stock: 75,
+    isFeatured: false,
+    isBestSeller: false,
+    whatsIncludedEn: JSON.stringify([
+      "360° Heavy-Duty Grill Cleaning Brush with Scraper",
+      "Leather Hanging Loop",
+    ]),
+    whatsIncludedAr: JSON.stringify([
+      "فرشاة تنظيف الشوايات ٣٦٠ درجة مع شفرة كشط فولاذية",
+      "حزام جلدي مدمج للتعليق",
+    ]),
+    specsEn: JSON.stringify({
+      "Wire Material": "High-Tensile 304 Stainless Steel",
+      "Head Design": "3-in-1 Triple Spiral Head",
+      "Scraper": "Laser-Cut Stainless Blade",
+      "Total Length": "45 cm Heavy Reach",
+    }),
+    specsAr: JSON.stringify({
+      "مادة الأسلاك": "ستانلس ستيل ٣٠٤ عالي الشد",
+      "رأس الفرشاة": "تصميم حلزوني ثلاثي ٣ في ١",
+      "شفرة الكشط": "شفرة ستانلس ستيل مقطوعة بالليزر",
+      "الطول الإجمالي": "٤٥ سم للوصول لجميع الزوايا",
+    }),
   });
 
-  const bundleProduct = await prisma.product.create({
-    data: {
-      slug: "outdoor-luxury-set",
-      nameEn: "Outdoor Luxury Set (4-Piece Suite)",
+  const bundleProduct = await createProduct({
+    slug: "outdoor-luxury-set",
+    nameEn: "Outdoor Luxury Set (4-Piece Suite)",
       nameAr: "طقم الفخامة الخارجية المتكامل (٤ قطع)",
       shortDescriptionEn:
         "The complete flagship outdoor suite: Foldable BBQ Grill (with Warming Rack), Folding Chair, Side Table/Stool, and Carry Bag at a 15% discount.",
@@ -451,7 +443,6 @@ Buying separately costs EGP 15,950. With our signature collection bundle, you re
         "الضمان": "ضمان هيكلي شامل لمدة ١٠ سنوات",
         "الشحن والتوصيل": "شحن مجاني سريع ومؤمن لكافة أنحاء مصر",
       }),
-    },
   });
 
   // Bundle Definition
