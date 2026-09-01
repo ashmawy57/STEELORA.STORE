@@ -59,12 +59,12 @@ export const TypewriterHeading: React.FC<TypewriterHeadingProps> = ({
   }, [text]);
 
   return (
-    <h1 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white max-w-5xl leading-[1.15] drop-shadow-2xl min-h-[3.2em] sm:min-h-[2.4em] flex items-center justify-center flex-wrap">
+    <h1 className="font-heading font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-white max-w-4xl leading-[1.2] drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)] min-h-[3em] sm:min-h-[2.4em] flex items-center justify-center flex-wrap text-center px-2">
       <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-sand-light to-gold-light">
         {displayedText}
       </span>
       {/* Blinking Neon Gold Cursor */}
-      <span className="inline-block w-[3px] sm:w-[4px] h-[0.9em] ms-1.5 bg-gradient-to-b from-gold-light via-gold to-amber-500 rounded-sm shadow-[0_0_12px_rgba(198,166,100,0.9)] animate-pulse" />
+      <span className="inline-block w-[2.5px] sm:w-[4px] h-[0.85em] ms-1.5 bg-gradient-to-b from-gold-light via-gold to-amber-500 rounded-sm shadow-[0_0_12px_rgba(198,166,100,0.9)] animate-pulse" />
     </h1>
   );
 };
