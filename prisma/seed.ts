@@ -267,6 +267,116 @@ Equipped with dual exterior pockets for tongs, thermometer, and spices, plus erg
     },
   });
 
+  const tongs = await prisma.product.create({
+    data: {
+      slug: "precision-stainless-steel-bbq-tongs",
+      nameEn: "Precision 304 Stainless Steel Grilling Tongs",
+      nameAr: "ملقط شواء احترافي من الستانلس ستيل ٣٠٤",
+      shortDescriptionEn:
+        "Heavy-duty 304 food-grade stainless steel locking tongs with scalloped grip edges and ergonomic heat-safe reach.",
+      shortDescriptionAr:
+        "ملقط شواء متين واحترافي من الستانلس ستيل ٣٠٤ الغذائي مع حواف إحكام مسننة وآلية قفل سريعة.",
+      descriptionEn: `Engineered for mastery over the open flame. The STEELORA Precision Grilling Tongs are forged from 1.5mm thick food-grade 304 stainless steel, offering exceptional leverage and heat protection.
+
+Featuring laser-cut scalloped grips that hold delicate seafood and heavy steaks securely without tearing, combined with an intuitive pull-lock mechanism and integrated hanging loop.`,
+      descriptionAr: `صُمم لتحكم فائق واحترافي فوق الجمر. ملقط شواء ستيلورا مصنوع من الفولاذ المقاوم للصدأ ٣٠٤ فائق النقاء بسماكة ١٫٥ ملم، ليمنحك قوة وثباتاً عالياً مع حماية يديك من حرارة الشواء.
+
+تتميز الحواف بتسنن هندسي دقيق يمسك اللحوم والمأكولات دون تمزيقها، مع آلية قفل وفتح سريعة وحلقة تعليق مدمجة.`,
+      pricePiasters: 85000, // 850 EGP
+      compareAtPricePiasters: 110000, // 1,100 EGP
+      images: JSON.stringify([
+        "/images/products/tongs-main.png",
+      ]),
+      category: "BBQ_ACCESSORY",
+      mainCategory: "BBQ",
+      subCategory: "BBQ_ACCESSORY",
+      materialEn: "1.5mm Food-Grade 304 Stainless Steel + Brass Locking Pin",
+      materialAr: "ستانلس ستيل ٣٠٤ غذائي نقي سماكة ١٫٥ ملم + قفل نحاسي متين",
+      foldedDimensions: "42 x 4.5 x 2.5 cm",
+      openDimensions: "42 x 4.5 x 4 cm",
+      weight: "0.38 kg",
+      weightKg: 0.38,
+      stock: 80,
+      isFeatured: true,
+      isBestSeller: false,
+      whatsIncludedEn: JSON.stringify([
+        "Precision 304 Stainless Steel Grilling Tongs (42cm)",
+        "Protective Storage Sleeve",
+      ]),
+      whatsIncludedAr: JSON.stringify([
+        "ملقط شواء ستانلس ستيل ٣٠٤ احترافي (٤٢ سم)",
+        "جراب حماية وتخزين مدمج",
+      ]),
+      specsEn: JSON.stringify({
+        "Material": "Food-Grade 304 Stainless Steel",
+        "Length": "42 cm Heat-Deflecting Reach",
+        "Lock Mechanism": "Smooth Pull-Tab Lock",
+        "Dishwasher Safe": "100% Rust-Proof & Dishwasher Safe",
+      }),
+      specsAr: JSON.stringify({
+        "الخامة": "ستانلس ستيل ٣٠٤ غذائي نقي",
+        "الطول": "٤٢ سم لحماية اليد من الحرارة",
+        "آلية القفل": "قفل سحب ميكانيكي سريع",
+        "غسيل الأطباق": "آمن تماماً ومقاوم للصدأ مدى الحياة",
+      }),
+    },
+  });
+
+  const grillBrush = await prisma.product.create({
+    data: {
+      slug: "heavy-duty-stainless-grill-cleaning-brush",
+      nameEn: "Heavy-Duty Stainless Steel Grill Cleaning Brush",
+      nameAr: "فرشاة تنظيف شبكات الشواء الفولاذية الثقيلة",
+      shortDescriptionEn:
+        "Triple-helix stainless steel wire brush with integrated laser scraper blade. Cleans grates 360 degrees without bristles shedding.",
+      shortDescriptionAr:
+        "فرشاة تنظيف شبكات الشواء الفاخرة بشعيرات ثلاثية حلزونية وشفرة كشط لإزالة الدهون والكربون بكل أمان وسهولة.",
+      descriptionEn: `Maintain your grill grates in pristine showroom condition. The STEELORA Heavy-Duty Grill Cleaning Brush features a triple-helix stainless steel coil architecture that cleans 360 degrees around each grate wire without shedding bristle fragments.
+
+Equipped with a thick stainless steel scraper for burnt-on residues and an ergonomic heat-deflecting handle.`,
+      descriptionAr: `حافظ على نظافة ولمعان شبكة الشواء كأنها جديدة تماماً. صُممت فرشاة ستيلورا الثقيلة بنظام الأسلاك الحلزونية الثلاثية المصنوعة من الستانلس ستيل لتنظيف الأسلاك بزاوية ٣٦٠ درجة بكل أمان دون تساقط الشعيرات.
+
+مزودة بشفرة كشط أمامية حادة لإزالة الدهون المتفحمة المستعصية مع مقبض متين وطويل لعزل الحرارة.`,
+      pricePiasters: 75000, // 750 EGP
+      compareAtPricePiasters: 95000, // 950 EGP
+      images: JSON.stringify([
+        "/images/products/grill-brush-main.png",
+      ]),
+      category: "BBQ_ACCESSORY",
+      mainCategory: "BBQ",
+      subCategory: "BBQ_ACCESSORY",
+      materialEn: "Heavy-Duty 304 Stainless Steel Wire + Reinforced Polymer Handle",
+      materialAr: "أسلاك فولاذية صلبة من الستانلس ستيل ٣٠٤ + مقبض مريح معزز وعازل للحرارة",
+      foldedDimensions: "45 x 16 x 7 cm",
+      openDimensions: "45 x 16 x 7 cm",
+      weight: "0.42 kg",
+      weightKg: 0.42,
+      stock: 75,
+      isFeatured: false,
+      isBestSeller: false,
+      whatsIncludedEn: JSON.stringify([
+        "360° Heavy-Duty Grill Cleaning Brush with Scraper",
+        "Leather Hanging Loop",
+      ]),
+      whatsIncludedAr: JSON.stringify([
+        "فرشاة تنظيف الشوايات ٣٦٠ درجة مع شفرة كشط فولاذية",
+        "حزام جلدي مدمج للتعليق",
+      ]),
+      specsEn: JSON.stringify({
+        "Wire Material": "High-Tensile 304 Stainless Steel",
+        "Head Design": "3-in-1 Triple Spiral Head",
+        "Scraper": "Laser-Cut Stainless Blade",
+        "Total Length": "45 cm Heavy Reach",
+      }),
+      specsAr: JSON.stringify({
+        "مادة الأسلاك": "ستانلس ستيل ٣٠٤ عالي الشد",
+        "رأس الفرشاة": "تصميم حلزوني ثلاثي ٣ في ١",
+        "شفرة الكشط": "شفرة ستانلس ستيل مقطوعة بالليزر",
+        "الطول الإجمالي": "٤٥ سم للوصول لجميع الزوايا",
+      }),
+    },
+  });
+
   const bundleProduct = await prisma.product.create({
     data: {
       slug: "outdoor-luxury-set",
@@ -408,6 +518,26 @@ Buying separately costs EGP 15,950. With our signature collection bundle, you re
           "Doubles as a super sturdy stool and coffee table. The laser perforated mesh top prevents any liquid accumulation.",
         commentAr:
           "ممتازة وتستخدم كطاولة لتحضير القهوة وكمقعد قوي جداً في نفس الوقت. الفتحات المخرمة تمنع تجمع أي سوائل على السطح.",
+        verifiedPurchase: true,
+      },
+      {
+        productId: tongs.id,
+        author: "Yasser Mansi (Mansoura)",
+        rating: 5,
+        commentEn:
+          "The grip precision is unbelievable. 42cm length keeps my arms completely safe from flare-ups, and the lock mechanism is super crisp.",
+        commentAr:
+          "إحكام المسك وقوة الملقط مذهلة. طول ٤٢ سم يوفر حماية تامة لليدين من لهب الفحم، وآلية القفل ناعمة وسريعة جداً.",
+        verifiedPurchase: true,
+      },
+      {
+        productId: grillBrush.id,
+        author: "Capt. Hany Nour (Hurghada)",
+        rating: 5,
+        commentEn:
+          "Best grill cleaner I have ever owned. The 3-in-1 triple coil cleans every side of the 304 stainless grate with minimal effort.",
+        commentAr:
+          "أفضل فرشاة تنظيف شوايات جربتها. الرأس الثلاثي الحلزوني ينظف أسلاك شبكة الشواء من كافة الجوانب بجهد قليل جداً وبدون تساقط للشعيرات.",
         verifiedPurchase: true,
       },
       {
