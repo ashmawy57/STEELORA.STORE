@@ -41,8 +41,8 @@ export const en = {
     menu: "Menu",
   },
   topbar: {
-    announcement: "Complimentary White-Glove Delivery on orders over EGP 10,000 across Egypt",
-    guarantee: "Egyptian Precision Engineering | 304 Marine-Grade Steel",
+    announcement: "FREE DELIVERY WITH OUR OFFERS",
+    whatsapp: "+20 110 775 4111 (WHATSAPP ONLY)",
   },
   hero: {
     eyebrow: "OUTDOOR BBQ GRILL",
