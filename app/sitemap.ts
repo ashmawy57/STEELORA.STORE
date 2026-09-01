@@ -6,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const locales = ["en", "ar"];
 
   // Static pages
-  const staticRoutes = ["", "/shop", "/about", "/blog", "/contact"];
+  const staticRoutes = ["", "/shop", "/blog", "/contact"];
 
   const staticEntries = locales.flatMap((locale) =>
     staticRoutes.map((route) => ({

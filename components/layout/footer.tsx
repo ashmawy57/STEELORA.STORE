@@ -123,14 +123,6 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
             <ul className="space-y-2 text-xs">
               <li>
                 <Link
-                  href={`/${locale}/about`}
-                  className="text-steel-300 hover:text-gold transition-colors"
-                >
-                  {dict.nav.about}
-                </Link>
-              </li>
-              <li>
-                <Link
                   href={`/${locale}/blog`}
                   className="text-steel-300 hover:text-gold transition-colors"
                 >

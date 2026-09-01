@@ -115,7 +115,6 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
       label: dict.nav.bundles,
       badge: dict.common.discount,
     },
-    { href: `/${locale}/about`, label: dict.nav.about },
     { href: `/${locale}/blog`, label: dict.nav.blog },
     { href: `/${locale}/contact`, label: dict.nav.contact },
   ];
@@ -160,7 +159,7 @@ const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-3.5 h-3
       text: isArabic
         ? "صنع يدوي في مصر بضمان ١٠ سنوات"
         : "Handcrafted in Egypt — 10-Year Guarantee",
-      href: `/${locale}/about`,
+      href: `/${locale}/shop`,
       external: false,
     },
   ];
