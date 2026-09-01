@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Sparkles, ArrowRight, ArrowLeft, SlidersHorizontal, Flame, Armchair, Package } from "lucide-react";
-import { prisma } from "@/lib/prisma";
+import { getStoreProducts } from "@/lib/products-store";
 import { ProductCard } from "@/components/product/product-card";
 import { getDictionary, isValidLocale, type Locale } from "@/lib/dictionaries";
 import { formatEGP } from "@/lib/currency";
@@ -43,7 +43,7 @@ export default async function ShopPage({
   const currentSort = searchParams.sort || "featured";
   const searchQuery = searchParams.q || "";
 
-  // Build Prisma filter
+  // Build filter
   let where: Record<string, unknown> = {};
   const categoryFilter = buildPrismaCategoryFilter(currentCategoryParam);
   if (categoryFilter) {
@@ -65,7 +65,7 @@ export default async function ShopPage({
     delete where.OR;
   }
 
-  // Build Prisma sort
+  // Build sort
   let orderBy: Record<string, "asc" | "desc">[] = [{ isFeatured: "desc" }, { createdAt: "asc" }];
   if (currentSort === "price-low") {
     orderBy = [{ pricePiasters: "asc" }];
@@ -75,10 +75,7 @@ export default async function ShopPage({
     orderBy = [{ isBestSeller: "desc" }, { pricePiasters: "desc" }];
   }
 
-  const products = await prisma.product.findMany({
-    where,
-    orderBy,
-  });
+  const products = await getStoreProducts(where, orderBy);
 
   // Determine active main category group
   const isBBQActive =

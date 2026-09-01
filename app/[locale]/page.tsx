@@ -14,7 +14,7 @@ import {
   ChevronRight,
   ChevronLeft,
 } from "lucide-react";
-import { prisma } from "@/lib/prisma";
+import { getStoreProducts } from "@/lib/products-store";
 import { ProductCard } from "@/components/product/product-card";
 import { VideoShowcase } from "@/components/home/video-showcase";
 import { TrustPillars } from "@/components/home/trust-pillars";
@@ -37,10 +37,11 @@ export default async function HomePage({
   const isArabic = locale === "ar";
   const ArrowIcon = isArabic ? ArrowLeft : ArrowRight;
 
-  // Fetch best sellers and bundle from SQLite
-  const products = await prisma.product.findMany({
-    orderBy: [{ isFeatured: "desc" }, { createdAt: "asc" }],
-  });
+  // Fetch best sellers and bundle safely
+  const products = await getStoreProducts(undefined, [
+    { isFeatured: "desc" },
+    { createdAt: "asc" },
+  ]);
 
   const bundleProduct = products.find((p) => p.slug === "outdoor-luxury-set");
   const gridProducts = products.filter((p) => p.slug !== "outdoor-luxury-set");
@@ -50,23 +51,23 @@ export default async function HomePage({
       {/* 1. HERO SECTION: Full-Bleed Dark Cinematic Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-charcoal-950 text-white">
         {/* Background Image with Crisp Clarity & Bottom Transition Shadow Only */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
           <Image
             src="/images/hero/hero-bg.png"
             alt="STEELORA Luxury Outdoor Gear"
             fill
             priority
-            className="object-cover object-center opacity-95 transform scale-105 animate-in fade-in zoom-in duration-1000"
+            className="object-cover object-center opacity-95 transform scale-105 animate-in fade-in zoom-in duration-1000 pointer-events-none"
             sizes="100vw"
           />
           {/* Subtle soft ambient overlay */}
-          <div className="absolute inset-0 bg-charcoal-950/20" />
+          <div className="absolute inset-0 bg-charcoal-950/20 pointer-events-none" />
           {/* Shadow gradient only at the end / bottom of the section */}
-          <div className="absolute bottom-0 inset-x-0 h-48 sm:h-64 bg-gradient-to-t from-charcoal-950 via-charcoal-950/80 to-transparent" />
+          <div className="absolute bottom-0 inset-x-0 h-48 sm:h-64 bg-gradient-to-t from-charcoal-950 via-charcoal-950/80 to-transparent pointer-events-none" />
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 flex flex-col items-center text-center space-y-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 flex flex-col items-center text-center space-y-8 pointer-events-auto">
           {/* Luxury Neon Glowing Eyebrow Badge */}
           <Reveal animation="fade-down" duration={600} className="relative inline-flex items-center justify-center group">
             {/* Outer Neon Halo */}
@@ -87,10 +88,11 @@ export default async function HomePage({
           <TypewriterHeading text={dict.hero.title} />
 
           {/* CTAs */}
-          <Reveal animation="fade-up" duration={650} delay={200} className="flex flex-col sm:flex-row items-center gap-4 pt-4 w-full sm:w-auto">
+          <Reveal animation="fade-up" duration={650} delay={200} className="flex flex-col sm:flex-row items-center gap-4 pt-4 w-full sm:w-auto relative z-20 pointer-events-auto">
             <Link
               href={`/${locale}/shop`}
-              className="w-full sm:w-auto btn-gold px-8 py-4 text-sm font-bold flex items-center justify-center gap-2 shadow-goldGlow hover:scale-105 transition-transform"
+              prefetch={true}
+              className="w-full sm:w-auto btn-gold px-8 py-4 text-sm font-bold flex items-center justify-center gap-2 shadow-goldGlow hover:scale-105 active:scale-95 transition-all cursor-pointer touch-manipulation relative z-30"
             >
               <span>{dict.hero.primaryCta}</span>
               <ArrowIcon className="w-4 h-4" />
@@ -98,7 +100,8 @@ export default async function HomePage({
 
             <Link
               href={`/${locale}/shop/outdoor-luxury-set`}
-              className="w-full sm:w-auto btn-outline-gold px-8 py-4 text-sm font-bold flex items-center justify-center gap-2 bg-charcoal-900/60 backdrop-blur-sm hover:scale-105 transition-transform"
+              prefetch={true}
+              className="w-full sm:w-auto btn-outline-gold px-8 py-4 text-sm font-bold flex items-center justify-center gap-2 bg-charcoal-900/60 backdrop-blur-sm hover:scale-105 active:scale-95 transition-all cursor-pointer touch-manipulation relative z-30"
             >
               <span>{dict.hero.secondaryCta}</span>
               <span className="text-[10px] px-1.5 py-0.5 rounded bg-gold text-charcoal font-black">

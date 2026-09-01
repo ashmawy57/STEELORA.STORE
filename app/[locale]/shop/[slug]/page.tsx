@@ -1,14 +1,14 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { prisma } from "@/lib/prisma";
+import { getStoreProducts, getStoreProductBySlug } from "@/lib/products-store";
 import { ProductDetailView } from "@/components/product/product-detail-view";
 import { isValidLocale, type Locale } from "@/lib/dictionaries";
 
 export const revalidate = 60; // ISR revalidate
 
 export async function generateStaticParams() {
-  const products = await prisma.product.findMany({ select: { slug: true } });
+  const products = await getStoreProducts();
   const locales = ["en", "ar"];
 
   return locales.flatMap((locale) =>
@@ -25,9 +25,7 @@ export async function generateMetadata({
   params: { locale: string; slug: string };
 }): Promise<Metadata> {
   const locale: Locale = isValidLocale(params.locale) ? params.locale : "en";
-  const product = await prisma.product.findUnique({
-    where: { slug: params.slug },
-  });
+  const product = await getStoreProductBySlug(params.slug);
 
   if (!product) return {};
 
@@ -70,25 +68,16 @@ export default async function ProductDetailPage({
 }) {
   const locale: Locale = isValidLocale(params.locale) ? params.locale : "en";
 
-  const product = await prisma.product.findUnique({
-    where: { slug: params.slug },
-    include: {
-      reviews: {
-        orderBy: { createdAt: "desc" },
-      },
-    },
-  });
+  const product = await getStoreProductBySlug(params.slug);
 
   if (!product) {
     notFound();
   }
 
-  const relatedProducts = await prisma.product.findMany({
-    where: {
-      slug: { not: params.slug },
-    },
-    take: 3,
-  });
+  const allProducts = await getStoreProducts();
+  const relatedProducts = allProducts
+    .filter((p) => p.slug !== params.slug)
+    .slice(0, 3);
 
   let parsedImages: string[] = [];
   try {
