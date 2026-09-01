@@ -265,19 +265,47 @@ Equipped with dual exterior pockets for tongs, thermometer, and spices, plus erg
   });
 
   const tongs = await createProduct({
-    slug: "precision-stainless-steel-bbq-tongs",
-    nameEn: "Precision 304 Stainless Steel Grilling Tongs",
-    nameAr: "ملقط شواء احترافي من الستانلس ستيل ٣٠٤",
+    slug: "premium-stainless-steel-bbq-tongs",
+    nameEn: "Premium Stainless Steel BBQ Tongs with Spatula & Locking Ring",
+    nameAr: "ملقط شواء ستانلس ستيل فاخر مع ملعقة تقليب وقفل حلقي",
     shortDescriptionEn:
-      "Heavy-duty 304 food-grade stainless steel locking tongs with scalloped grip edges and ergonomic heat-safe reach.",
+      "Premium stainless steel BBQ tongs designed for easy and precise food handling while grilling. Featuring a convenient spatula end, scalloped gripping edges, a comfortable non-slip grip, and a locking ring for compact storage.",
     shortDescriptionAr:
-      "ملقط شواء متين واحترافي من الستانلس ستيل ٣٠٤ الغذائي مع حواف إحكام مسننة وآلية قفل سريعة.",
-    descriptionEn: `Engineered for mastery over the open flame. The STEELORA Precision Grilling Tongs are forged from 1.5mm thick food-grade 304 stainless steel, offering exceptional leverage and heat protection.
+      "ملقط شواء ستانلس ستيل فاخر متعدد الاستخدامات مصمم لتحكم فائق أثناء الشواء. يجمع بين ملقط مسنن وملعقة تقليب مدمجة مع مقبض مريح مانع للانزلاق وحلقة قفل للتخزين المدمج.",
+    descriptionEn: `### Premium BBQ Tongs for Better Grilling Control
 
-Featuring laser-cut scalloped grips that hold delicate seafood and heavy steaks securely without tearing, combined with an intuitive pull-lock mechanism and integrated hanging loop.`,
-    descriptionAr: `صُمم لتحكم فائق واحترافي فوق الجمر. ملقط شواء ستيلورا مصنوع من الفولاذ المقاوم للصدأ ٣٠٤ فائق النقاء بسماكة ١٫٥ ملم، ليمنحك قوة وثباتاً عالياً مع حماية يديك من حرارة الشواء.
+Take your grilling experience to the next level with these Premium Stainless Steel BBQ Tongs, designed to give you better control, precision, and convenience when handling food on the grill.
 
-تتميز الحواف بتسنن هندسي دقيق يمسك اللحوم والمأكولات دون تمزيقها، مع آلية قفل وفتح سريعة وحلقة تعليق مدمجة.`,
+Crafted with a durable stainless-steel construction, the tongs combine a scalloped gripping end for securely handling food with an integrated spatula-style end that makes flipping, lifting, and serving easier.
+
+The ergonomic design features a comfortable non-slip grip, helping provide better handling and control during cooking. A built-in locking ring allows the tongs to be closed securely for convenient storage and helps keep your kitchen or grilling tools organized.
+
+Whether you're grilling meat, flipping burgers, serving vegetables, or handling food at the barbecue, this versatile tool is designed to make everyday grilling easier and more efficient.
+
+### Key Features
+- 🔒 **Locking Ring:** The integrated locking ring allows the tongs to be securely closed when not in use, making them easier to store.
+- 🥩 **Multi-Purpose Design:** Combines tongs and a spatula-style end in one practical grilling tool for handling, flipping, lifting, and serving food.
+- 🛡️ **Stainless Steel Construction:** Durable stainless-steel construction designed for everyday grilling and kitchen use.
+- ✋ **Non-Slip Comfort Grip:** The dark grip section provides a more comfortable and controlled handling experience while using the tongs.
+- 🍖 **Scalloped Gripping Edges:** The shaped gripping edges help hold food securely while grilling, flipping, and serving.
+- 🔥 **Ideal for BBQ & Grilling:** Perfect for handling a variety of foods during barbecue and grilling preparation.`,
+    descriptionAr: `### ملقط شواء فاخر لتحكم أفضل أثناء الشواء
+
+ارتقِ بتجربة الشواء إلى مستوى جديد مع ملقط الشواء الفاخر من الستانلس ستيل، المصمم ليمنحك تحكماً ودقة وسهولة فائقة عند التعامل مع مختلف الأطعمة على الشواية.
+
+مصنوع من هيكل متين من الفولاذ المقاوم للصدأ يجمع بذكاء بين طرف مسنن لإمساك اللحوم بإحكام وطرف عريض بنمط ملعقة تقليب (Spatula) لتسهيل التقليب والرفع والتقديم.
+
+يتميز التصميم المريح بمقبض مانع للانزلاق يوفر راحة وثباتاً أثناء الطهي، مع حلقة قفل مدمجة لإغلاق الملقط بإحكام للتخزين الأنيق والموفر للمساحة.
+
+سواء كنت تشوي اللحوم، تقلب البرجر، تقدم الخضار، أو تجهز المشويات، فإن هذه الأداة متعددة الاستخدامات مصممة لجعل الشواء أسهل وأكثر كفاءة واحترافية.
+
+### الميزات الرئيسية
+- 🔒 **حلقة قفل مدمجة:** تتيح إغلاق الملقط بإحكام لسهولة التخزين وتوفير المساحة.
+- 🥩 **تصميم متعدد الأغراض:** يدمج بين ملقط مسنن وملعقة تقليب مسطحة في أداة شواء عملية واحدة.
+- 🛡️ **هيكل ستانلس ستيل متين:** مقاوم للصدأ والحرارة ومصمم للاستخدام الشاق اليومي.
+- ✋ **مقبض مريح مانع للانزلاق:** يوفر تحكماً آمناً ومريحاً يمنع الانزلاق أثناء تقليب الأطعمة الساخنة.
+- 🍖 **حواف إمساك مسننة:** تصميم مقوس يمسك مختلف الأطعمة بإحكام ودون تمزيق.
+- 🔥 **مثالي للشواء والمطبخ:** الأداة المتكاملة لكافة أعمال الشواء والطهي والتقديم.`,
     pricePiasters: 85000, // 850 EGP
     compareAtPricePiasters: 110000, // 1,100 EGP
     images: JSON.stringify([
@@ -286,51 +314,81 @@ Featuring laser-cut scalloped grips that hold delicate seafood and heavy steaks 
     category: "BBQ_ACCESSORY",
     mainCategory: "BBQ",
     subCategory: "BBQ_ACCESSORY",
-    materialEn: "1.5mm Food-Grade 304 Stainless Steel + Brass Locking Pin",
-    materialAr: "ستانلس ستيل ٣٠٤ غذائي نقي سماكة ١٫٥ ملم + قفل نحاسي متين",
-    foldedDimensions: "42 x 4.5 x 2.5 cm",
-    openDimensions: "42 x 4.5 x 4 cm",
+    materialEn: "Premium Stainless Steel + Non-Slip Comfort Grip",
+    materialAr: "ستانلس ستيل فاخر مقاوم للصدأ + مقبض مريح مانع للانزلاق",
+    foldedDimensions: "42 x 4.5 x 3.5 cm",
+    openDimensions: "42 x 9.5 x 4 cm",
     weight: "0.38 kg",
     weightKg: 0.38,
     stock: 80,
     isFeatured: true,
     isBestSeller: false,
     whatsIncludedEn: JSON.stringify([
-      "Precision 304 Stainless Steel Grilling Tongs (42cm)",
-      "Protective Storage Sleeve",
+      "1 × Stainless Steel BBQ Tongs with Spatula & Locking Ring",
     ]),
     whatsIncludedAr: JSON.stringify([
-      "ملقط شواء ستانلس ستيل ٣٠٤ احترافي (٤٢ سم)",
-      "جراب حماية وتخزين مدمج",
+      "١ × ملقط شواء ستانلس ستيل مع ملعقة تقليب وحلقة قفل",
     ]),
     specsEn: JSON.stringify({
-      "Material": "Food-Grade 304 Stainless Steel",
-      "Length": "42 cm Heat-Deflecting Reach",
-      "Lock Mechanism": "Smooth Pull-Tab Lock",
-      "Dishwasher Safe": "100% Rust-Proof & Dishwasher Safe",
+      "Product Type": "Multi-Purpose BBQ Tongs / Grill Serving Tool",
+      "Material": "Stainless Steel",
+      "Design": "Multi-Purpose (Scalloped Gripper + Spatula)",
+      "Grip": "Non-Slip Comfort Grip",
+      "End Design": "Scalloped Gripper + Spatula",
+      "Storage": "Locking Ring",
+      "Application": "BBQ / Grilling / Kitchen",
+      "Color": "Stainless Steel / Black Accent",
+      "Quantity": "1 Piece",
     }),
     specsAr: JSON.stringify({
-      "الخامة": "ستانلس ستيل ٣٠٤ غذائي نقي",
-      "الطول": "٤٢ سم لحماية اليد من الحرارة",
-      "آلية القفل": "قفل سحب ميكانيكي سريع",
-      "غسيل الأطباق": "آمن تماماً ومقاوم للصدأ مدى الحياة",
+      "نوع المنتج": "ملقط شواء متعدد الأغراض / أداة تقديم المشويات",
+      "الخامة": "ستانلس ستيل مقاوم للصدأ",
+      "التصميم": "متعدد الاستخدامات (ملقط مسنن + ملعقة تقليب)",
+      "المقبض": "مقبض مريح مانع للانزلاق",
+      "تصميم الأطراف": "طرف مسنن + ملعقة تقليب عريضة",
+      "التخزين": "حلقة قفل سحب مدمجة",
+      "الاستخدام": "الشواء / الطهي / المطبخ",
+      "اللون": "فضي ستانلس ستيل / أسود",
+      "الكمية": "قطعة واحدة",
     }),
   });
 
   const grillBrush = await createProduct({
-    slug: "heavy-duty-stainless-grill-cleaning-brush",
-    nameEn: "Heavy-Duty Stainless Steel Grill Cleaning Brush",
-    nameAr: "فرشاة تنظيف شبكات الشواء الفولاذية الثقيلة",
+    slug: "3-in-1-bbq-cleaning-brush-scraper",
+    nameEn: "3-in-1 BBQ Cleaning Brush with Scraper & Scrubbing Pad",
+    nameAr: "فرشاة تنظيف الشوايات ٣ في ١ مع شفرة كشط وإسفنجة فرك",
     shortDescriptionEn:
-      "Triple-helix stainless steel wire brush with integrated laser scraper blade. Cleans grates 360 degrees without bristles shedding.",
+      "Keep your grill clean and always ready to use with this all-in-one BBQ cleaning brush. A practical design combining 3 tools in 1: a built-in scraper for tough grease, sturdy metal bristles for deep cleaning, and a powerful scrubbing pad, complete with a comfortable grip for perfect, non-slip control.",
     shortDescriptionAr:
-      "فرشاة تنظيف شبكات الشواء الفاخرة بشعيرات ثلاثية حلزونية وشفرة كشط لإزالة الدهون والكربون بكل أمان وسهولة.",
-    descriptionEn: `Maintain your grill grates in pristine showroom condition. The STEELORA Heavy-Duty Grill Cleaning Brush features a triple-helix stainless steel coil architecture that cleans 360 degrees around each grate wire without shedding bristle fragments.
+      "حافظ على شوايتك نظيفة وجاهزة دائماً مع هذه الفرشاة الشاملة ٣ في ١. تصميم عملي يجمع ٣ أدوات في أداة واحدة: شفرة كشط مدمجة للدهون الصعبة، شعيرات معدنية متينة للتنظيف العميق، وإسفنجة فرك قوية مع مقبض مريح غير قابل للانزلاق.",
+    descriptionEn: `### The All-In-One Cleaning Brush for a Clean and Ready Grill
 
-Equipped with a thick stainless steel scraper for burnt-on residues and an ergonomic heat-deflecting handle.`,
-    descriptionAr: `حافظ على نظافة ولمعان شبكة الشواء كأنها جديدة تماماً. صُممت فرشاة ستيلورا الثقيلة بنظام الأسلاك الحلزونية الثلاثية المصنوعة من الستانلس ستيل لتنظيف الأسلاك بزاوية ٣٦٠ درجة بكل أمان دون تساقط الشعيرات.
+Make post-BBQ grill cleaning a quick and easy task with the 3-in-1 BBQ Cleaning Brush. This tool is designed to be the ultimate solution for efficiently removing burnt-on grease and stuck food residue from your grill grates.
 
-مزودة بشفرة كشط أمامية حادة لإزالة الدهون المتفحمة المستعصية مع مقبض متين وطويل لعزل الحرارة.`,
+This smart design integrates three essential functions: a sturdy metal scraper at the front to remove hard buildup, durable metal bristles that penetrate between the grill bars to clean from all angles, and a bottom scrubbing pad for finishing touches and surface polishing.
+
+Thanks to the comfortable, dual-arch, non-slip handle design, you can apply strong pressure while cleaning without straining your hands. This brush is the exact tool you need to ensure your grill stays in top condition and ready for your next barbecue.
+
+### Key Features
+- 🧼 **Powerful Scrubbing Pad:** A durable bottom pad perfect for wiping down and polishing the grill surface, removing any fine, leftover residue.
+- ✋ **Comfortable Non-Slip Grip:** An ergonomic design that allows you to hold the brush firmly and securely, providing maximum comfort and control while scrubbing.
+- 🔪 **Built-in Scraper:** A strong metal blade at the front of the brush specifically designed to easily scrape off tough grease and burnt-on food.
+- 🧹 **Sturdy Metal Bristles:** Tough and durable bristles designed to reach tricky corners and between grill grates for a deep, highly effective clean.
+- 🔥 **Keeps Your Grill Clean & Ready:** This comprehensive tool ensures your equipment remains perfectly clean and prepared for use at any time.`,
+    descriptionAr: `### فرشاة التنظيف الشاملة ٣ في ١ لشواية نظيفة وجاهزة دائماً
+
+اجعل تنظيف الشواية بعد كل حفلة شواء مهمة سريعة وسهلة مع فرشاة تنظيف الشوايات ٣ في ١ من ستيلورا. صُممت هذه الأداة لتكون الحل الأمثل والنهائي لإزالة الدهون المتفحمة وبقايا الطعام العالقة على شبكات الشواء بكل فاعلية.
+
+يجمع هذا التصميم الذكي بين ثلاث وظائف أساسية: شفرة كشط معدنية صلبة في المقدمة لإزالة التراكمات القاسية، شعيرات معدنية متينة تخترق الفراغات بين قضبان الشبكة لتنظيفها من كافة الزوايا، وإسفنجة فرك سفلية للمسات النهائية وتلميع السطح.
+
+بفضل المقبض المريح ثنائي القوس المانع للانزلاق، يمكنك تطبيق ضغط قوي أثناء التنظيف دون إجهاد يديك أو معصمك، مما يضمن بقاء الشواية في أبهى حالاتها دائماً.
+
+### الميزات الرئيسية
+- 🧼 **إسفنجة فرك قوية:** قاعدة سفلية متينة لتنظيف وتلميع سطح الشبكة وإزالة الرواسب الدقيقة.
+- ✋ **مقبض مريح مانع للانزلاق:** تصميم مقوس ومريح يتيح لك الإمساك بقوة وتحكم تام أثناء التنظيف.
+- 🔪 **شفرة كشط مدمجة:** شفرة فولاذية أمامية قوية لكشط الدهون المتفحمة وبقايا الطعام المستعصية.
+- 🧹 **شعيرات معدنية متينة:** شعيرات صلبة تصل بين أسلاك الشبكة للتنظيف العميق والشامل.
+- 🔥 **تحافظ على الشواية جاهزة ونظيفة:** تضمن بقاء معدات الشواء نظيفة ولامعة وتطيل عمرها الافتراضي.`,
     pricePiasters: 75000, // 750 EGP
     compareAtPricePiasters: 95000, // 950 EGP
     images: JSON.stringify([
@@ -339,34 +397,40 @@ Equipped with a thick stainless steel scraper for burnt-on residues and an ergon
     category: "BBQ_ACCESSORY",
     mainCategory: "BBQ",
     subCategory: "BBQ_ACCESSORY",
-    materialEn: "Heavy-Duty 304 Stainless Steel Wire + Reinforced Polymer Handle",
-    materialAr: "أسلاك فولاذية صلبة من الستانلس ستيل ٣٠٤ + مقبض مريح معزز وعازل للحرارة",
-    foldedDimensions: "45 x 16 x 7 cm",
-    openDimensions: "45 x 16 x 7 cm",
-    weight: "0.42 kg",
-    weightKg: 0.42,
+    materialEn: "Stainless Steel Scraper + High-Tensile Wire Bristles + Heavy-Duty Scrubbing Pad + Ergonomic Handle",
+    materialAr: "شفرة كشط ستانلس ستيل + أسلاك معدنية صلبة + إسفنجة فرك قوية + مقبض مريح معزز",
+    foldedDimensions: "15 x 12 x 8 cm",
+    openDimensions: "15 x 12 x 8 cm",
+    weight: "0.35 kg",
+    weightKg: 0.35,
     stock: 75,
     isFeatured: false,
     isBestSeller: false,
     whatsIncludedEn: JSON.stringify([
-      "360° Heavy-Duty Grill Cleaning Brush with Scraper",
-      "Leather Hanging Loop",
+      "1 × 3-in-1 BBQ Cleaning Brush with Scraper & Scrubbing Pad",
     ]),
     whatsIncludedAr: JSON.stringify([
-      "فرشاة تنظيف الشوايات ٣٦٠ درجة مع شفرة كشط فولاذية",
-      "حزام جلدي مدمج للتعليق",
+      "١ × فرشاة تنظيف الشوايات ٣ في ١ مع شفرة كشط وإسفنجة فرك",
     ]),
     specsEn: JSON.stringify({
-      "Wire Material": "High-Tensile 304 Stainless Steel",
-      "Head Design": "3-in-1 Triple Spiral Head",
-      "Scraper": "Laser-Cut Stainless Blade",
-      "Total Length": "45 cm Heavy Reach",
+      "Product Type": "3-in-1 BBQ Cleaning Brush",
+      "Design": "3-in-1 (Bristles, Scraper, Scrubbing Pad)",
+      "Grip": "Reinforced Plastic with Ergonomic Non-Slip Design",
+      "Bristle Material": "Durable Metal (Wire Bristles)",
+      "Scraper Material": "Stainless Steel",
+      "Application": "Cleaning Grill Grates (Gas, Charcoal, Electric)",
+      "Color": "Black / Metallic",
+      "Quantity": "1 Piece",
     }),
     specsAr: JSON.stringify({
-      "مادة الأسلاك": "ستانلس ستيل ٣٠٤ عالي الشد",
-      "رأس الفرشاة": "تصميم حلزوني ثلاثي ٣ في ١",
-      "شفرة الكشط": "شفرة ستانلس ستيل مقطوعة بالليزر",
-      "الطول الإجمالي": "٤٥ سم للوصول لجميع الزوايا",
+      "نوع المنتج": "فرشاة تنظيف الشوايات ٣ في ١",
+      "التصميم": "٣ في ١ (شعيرات معدنية، شفرة كشط، إسفنجة فرك)",
+      "المقبض": "بلاستيك مقوى بتصميم مريح مانع للانزلاق",
+      "مادة الشعيرات": "معدن متين (شعيرات سلكية صلبة)",
+      "مادة شفرة الكشط": "ستانلس ستيل مقاوم للصدأ",
+      "الاستخدام": "تنظيف شبكات الشواء (غاز، فحم، كهرباء)",
+      "اللون": "أسود / معدني",
+      "الكمية": "قطعة واحدة",
     }),
   });
 
