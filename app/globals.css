@@ -10,13 +10,27 @@
   color: #1A1A1A;
 }
 
-/* Base Body Styles */
+/* Base HTML & Body Styles with Mobile Viewport Safeguards */
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   color: #1A1A1A;
   background-color: #F5F5F5;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 /* RTL Specific Body Overrides */

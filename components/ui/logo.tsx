@@ -10,7 +10,7 @@ interface LogoProps {
 }
 
 export const SteelRibbonIcon: React.FC<{ className?: string; size?: number }> = ({
-  className = "w-9 h-9",
+  className = "w-7 h-7 sm:w-9 sm:h-9",
   size = 36,
 }) => {
   return (
@@ -39,8 +39,8 @@ export const Logo: React.FC<LogoProps> = ({
 
   if (variant === "icon") {
     return (
-      <Link href={href} className={`inline-flex items-center group ${className}`}>
-        <SteelRibbonIcon className="w-10 h-10 transition-transform duration-300 group-hover:scale-105" size={40} />
+      <Link href={href} className={`inline-flex items-center group shrink-0 ${className}`}>
+        <SteelRibbonIcon className="w-8 h-8 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-105" size={40} />
       </Link>
     );
   }
@@ -48,15 +48,15 @@ export const Logo: React.FC<LogoProps> = ({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center gap-2.5 group focus:outline-none ${className}`}
+      className={`inline-flex items-center gap-1.5 sm:gap-2.5 group focus:outline-none shrink-0 ${className}`}
       aria-label={isArabic ? "ستيلورا - الصفحة الرئيسية" : "STEELORA Homepage"}
     >
-      <div className="relative flex items-center justify-center">
-        <SteelRibbonIcon className="w-9 h-9 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-105" size={40} />
+      <div className="relative flex items-center justify-center shrink-0">
+        <SteelRibbonIcon className="w-7 h-7 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-105 shrink-0" size={36} />
       </div>
 
       {isArabic ? (
-        <div className="flex items-center font-heading font-extrabold text-xl sm:text-2xl select-none tracking-tight">
+        <div className="flex items-center font-heading font-extrabold text-lg sm:text-2xl select-none tracking-tight shrink-0">
           <span
             className={`transition-colors duration-200 ${
               isDark ? "text-white group-hover:text-gold" : "text-charcoal-black"
@@ -70,7 +70,7 @@ export const Logo: React.FC<LogoProps> = ({
         </div>
       ) : (
         <div
-          className="flex items-center tracking-[0.16em] font-heading font-bold text-xl sm:text-2xl uppercase select-none [direction:ltr]"
+          className="flex items-center tracking-[0.10em] sm:tracking-[0.16em] font-heading font-extrabold text-base sm:text-2xl uppercase select-none [direction:ltr] shrink-0"
           dir="ltr"
         >
           <span

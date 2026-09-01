@@ -66,42 +66,50 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
               <li>
                 <Link
                   href={`/${locale}/shop`}
-                  className="text-steel-300 hover:text-gold transition-colors"
+                  className="text-steel-300 hover:text-gold transition-colors font-medium"
                 >
                   {dict.shop.allCategories}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/${locale}/shop/foldable-charcoal-bbq-grill`}
+                  href={`/${locale}/shop?category=CHARCOAL_GRILL`}
                   className="text-steel-300 hover:text-gold transition-colors"
                 >
-                  {dict.shop.grill}
+                  🔥 {dict.shop.charcoalGrill}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/${locale}/shop/foldable-outdoor-chair`}
+                  href={`/${locale}/shop?category=BBQ_ACCESSORY`}
                   className="text-steel-300 hover:text-gold transition-colors"
                 >
-                  {dict.shop.chair}
+                  🎒 {dict.shop.bbqAccessory}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/${locale}/shop/foldable-side-table-stool`}
+                  href={`/${locale}/shop?category=CHAIR`}
                   className="text-steel-300 hover:text-gold transition-colors"
                 >
-                  {dict.shop.table}
+                  🪑 {dict.shop.chair}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/shop?category=TABLE`}
+                  className="text-steel-300 hover:text-gold transition-colors"
+                >
+                  🪵 {dict.shop.table}
                 </Link>
               </li>
               <li>
                 <Link
                   href={`/${locale}/shop/outdoor-luxury-set`}
-                  className="text-gold font-semibold hover:text-gold-light transition-colors flex items-center gap-1.5"
+                  className="text-gold font-semibold hover:text-gold-light transition-colors flex items-center gap-1.5 pt-1"
                 >
                   <span>{dict.shop.bundle}</span>
-                  <span className="text-[9px] px-1 py-0.5 bg-gold/20 rounded">15% OFF</span>
+                  <span className="text-[9px] px-1.5 py-0.5 bg-gold/20 text-gold rounded font-bold">15% OFF</span>
                 </Link>
               </li>
             </ul>

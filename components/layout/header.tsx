@@ -14,6 +14,10 @@ import {
   Sparkles,
   ArrowRight,
   ArrowLeft,
+  ChevronDown,
+  Flame,
+  Armchair,
+  Package,
 } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
@@ -32,6 +36,8 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isTopBarVisible, setIsTopBarVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
+  const [isMobileShopExpanded, setIsMobileShopExpanded] = useState(true);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [prevCartCount, setPrevCartCount] = useState(totalItemCount);
@@ -207,65 +213,221 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
             : "bg-charcoal-900/95 backdrop-blur-md py-4"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-1.5 sm:gap-4">
             {/* ── Logo ── */}
-            <div className="flex items-center shrink-0">
+            <div className="flex items-center shrink-0 min-w-0">
               <Logo locale={locale} theme="dark" />
             </div>
 
             {/* ── Desktop Navigation Links ── */}
             <nav className="hidden lg:flex items-center gap-1 xl:gap-2 ms-10 xl:ms-14">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`nav-link-underline relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-heading font-semibold px-3 xl:px-4 py-2 rounded-md transition-all duration-300 group ${
-                      isActive
-                        ? "active text-gold"
-                        : "text-steel-200 hover:text-white"
-                    }`}
-                  >
-                    <span className="relative z-10 flex items-center gap-1.5">
-                      {link.label}
-                      {link.badge && (
-                        <span className="badge-glow px-1.5 py-0.5 text-[9px] font-bold bg-gradient-to-r from-gold/25 to-gold/10 text-gold border border-gold/40 rounded-full leading-none">
-                          15%
-                        </span>
-                      )}
-                    </span>
-                    {/* Subtle hover bg glow */}
-                    <span className="absolute inset-0 rounded-md bg-white/0 group-hover:bg-white/[0.04] transition-colors duration-300" />
-                  </Link>
-                );
-              })}
+              {/* Home */}
+              <Link
+                href={`/${locale}`}
+                className={`nav-link-underline relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-heading font-semibold px-3 xl:px-4 py-2 rounded-md transition-all duration-300 group ${
+                  pathname === `/${locale}`
+                    ? "active text-gold"
+                    : "text-steel-200 hover:text-white"
+                }`}
+              >
+                <span className="relative z-10 flex items-center gap-1.5">
+                  {dict.nav.home}
+                </span>
+                <span className="absolute inset-0 rounded-md bg-white/0 group-hover:bg-white/[0.04] transition-colors duration-300" />
+              </Link>
+
+              {/* Shop with Category Mega Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsShopDropdownOpen(true)}
+                onMouseLeave={() => setIsShopDropdownOpen(false)}
+              >
+                <Link
+                  href={`/${locale}/shop`}
+                  className={`nav-link-underline relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-heading font-semibold px-3 xl:px-4 py-2 rounded-md transition-all duration-300 group inline-flex items-center gap-1.5 ${
+                    pathname.startsWith(`/${locale}/shop`)
+                      ? "active text-gold"
+                      : "text-steel-200 hover:text-white"
+                  }`}
+                >
+                  <span className="relative z-10 flex items-center gap-1">
+                    {dict.nav.shop}
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                        isShopDropdownOpen ? "rotate-180 text-gold" : "text-steel-400"
+                      }`}
+                    />
+                  </span>
+                  <span className="absolute inset-0 rounded-md bg-white/0 group-hover:bg-white/[0.04] transition-colors duration-300" />
+                </Link>
+
+                {/* Dropdown Card */}
+                {isShopDropdownOpen && (
+                  <div className="absolute top-full start-0 w-[480px] pt-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="p-5 rounded-2xl bg-charcoal-950/95 backdrop-blur-2xl border border-gold/30 shadow-[0_20px_50px_rgba(0,0,0,0.6)] space-y-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        {/* BBQ Column */}
+                        <div className="space-y-2 p-3 rounded-xl bg-charcoal-900/80 border border-gold/15">
+                          <Link
+                            href={`/${locale}/shop?category=BBQ`}
+                            className="flex items-center gap-2 text-xs font-heading font-bold text-gold uppercase tracking-wider hover:text-gold-light transition-colors"
+                          >
+                            <Flame className="w-4 h-4 text-gold" />
+                            <span>{isArabic ? "معدات الشواء (BBQ)" : "BBQ"}</span>
+                          </Link>
+                          <div className="space-y-1.5 pt-1 border-t border-steel-gray/20">
+                            <Link
+                              href={`/${locale}/shop?category=CHARCOAL_GRILL`}
+                              className="block text-xs text-steel-300 hover:text-white hover:translate-x-1 transition-all py-1"
+                            >
+                              🔥 {dict.shop.charcoalGrill}
+                            </Link>
+                            <Link
+                              href={`/${locale}/shop?category=BBQ_ACCESSORY`}
+                              className="block text-xs text-steel-300 hover:text-white hover:translate-x-1 transition-all py-1"
+                            >
+                              🎒 {dict.shop.bbqAccessory}
+                            </Link>
+                          </div>
+                        </div>
+
+                        {/* Outdoor Furniture Column */}
+                        <div className="space-y-2 p-3 rounded-xl bg-charcoal-900/80 border border-gold/15">
+                          <Link
+                            href={`/${locale}/shop?category=OUTDOOR_FURNITURE`}
+                            className="flex items-center gap-2 text-xs font-heading font-bold text-gold uppercase tracking-wider hover:text-gold-light transition-colors"
+                          >
+                            <Armchair className="w-4 h-4 text-gold" />
+                            <span>{isArabic ? "الأثاث الخارجي" : "Outdoor Furniture"}</span>
+                          </Link>
+                          <div className="space-y-1.5 pt-1 border-t border-steel-gray/20">
+                            <Link
+                              href={`/${locale}/shop?category=CHAIR`}
+                              className="block text-xs text-steel-300 hover:text-white hover:translate-x-1 transition-all py-1"
+                            >
+                              🪑 {dict.shop.chair}
+                            </Link>
+                            <Link
+                              href={`/${locale}/shop?category=TABLE`}
+                              className="block text-xs text-steel-300 hover:text-white hover:translate-x-1 transition-all py-1"
+                            >
+                              🪵 {dict.shop.table}
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Curated Suite Footer Strip */}
+                      <Link
+                        href={`/${locale}/shop/outdoor-luxury-set`}
+                        className="p-3 rounded-xl bg-gradient-to-r from-gold/20 via-gold/10 to-transparent border border-gold/30 flex items-center justify-between group/suite hover:border-gold transition-all"
+                      >
+                        <div className="flex items-center gap-2">
+                          <Package className="w-4 h-4 text-gold" />
+                          <div>
+                            <span className="text-xs font-heading font-bold text-white block">
+                              {dict.bundleSpotlight.title}
+                            </span>
+                            <span className="text-[10px] text-gold font-semibold">
+                              {dict.bundleSpotlight.savings}
+                            </span>
+                          </div>
+                        </div>
+                        <ArrowIcon className="w-4 h-4 text-gold group-hover/suite:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Luxury Offers */}
+              <Link
+                href={`/${locale}/shop/outdoor-luxury-set`}
+                className={`nav-link-underline relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-heading font-semibold px-3 xl:px-4 py-2 rounded-md transition-all duration-300 group ${
+                  pathname === `/${locale}/shop/outdoor-luxury-set`
+                    ? "active text-gold"
+                    : "text-steel-200 hover:text-white"
+                }`}
+              >
+                <span className="relative z-10 flex items-center gap-1.5">
+                  {dict.nav.bundles}
+                  <span className="badge-glow px-1.5 py-0.5 text-[9px] font-bold bg-gradient-to-r from-gold/25 to-gold/10 text-gold border border-gold/40 rounded-full leading-none">
+                    15%
+                  </span>
+                </span>
+                <span className="absolute inset-0 rounded-md bg-white/0 group-hover:bg-white/[0.04] transition-colors duration-300" />
+              </Link>
+
+              {/* Brand Story */}
+              <Link
+                href={`/${locale}/about`}
+                className={`nav-link-underline relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-heading font-semibold px-3 xl:px-4 py-2 rounded-md transition-all duration-300 group ${
+                  pathname === `/${locale}/about`
+                    ? "active text-gold"
+                    : "text-steel-200 hover:text-white"
+                }`}
+              >
+                <span className="relative z-10 flex items-center gap-1.5">
+                  {dict.nav.about}
+                </span>
+                <span className="absolute inset-0 rounded-md bg-white/0 group-hover:bg-white/[0.04] transition-colors duration-300" />
+              </Link>
+
+              {/* Journal */}
+              <Link
+                href={`/${locale}/blog`}
+                className={`nav-link-underline relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-heading font-semibold px-3 xl:px-4 py-2 rounded-md transition-all duration-300 group ${
+                  pathname.startsWith(`/${locale}/blog`)
+                    ? "active text-gold"
+                    : "text-steel-200 hover:text-white"
+                }`}
+              >
+                <span className="relative z-10 flex items-center gap-1.5">
+                  {dict.nav.blog}
+                </span>
+                <span className="absolute inset-0 rounded-md bg-white/0 group-hover:bg-white/[0.04] transition-colors duration-300" />
+              </Link>
+
+              {/* Contact */}
+              <Link
+                href={`/${locale}/contact`}
+                className={`nav-link-underline relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-heading font-semibold px-3 xl:px-4 py-2 rounded-md transition-all duration-300 group ${
+                  pathname === `/${locale}/contact`
+                    ? "active text-gold"
+                    : "text-steel-200 hover:text-white"
+                }`}
+              >
+                <span className="relative z-10 flex items-center gap-1.5">
+                  {dict.nav.contact}
+                </span>
+                <span className="absolute inset-0 rounded-md bg-white/0 group-hover:bg-white/[0.04] transition-colors duration-300" />
+              </Link>
             </nav>
 
             {/* ── Actions: Search, Language, Cart, Mobile Menu ── */}
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-1 sm:gap-3 shrink-0">
               {/* Search Button */}
               <button
                 type="button"
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className={`relative p-2.5 rounded-xl transition-all duration-300 group ${
+                className={`relative p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl transition-all duration-300 group shrink-0 ${
                   isSearchOpen
                     ? "bg-gold/15 text-gold"
                     : "text-steel-300 hover:text-white hover:bg-white/[0.06]"
                 }`}
                 aria-label={dict.nav.searchPlaceholder}
               >
-                <Search className="w-[18px] h-[18px] transition-transform duration-300 group-hover:scale-110" />
+                <Search className="w-4 h-4 sm:w-[18px] sm:h-[18px] transition-transform duration-300 group-hover:scale-110" />
               </button>
 
-              {/* Language Switcher — Mobile (Globe icon) */}
-              <div className="sm:hidden">
+              {/* Language Switcher — Mobile (Compact badge) */}
+              <div className="sm:hidden shrink-0">
                 <LanguageSwitcher currentLocale={locale} variant="compact" />
               </div>
 
               {/* Language Switcher — Desktop (Pill) */}
-              <div className="hidden sm:block">
+              <div className="hidden sm:block shrink-0">
                 <LanguageSwitcher currentLocale={locale} variant="pill" />
               </div>
 
@@ -273,14 +435,14 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
               <button
                 type="button"
                 onClick={() => setIsDrawerOpen(true)}
-                className="relative inline-flex items-center justify-center p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-gold via-gold to-gold-dark text-charcoal hover:from-gold-light hover:via-gold hover:to-gold active:scale-95 transition-all duration-300 shadow-[0_4px_16px_rgba(198,166,100,0.3)] hover:shadow-[0_6px_24px_rgba(198,166,100,0.5)] group"
+                className="relative inline-flex items-center justify-center p-1.5 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br from-gold via-gold to-gold-dark text-charcoal hover:from-gold-light hover:via-gold hover:to-gold active:scale-95 transition-all duration-300 shadow-[0_4px_16px_rgba(198,166,100,0.3)] hover:shadow-[0_6px_24px_rgba(198,166,100,0.5)] group shrink-0"
                 aria-label={`${dict.nav.cart} (${totalItemCount})`}
               >
-                <ShoppingBag className="w-[18px] h-[18px] sm:w-5 sm:h-5 text-charcoal transition-transform duration-300 group-hover:scale-105" />
+                <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-charcoal transition-transform duration-300 group-hover:scale-105" />
                 {totalItemCount > 0 && (
                   <span
                     key={cartBounceKey}
-                    className="cart-badge-bounce absolute -top-1.5 -end-1.5 w-5 h-5 flex items-center justify-center rounded-full bg-charcoal-950 text-gold text-[10px] font-bold border-2 border-gold shadow-[0_0_8px_rgba(198,166,100,0.5)]"
+                    className="cart-badge-bounce absolute -top-1 -end-1 sm:-top-1.5 sm:-end-1.5 w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center rounded-full bg-charcoal-950 text-gold text-[9px] sm:text-[10px] font-bold border border-gold sm:border-2 shadow-[0_0_8px_rgba(198,166,100,0.5)]"
                   >
                     {totalItemCount}
                   </span>
@@ -291,14 +453,14 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden relative p-2.5 text-steel-200 hover:text-white transition-all duration-300 rounded-xl hover:bg-white/[0.06]"
+                className="lg:hidden relative p-1.5 sm:p-2.5 text-steel-200 hover:text-white transition-all duration-300 rounded-lg sm:rounded-xl hover:bg-white/[0.06] shrink-0"
                 aria-label="Toggle Menu"
                 aria-expanded={isMobileMenuOpen}
               >
                 {isMobileMenuOpen ? (
-                  <X className="w-6 h-6 close-spin" />
+                  <X className="w-5 h-5 sm:w-6 sm:h-6 close-spin" />
                 ) : (
-                  <Menu className="w-6 h-6" />
+                  <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
                 )}
               </button>
             </div>
@@ -382,37 +544,153 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
 
             {/* Nav Links */}
             <nav className="flex flex-col space-y-1 flex-1">
-              {navLinks.map((link, index) => {
-                const isActive = pathname === link.href;
-                return (
+              {/* Home */}
+              <Link
+                href={`/${locale}`}
+                className={`mobile-nav-item flex items-center justify-between py-3.5 px-4 rounded-xl text-[14px] uppercase tracking-[0.12em] font-heading font-semibold transition-all duration-300 ${
+                  pathname === `/${locale}`
+                    ? "text-gold bg-gold/[0.08] border-s-[3px] border-gold"
+                    : "text-steel-100 hover:text-white hover:bg-white/[0.03]"
+                }`}
+              >
+                <span>{dict.nav.home}</span>
+                <ArrowIcon className="w-4 h-4 text-steel-600" />
+              </Link>
+
+              {/* Shop & Categories Accordion */}
+              <div className="mobile-nav-item rounded-xl bg-charcoal-900/60 border border-steel-gray/20 overflow-hidden">
+                <div className="flex items-center justify-between p-3.5">
                   <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`mobile-nav-item flex items-center justify-between py-4 px-4 rounded-xl text-[15px] uppercase tracking-[0.12em] font-heading font-semibold transition-all duration-300 group ${
-                      isActive
-                        ? "text-gold bg-gold/[0.08] border-s-[3px] border-gold"
-                        : "text-steel-100 hover:text-white hover:bg-white/[0.03] border-s-[3px] border-transparent"
-                    }`}
-                    style={{ animationDelay: `${(index + 1) * 60}ms` }}
+                    href={`/${locale}/shop`}
+                    className="text-[14px] uppercase tracking-[0.12em] font-heading font-semibold text-gold flex items-center gap-2"
                   >
-                    <span className="flex items-center gap-3">
-                      {link.label}
-                      {link.badge && (
-                        <span className="badge-glow px-2.5 py-1 text-[10px] font-bold bg-gradient-to-r from-gold/20 to-gold/10 text-gold border border-gold/40 rounded-full">
-                          15% OFF
-                        </span>
-                      )}
-                    </span>
-                    <ArrowIcon
-                      className={`w-4 h-4 transition-all duration-300 ${
-                        isActive
-                          ? "text-gold opacity-100"
-                          : "text-steel-600 opacity-0 group-hover:opacity-100"
+                    <span>{dict.nav.shop}</span>
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setIsMobileShopExpanded(!isMobileShopExpanded)}
+                    className="p-1 text-gold/70 hover:text-gold"
+                    aria-label="Toggle Shop categories"
+                  >
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        isMobileShopExpanded ? "rotate-180" : ""
                       }`}
                     />
-                  </Link>
-                );
-              })}
+                  </button>
+                </div>
+
+                {isMobileShopExpanded && (
+                  <div className="px-4 pb-3 space-y-3 border-t border-steel-gray/20 pt-3 text-xs">
+                    {/* BBQ */}
+                    <div className="space-y-1.5">
+                      <Link
+                        href={`/${locale}/shop?category=BBQ`}
+                        className="font-heading font-bold text-gold uppercase tracking-wider flex items-center gap-1.5"
+                      >
+                        <Flame className="w-3.5 h-3.5 text-gold" />
+                        <span>{isArabic ? "معدات الشواء (BBQ)" : "BBQ"}</span>
+                      </Link>
+                      <div className="ps-5 space-y-1 text-steel-300">
+                        <Link
+                          href={`/${locale}/shop?category=CHARCOAL_GRILL`}
+                          className="block py-1 hover:text-white"
+                        >
+                          🔥 {dict.shop.charcoalGrill}
+                        </Link>
+                        <Link
+                          href={`/${locale}/shop?category=BBQ_ACCESSORY`}
+                          className="block py-1 hover:text-white"
+                        >
+                          🎒 {dict.shop.bbqAccessory}
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Outdoor Furniture */}
+                    <div className="space-y-1.5 pt-2 border-t border-steel-gray/10">
+                      <Link
+                        href={`/${locale}/shop?category=OUTDOOR_FURNITURE`}
+                        className="font-heading font-bold text-gold uppercase tracking-wider flex items-center gap-1.5"
+                      >
+                        <Armchair className="w-3.5 h-3.5 text-gold" />
+                        <span>{isArabic ? "الأثاث الخارجي" : "Outdoor Furniture"}</span>
+                      </Link>
+                      <div className="ps-5 space-y-1 text-steel-300">
+                        <Link
+                          href={`/${locale}/shop?category=CHAIR`}
+                          className="block py-1 hover:text-white"
+                        >
+                          🪑 {dict.shop.chair}
+                        </Link>
+                        <Link
+                          href={`/${locale}/shop?category=TABLE`}
+                          className="block py-1 hover:text-white"
+                        >
+                          🪵 {dict.shop.table}
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Luxury Offers */}
+              <Link
+                href={`/${locale}/shop/outdoor-luxury-set`}
+                className={`mobile-nav-item flex items-center justify-between py-3.5 px-4 rounded-xl text-[14px] uppercase tracking-[0.12em] font-heading font-semibold transition-all duration-300 ${
+                  pathname === `/${locale}/shop/outdoor-luxury-set`
+                    ? "text-gold bg-gold/[0.08] border-s-[3px] border-gold"
+                    : "text-steel-100 hover:text-white hover:bg-white/[0.03]"
+                }`}
+              >
+                <span className="flex items-center gap-2">
+                  {dict.nav.bundles}
+                  <span className="badge-glow px-2 py-0.5 text-[9px] font-bold bg-gradient-to-r from-gold/25 to-gold/10 text-gold border border-gold/40 rounded-full">
+                    15% OFF
+                  </span>
+                </span>
+                <ArrowIcon className="w-4 h-4 text-steel-600" />
+              </Link>
+
+              {/* Brand Story */}
+              <Link
+                href={`/${locale}/about`}
+                className={`mobile-nav-item flex items-center justify-between py-3.5 px-4 rounded-xl text-[14px] uppercase tracking-[0.12em] font-heading font-semibold transition-all duration-300 ${
+                  pathname === `/${locale}/about`
+                    ? "text-gold bg-gold/[0.08] border-s-[3px] border-gold"
+                    : "text-steel-100 hover:text-white hover:bg-white/[0.03]"
+                }`}
+              >
+                <span>{dict.nav.about}</span>
+                <ArrowIcon className="w-4 h-4 text-steel-600" />
+              </Link>
+
+              {/* Journal */}
+              <Link
+                href={`/${locale}/blog`}
+                className={`mobile-nav-item flex items-center justify-between py-3.5 px-4 rounded-xl text-[14px] uppercase tracking-[0.12em] font-heading font-semibold transition-all duration-300 ${
+                  pathname.startsWith(`/${locale}/blog`)
+                    ? "text-gold bg-gold/[0.08] border-s-[3px] border-gold"
+                    : "text-steel-100 hover:text-white hover:bg-white/[0.03]"
+                }`}
+              >
+                <span>{dict.nav.blog}</span>
+                <ArrowIcon className="w-4 h-4 text-steel-600" />
+              </Link>
+
+              {/* Contact */}
+              <Link
+                href={`/${locale}/contact`}
+                className={`mobile-nav-item flex items-center justify-between py-3.5 px-4 rounded-xl text-[14px] uppercase tracking-[0.12em] font-heading font-semibold transition-all duration-300 ${
+                  pathname === `/${locale}/contact`
+                    ? "text-gold bg-gold/[0.08] border-s-[3px] border-gold"
+                    : "text-steel-100 hover:text-white hover:bg-white/[0.03]"
+                }`}
+              >
+                <span>{dict.nav.contact}</span>
+                <ArrowIcon className="w-4 h-4 text-steel-600" />
+              </Link>
             </nav>
 
             {/* Bottom Info */}

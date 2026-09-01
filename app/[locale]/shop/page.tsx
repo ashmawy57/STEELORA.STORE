@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Sparkles, ArrowRight, ArrowLeft, Filter, SlidersHorizontal } from "lucide-react";
+import { Sparkles, ArrowRight, ArrowLeft, SlidersHorizontal, Flame, Armchair, Package } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { ProductCard } from "@/components/product/product-card";
 import { getDictionary, isValidLocale, type Locale } from "@/lib/dictionaries";
 import { formatEGP } from "@/lib/currency";
+import { CATEGORY_TREE, buildPrismaCategoryFilter } from "@/lib/categories";
 import type { Metadata } from "next";
 
 export async function generateMetadata({
@@ -19,8 +20,8 @@ export async function generateMetadata({
   return {
     title: isArabic ? "تسوق معدات التخييم والشواء الفاخرة" : "Shop Luxury Stainless Steel Outdoor Gear",
     description: isArabic
-      ? "تصفح مجموعة ستيلورا الكاملة من شوايات الفحم القابلة للطي وكراسي وطاولات التخييم المصنوعة من الستانلس ستيل ٣٠٤ في مصر."
-      : "Explore the full STEELORA collection of foldable 304 stainless steel BBQ grills, camping chairs, and side tables in Egypt.",
+      ? "تصفح مجموعة ستيلورا الكاملة من شوايات الفحم القابلة للطي وإكسسوارات الشواء وكراسي وطاولات التخييم المصنوعة من الستانلس ستيل ٣٠٤ في مصر."
+      : "Explore the full STEELORA collection of foldable 304 stainless steel BBQ grills, accessories, camping chairs, and side tables in Egypt.",
   };
 }
 
@@ -38,22 +39,30 @@ export default async function ShopPage({
   const isArabic = locale === "ar";
   const ArrowIcon = isArabic ? ArrowLeft : ArrowRight;
 
-  const currentCategory = searchParams.category?.toUpperCase() || "ALL";
+  const currentCategoryParam = searchParams.category?.toUpperCase() || "ALL";
   const currentSort = searchParams.sort || "featured";
   const searchQuery = searchParams.q || "";
 
   // Build Prisma filter
-  const where: Record<string, unknown> = {};
-  if (currentCategory !== "ALL") {
-    where.category = currentCategory;
+  let where: Record<string, unknown> = {};
+  const categoryFilter = buildPrismaCategoryFilter(currentCategoryParam);
+  if (categoryFilter) {
+    where = { ...categoryFilter };
   }
+
   if (searchQuery) {
-    where.OR = [
-      { nameEn: { contains: searchQuery } },
-      { nameAr: { contains: searchQuery } },
-      { descriptionEn: { contains: searchQuery } },
-      { descriptionAr: { contains: searchQuery } },
+    where.AND = [
+      ...(where.OR ? [{ OR: where.OR }] : []),
+      {
+        OR: [
+          { nameEn: { contains: searchQuery } },
+          { nameAr: { contains: searchQuery } },
+          { descriptionEn: { contains: searchQuery } },
+          { descriptionAr: { contains: searchQuery } },
+        ],
+      },
     ];
+    delete where.OR;
   }
 
   // Build Prisma sort
@@ -71,13 +80,48 @@ export default async function ShopPage({
     orderBy,
   });
 
-  const categories = [
-    { key: "ALL", label: dict.shop.allCategories },
-    { key: "GRILL", label: dict.shop.grill },
-    { key: "CHAIR", label: dict.shop.chair },
-    { key: "TABLE", label: dict.shop.table },
-    { key: "ACCESSORY", label: dict.shop.accessory },
-    { key: "BUNDLE", label: dict.shop.bundle, highlight: true },
+  // Determine active main category group
+  const isBBQActive =
+    currentCategoryParam === "BBQ" ||
+    currentCategoryParam === "CHARCOAL_GRILL" ||
+    currentCategoryParam === "BBQ_ACCESSORY";
+
+  const isFurnitureActive =
+    currentCategoryParam === "OUTDOOR_FURNITURE" ||
+    currentCategoryParam === "CHAIR" ||
+    currentCategoryParam === "TABLE";
+
+  const isBundleActive = currentCategoryParam === "BUNDLE";
+  const isAllActive = currentCategoryParam === "ALL";
+
+  // Active main tab
+  let activeMainKey = "ALL";
+  if (isBBQActive) activeMainKey = "BBQ";
+  else if (isFurnitureActive) activeMainKey = "OUTDOOR_FURNITURE";
+  else if (isBundleActive) activeMainKey = "BUNDLE";
+
+  const mainTabs = [
+    {
+      key: "ALL",
+      label: dict.shop.allCategories,
+      icon: null,
+    },
+    {
+      key: "BBQ",
+      label: isArabic ? "معدات الشواء (BBQ)" : "BBQ",
+      icon: Flame,
+    },
+    {
+      key: "OUTDOOR_FURNITURE",
+      label: isArabic ? "الأثاث الخارجي (Furniture)" : "Outdoor Furniture",
+      icon: Armchair,
+    },
+    {
+      key: "BUNDLE",
+      label: dict.shop.bundle,
+      icon: Package,
+      highlight: true,
+    },
   ];
 
   return (
@@ -130,34 +174,148 @@ export default async function ShopPage({
           </div>
         </div>
 
-        {/* Filter Chips & Sort Controls */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-4 border-t border-steel-gray/20">
-          {/* Category Chips */}
-          <div className="flex flex-wrap items-center gap-2">
-            {categories.map((cat) => {
-              const isActive = currentCategory === cat.key;
-              const href = `/${locale}/shop?category=${cat.key}${currentSort ? `&sort=${currentSort}` : ""}`;
+        {/* ═══════════════ HIERARCHICAL CATEGORY FILTERS ═══════════════ */}
+        <div className="space-y-4 pt-4 border-t border-steel-gray/20">
+          {/* Main Category Tabs */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            {mainTabs.map((tab) => {
+              const isActive = activeMainKey === tab.key;
+              const href = `/${locale}/shop?category=${tab.key}${currentSort ? `&sort=${currentSort}` : ""}`;
+              const TabIcon = tab.icon;
 
               return (
                 <Link
-                  key={cat.key}
+                  key={tab.key}
                   href={href}
-                  className={`px-3.5 py-2 rounded-lg text-xs font-heading font-semibold uppercase tracking-wider transition-all duration-200 ${
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-heading font-bold uppercase tracking-wider transition-all duration-300 ${
                     isActive
-                      ? "bg-charcoal-black text-gold shadow-sm border border-gold/40"
-                      : cat.highlight
+                      ? "bg-charcoal-black text-gold shadow-md border border-gold/50 scale-[1.02]"
+                      : tab.highlight
                       ? "bg-gold/15 text-gold-dark border border-gold/40 hover:bg-gold/25"
-                      : "bg-white text-steel-700 border border-steel-gray/20 hover:border-gold/50"
+                      : "bg-white text-steel-700 border border-steel-gray/25 hover:border-gold/50 hover:bg-gold/5"
                   }`}
                 >
-                  {cat.label}
+                  {TabIcon && <TabIcon className={`w-4 h-4 ${isActive ? "text-gold" : "text-steel-500"}`} />}
+                  <span>{tab.label}</span>
                 </Link>
               );
             })}
           </div>
 
+          {/* Subcategory Filter Pills */}
+          {(isBBQActive || isFurnitureActive || isAllActive) && (
+            <div className="p-3 sm:p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-steel-gray/20 flex flex-wrap items-center gap-2">
+              <span className="text-xs font-heading font-semibold text-steel-500 me-2 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
+                {dict.shop.filterBySub}:
+              </span>
+
+              {/* If BBQ is active */}
+              {isBBQActive && (
+                <>
+                  <Link
+                    href={`/${locale}/shop?category=BBQ${currentSort ? `&sort=${currentSort}` : ""}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-heading font-medium transition-all ${
+                      currentCategoryParam === "BBQ"
+                        ? "bg-gold text-charcoal font-bold shadow-sm"
+                        : "bg-charcoal-50 text-steel-700 hover:bg-gold/15"
+                    }`}
+                  >
+                    {isArabic ? "كل الشواء" : "All BBQ"}
+                  </Link>
+                  <Link
+                    href={`/${locale}/shop?category=CHARCOAL_GRILL${currentSort ? `&sort=${currentSort}` : ""}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-heading font-medium transition-all ${
+                      currentCategoryParam === "CHARCOAL_GRILL"
+                        ? "bg-gold text-charcoal font-bold shadow-sm"
+                        : "bg-charcoal-50 text-steel-700 hover:bg-gold/15"
+                    }`}
+                  >
+                    {dict.shop.charcoalGrill}
+                  </Link>
+                  <Link
+                    href={`/${locale}/shop?category=BBQ_ACCESSORY${currentSort ? `&sort=${currentSort}` : ""}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-heading font-medium transition-all ${
+                      currentCategoryParam === "BBQ_ACCESSORY"
+                        ? "bg-gold text-charcoal font-bold shadow-sm"
+                        : "bg-charcoal-50 text-steel-700 hover:bg-gold/15"
+                    }`}
+                  >
+                    {dict.shop.bbqAccessory}
+                  </Link>
+                </>
+              )}
+
+              {/* If Outdoor Furniture is active */}
+              {isFurnitureActive && (
+                <>
+                  <Link
+                    href={`/${locale}/shop?category=OUTDOOR_FURNITURE${currentSort ? `&sort=${currentSort}` : ""}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-heading font-medium transition-all ${
+                      currentCategoryParam === "OUTDOOR_FURNITURE"
+                        ? "bg-gold text-charcoal font-bold shadow-sm"
+                        : "bg-charcoal-50 text-steel-700 hover:bg-gold/15"
+                    }`}
+                  >
+                    {isArabic ? "كل الأثاث" : "All Furniture"}
+                  </Link>
+                  <Link
+                    href={`/${locale}/shop?category=CHAIR${currentSort ? `&sort=${currentSort}` : ""}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-heading font-medium transition-all ${
+                      currentCategoryParam === "CHAIR"
+                        ? "bg-gold text-charcoal font-bold shadow-sm"
+                        : "bg-charcoal-50 text-steel-700 hover:bg-gold/15"
+                    }`}
+                  >
+                    {dict.shop.chair}
+                  </Link>
+                  <Link
+                    href={`/${locale}/shop?category=TABLE${currentSort ? `&sort=${currentSort}` : ""}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-heading font-medium transition-all ${
+                      currentCategoryParam === "TABLE"
+                        ? "bg-gold text-charcoal font-bold shadow-sm"
+                        : "bg-charcoal-50 text-steel-700 hover:bg-gold/15"
+                    }`}
+                  >
+                    {dict.shop.table}
+                  </Link>
+                </>
+              )}
+
+              {/* If ALL is active, quick pills for all 4 subcategories */}
+              {isAllActive && (
+                <>
+                  <Link
+                    href={`/${locale}/shop?category=CHARCOAL_GRILL${currentSort ? `&sort=${currentSort}` : ""}`}
+                    className="px-3 py-1.5 rounded-lg text-xs font-heading font-medium bg-charcoal-50 text-steel-700 hover:bg-gold/15 transition-all"
+                  >
+                    🔥 {dict.shop.charcoalGrill}
+                  </Link>
+                  <Link
+                    href={`/${locale}/shop?category=BBQ_ACCESSORY${currentSort ? `&sort=${currentSort}` : ""}`}
+                    className="px-3 py-1.5 rounded-lg text-xs font-heading font-medium bg-charcoal-50 text-steel-700 hover:bg-gold/15 transition-all"
+                  >
+                    🎒 {dict.shop.bbqAccessory}
+                  </Link>
+                  <Link
+                    href={`/${locale}/shop?category=CHAIR${currentSort ? `&sort=${currentSort}` : ""}`}
+                    className="px-3 py-1.5 rounded-lg text-xs font-heading font-medium bg-charcoal-50 text-steel-700 hover:bg-gold/15 transition-all"
+                  >
+                    🪑 {dict.shop.chair}
+                  </Link>
+                  <Link
+                    href={`/${locale}/shop?category=TABLE${currentSort ? `&sort=${currentSort}` : ""}`}
+                    className="px-3 py-1.5 rounded-lg text-xs font-heading font-medium bg-charcoal-50 text-steel-700 hover:bg-gold/15 transition-all"
+                  >
+                    🪵 {dict.shop.table}
+                  </Link>
+                </>
+              )}
+            </div>
+          )}
+
           {/* Results count & Sort select */}
-          <div className="flex items-center justify-between md:justify-end gap-4 text-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 text-xs">
             <span className="text-steel-600 font-mono text-[11px]">
               {dict.shop.showingResults.replace("{count}", products.length.toString())}
             </span>
@@ -166,20 +324,32 @@ export default async function ShopPage({
               <SlidersHorizontal className="w-3.5 h-3.5 text-steel-gray" />
               <div className="flex items-center gap-1.5 text-xs font-medium text-steel-700">
                 <Link
-                  href={`/${locale}/shop?category=${currentCategory}&sort=featured`}
-                  className={`px-2 py-1 rounded ${currentSort === "featured" ? "bg-charcoal text-gold font-bold" : "hover:text-gold"}`}
+                  href={`/${locale}/shop?category=${currentCategoryParam}&sort=featured`}
+                  className={`px-2.5 py-1 rounded-md transition-all ${
+                    currentSort === "featured"
+                      ? "bg-charcoal text-gold font-bold shadow-sm"
+                      : "hover:text-gold"
+                  }`}
                 >
                   {dict.shop.sortFeatured}
                 </Link>
                 <Link
-                  href={`/${locale}/shop?category=${currentCategory}&sort=price-low`}
-                  className={`px-2 py-1 rounded ${currentSort === "price-low" ? "bg-charcoal text-gold font-bold" : "hover:text-gold"}`}
+                  href={`/${locale}/shop?category=${currentCategoryParam}&sort=price-low`}
+                  className={`px-2.5 py-1 rounded-md transition-all ${
+                    currentSort === "price-low"
+                      ? "bg-charcoal text-gold font-bold shadow-sm"
+                      : "hover:text-gold"
+                  }`}
                 >
                   {dict.shop.sortPriceLowHigh}
                 </Link>
                 <Link
-                  href={`/${locale}/shop?category=${currentCategory}&sort=price-high`}
-                  className={`px-2 py-1 rounded ${currentSort === "price-high" ? "bg-charcoal text-gold font-bold" : "hover:text-gold"}`}
+                  href={`/${locale}/shop?category=${currentCategoryParam}&sort=price-high`}
+                  className={`px-2.5 py-1 rounded-md transition-all ${
+                    currentSort === "price-high"
+                      ? "bg-charcoal text-gold font-bold shadow-sm"
+                      : "hover:text-gold"
+                  }`}
                 >
                   {dict.shop.sortPriceHighLow}
                 </Link>

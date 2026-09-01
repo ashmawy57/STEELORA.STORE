@@ -19,7 +19,9 @@ model Product {
   pricePiasters         Int
   compareAtPricePiasters Int?
   images                String      // JSON array of image URLs
-  category              String      // GRILL, CHAIR, TABLE, ACCESSORY, BUNDLE
+  category              String      // CHARCOAL_GRILL, BBQ_ACCESSORY, CHAIR, TABLE, BUNDLE
+  mainCategory          String      @default("BBQ") // BBQ, OUTDOOR_FURNITURE, BUNDLE
+  subCategory           String?     // CHARCOAL_GRILL, BBQ_ACCESSORY, CHAIR, TABLE, BUNDLE
   materialEn            String
   materialAr            String
   foldedDimensions      String

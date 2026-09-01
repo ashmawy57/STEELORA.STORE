@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { buildPrismaCategoryFilter } from "@/lib/categories";
 
 export const dynamic = "force-dynamic";
 
@@ -9,19 +10,26 @@ export async function GET(req: NextRequest) {
     const category = searchParams.get("category");
     const query = searchParams.get("q");
 
-    const where: Record<string, unknown> = {};
+    let where: Record<string, unknown> = {};
 
-    if (category && category !== "ALL") {
-      where.category = category.toUpperCase();
+    const categoryFilter = buildPrismaCategoryFilter(category || undefined);
+    if (categoryFilter) {
+      where = { ...categoryFilter };
     }
 
     if (query) {
-      where.OR = [
-        { nameEn: { contains: query } },
-        { nameAr: { contains: query } },
-        { descriptionEn: { contains: query } },
-        { descriptionAr: { contains: query } },
+      where.AND = [
+        ...(where.OR ? [{ OR: where.OR }] : []),
+        {
+          OR: [
+            { nameEn: { contains: query } },
+            { nameAr: { contains: query } },
+            { descriptionEn: { contains: query } },
+            { descriptionAr: { contains: query } },
+          ],
+        },
       ];
+      delete where.OR;
     }
 
     const products = await prisma.product.findMany({

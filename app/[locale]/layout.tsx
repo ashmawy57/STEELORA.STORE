@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CartDrawer } from "@/components/cart/cart-drawer";
@@ -7,6 +7,15 @@ import { CartProvider } from "@/context/cart-context";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { getDictionary, isValidLocale, type Locale } from "@/lib/dictionaries";
 import "@/app/globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover",
+  themeColor: "#0a0a0a",
+};
 
 export async function generateMetadata({
   params,
@@ -96,14 +105,6 @@ export default function LocaleLayout({
       dir={isArabic ? "rtl" : "ltr"}
       className="scroll-smooth"
     >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className="min-h-screen flex flex-col bg-ivory text-charcoal antialiased selection:bg-gold selection:text-charcoal font-sans">
         <CartProvider>
           <Header locale={locale} />

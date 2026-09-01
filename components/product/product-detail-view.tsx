@@ -23,6 +23,7 @@ import { useCart, type CartProduct } from "@/context/cart-context";
 import { formatEGP } from "@/lib/currency";
 import { getDictionary, type Locale } from "@/lib/dictionaries";
 import { StickyMobileAddToCartBar } from "@/components/product/mobile-sticky-bar";
+import { getCategoryBadge } from "@/lib/categories";
 
 interface ProductDetailViewProps {
   product: CartProduct & {
@@ -36,6 +37,8 @@ interface ProductDetailViewProps {
     specsEn: string;
     specsAr: string;
     isBestSeller?: boolean;
+    mainCategory?: string;
+    subCategory?: string | null;
     reviews: Array<{
       id: string;
       author: string;
@@ -65,6 +68,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
   const productName = isArabic ? product.nameAr : product.nameEn;
   const description = isArabic ? product.descriptionAr : product.descriptionEn;
   const material = isArabic ? product.materialAr : product.materialEn;
+  const categoryBadge = getCategoryBadge(product.mainCategory, product.subCategory, product.category, locale);
 
   let images: string[] = [];
   try {
@@ -97,19 +101,19 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
   return (
     <>
-      <div className="py-8 sm:py-12 bg-ivory-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="pt-5 pb-28 sm:py-12 bg-ivory-200 overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
           {/* Breadcrumbs */}
-          <nav className="flex items-center gap-2 text-xs text-steel-gray font-medium">
-            <Link href={`/${locale}`} className="hover:text-gold transition-colors">
+          <nav className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-xs text-steel-gray font-medium">
+            <Link href={`/${locale}`} className="hover:text-gold transition-colors shrink-0">
               {dict.nav.home}
             </Link>
-            <span>/</span>
-            <Link href={`/${locale}/shop`} className="hover:text-gold transition-colors">
+            <span className="shrink-0">/</span>
+            <Link href={`/${locale}/shop`} className="hover:text-gold transition-colors shrink-0">
               {dict.nav.shop}
             </Link>
-            <span>/</span>
-            <span className="text-charcoal-900 font-semibold truncate max-w-[200px] sm:max-w-none">
+            <span className="shrink-0">/</span>
+            <span className="text-charcoal-900 font-semibold truncate max-w-[180px] sm:max-w-none">
               {productName}
             </span>
           </nav>
@@ -216,8 +220,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               {/* Header Details */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs uppercase tracking-widest font-mono text-steel-500 font-bold">
-                    {product.category}
+                  <span className="font-heading font-semibold text-xs text-gold-dark tracking-wide bg-gold/10 px-2.5 py-1 rounded-md border border-gold/20">
+                    {categoryBadge.full}
                   </span>
                   <div className="flex items-center gap-1.5 text-gold">
                     <div className="flex">

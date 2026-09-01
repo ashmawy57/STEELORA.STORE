@@ -42,11 +42,11 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     return (
       <button
         onClick={() => handleToggle(isArabic ? "en" : "ar")}
-        className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold uppercase tracking-wider border border-steel-gray/30 text-steel-100 hover:text-gold hover:border-gold/50 transition-all ${className}`}
+        className={`inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-lg text-[11px] font-bold uppercase tracking-wider border border-gold/30 bg-gold/10 text-gold hover:bg-gold hover:text-charcoal transition-all active:scale-95 shrink-0 ${className}`}
         aria-label="Switch Language"
       >
-        <Globe className="w-3.5 h-3.5 text-gold" />
-        <span>{isArabic ? "English" : "العربية"}</span>
+        <Globe className="w-3 h-3 text-gold" />
+        <span>{isArabic ? "EN" : "عربي"}</span>
       </button>
     );
   }

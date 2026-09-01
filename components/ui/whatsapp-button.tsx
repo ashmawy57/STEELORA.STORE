@@ -41,19 +41,19 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
 
   return (
     <div
-      className={`fixed z-50 transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${
+      className={`fixed z-40 transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${
         isVisible
           ? "opacity-100 translate-y-0 scale-100"
           : "opacity-0 translate-y-8 scale-75"
       }`}
       style={{
-        bottom: "24px",
-        ...(isArabic ? { left: "24px" } : { right: "24px" }),
+        bottom: "calc(5.25rem + env(safe-area-inset-bottom, 0px))",
+        ...(isArabic ? { left: "16px" } : { right: "16px" }),
       }}
     >
       {/* Tooltip */}
       <div
-        className={`absolute bottom-full mb-3 transition-all duration-300 ${
+        className={`absolute bottom-full mb-2.5 transition-all duration-300 ${
           isArabic ? "left-0" : "right-0"
         } ${
           isTooltipVisible
@@ -61,12 +61,12 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
             : "opacity-0 translate-y-2 pointer-events-none"
         }`}
       >
-        <div className="bg-white text-charcoal text-xs font-medium px-4 py-2.5 rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] whitespace-nowrap border border-steel-gray/10">
-          <span>{isArabic ? "تواصل معانا على واتساب 💬" : "Chat with us on WhatsApp 💬"}</span>
+        <div className="bg-white text-charcoal text-[11px] font-medium px-3 py-2 rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.15)] whitespace-nowrap border border-steel-gray/10">
+          <span>{isArabic ? "تواصل معنا على واتساب 💬" : "Chat on WhatsApp 💬"}</span>
           {/* Arrow */}
           <div
-            className={`absolute -bottom-1.5 w-3 h-3 bg-white rotate-45 border-b border-r border-steel-gray/10 ${
-              isArabic ? "left-6" : "right-6"
+            className={`absolute -bottom-1.5 w-2.5 h-2.5 bg-white rotate-45 border-b border-r border-steel-gray/10 ${
+              isArabic ? "left-5" : "right-5"
             }`}
           />
         </div>
@@ -77,17 +77,17 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex items-center justify-center w-[60px] h-[60px] rounded-full bg-[#25D366] hover:bg-[#20BD5A] active:scale-90 transition-all duration-300 shadow-[0_6px_24px_rgba(37,211,102,0.4)] hover:shadow-[0_8px_32px_rgba(37,211,102,0.55)]"
+        className="group relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20BD5A] active:scale-90 transition-all duration-300 shadow-[0_6px_24px_rgba(37,211,102,0.45)] hover:shadow-[0_8px_32px_rgba(37,211,102,0.6)]"
         aria-label={isArabic ? "تواصل عبر واتساب" : "Chat on WhatsApp"}
         onMouseEnter={() => setIsTooltipVisible(true)}
         onMouseLeave={() => setIsTooltipVisible(false)}
       >
         {/* Ping ring */}
-        <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20" />
+        <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-25" />
 
         {/* WhatsApp SVG Icon */}
         <svg
-          className="w-7 h-7 text-white relative z-10 transition-transform duration-300 group-hover:scale-110"
+          className="w-6 h-6 sm:w-7 sm:h-7 text-white relative z-10 transition-transform duration-300 group-hover:scale-110"
           viewBox="0 0 24 24"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"

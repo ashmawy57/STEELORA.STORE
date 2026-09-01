@@ -7,12 +7,15 @@ import { ShoppingBag, Star, Sparkles, Check } from "lucide-react";
 import { useCart, type CartProduct } from "@/context/cart-context";
 import { formatEGP } from "@/lib/currency";
 import { getDictionary, type Locale } from "@/lib/dictionaries";
+import { getCategoryBadge } from "@/lib/categories";
 
 interface ProductCardProps {
   product: CartProduct & {
     compareAtPricePiasters?: number | null;
     isBestSeller?: boolean;
     isFeatured?: boolean;
+    mainCategory?: string;
+    subCategory?: string | null;
   };
   locale: Locale;
 }
@@ -24,6 +27,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale }) => 
   const isArabic = locale === "ar";
   const productName = isArabic ? product.nameAr : product.nameEn;
   const shortDesc = isArabic ? product.shortDescriptionAr : product.shortDescriptionEn;
+  const categoryBadge = getCategoryBadge(product.mainCategory, product.subCategory, product.category, locale);
 
   let parsedImages: string[] = [];
   try {
@@ -86,8 +90,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale }) => 
         <div className="space-y-2">
           {/* Category & Rating */}
           <div className="flex items-center justify-between text-xs text-steel-gray">
-            <span className="uppercase tracking-wider font-mono text-[10px] text-steel-500">
-              {product.category}
+            <span className="font-heading font-semibold text-[11px] text-gold-dark tracking-wide bg-gold/10 px-2 py-0.5 rounded border border-gold/20">
+              {categoryBadge.full}
             </span>
             <div className="flex items-center gap-1 text-gold">
               <Star className="w-3.5 h-3.5 fill-gold" />
