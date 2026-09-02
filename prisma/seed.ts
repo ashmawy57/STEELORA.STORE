@@ -118,18 +118,30 @@ This size is the perfect sweet spot. It's large enough to cook a feast for famil
 
   const chair = await createProduct({
     slug: "foldable-outdoor-chair",
-    nameEn: "Foldable Outdoor Luxury Chair",
-    nameAr: "كرسي تخييم فاخر قابل للطي",
+    nameEn: "Folding Camping Chair",
+    nameAr: "كرسي رحلات قابل للطي",
     shortDescriptionEn:
-      "Ergonomic luxury outdoor chair with tubular 304 stainless steel frame and water-repellent heavy canvas.",
+      "Make relaxing by the grill or at the beach even more enjoyable. Comfortable, lightweight, and effortlessly foldable, this chair is designed to accompany you on any road trip, beach day, or balcony hangout without taking up space.",
     shortDescriptionAr:
-      "كرسي تخييم مريح ومصمم هندسياً بهيكل أنبوبي من الستانلس ستيل ٣٠٤ وقماش معزز عالي المتانة.",
-    descriptionEn: `Engineered for ultimate comfort under the stars. The STEELORA Foldable Outdoor Chair utilizes a high-tensile 304 stainless steel tubular architecture paired with double-layered 1000D waterproof ballistic canvas.
+      "عشان القعدة تحلى قدام الشواية او على البحر، الكرسي ده هو الحل. مريح، خفيف، وبيطبق معاك بسهولة عشان تاخده في اي رحلة او مصيف او حتى تحطه في البلكونة من غير ما ياخد مكان.",
+    descriptionEn: `Make relaxing by the grill or at the beach even more enjoyable. Comfortable, lightweight, and effortlessly foldable, this chair is designed to accompany you on any road trip, beach day, or balcony hangout without taking up space.
 
-Designed with an ergonomic reclining angle and reinforced mechanical pivot joints, it supports up to 180kg while folding into a compact cylindrical form factor.`,
-    descriptionAr: `صُمم ليمنحك أقصى درجات الراحة والاسترخاء تحت السماء المفتوحة. يعتمد كرسي ستيلورا الخارجي القابل للطي على هيكل أنبوبي صلب من الستانلس ستيل ٣٠٤ مع طبقتين من قماش الكوردورا ١٠٠٠ دي المقاوم للماء والتآكل.
+### Why Choose This Chair? (Key Features):
 
-يوفر زاوية جلوس مريحة مدروسة ومفاصل تثبيت ميكانيكية تتحمل حتى ١٨٠ كجم مع إمكانية طيه لحجم مدمج للغاية.`,
+- **Ergonomic Back Support:** Designed for long-lasting sitting comfort with a supportive backrest that lets you kick back and relax while grilling or enjoying the outdoors.
+- **Lightweight & Portable:** Built with a durable metal frame that remains remarkably lightweight, allowing you to move and carry it anywhere without fatigue.
+- **Quick 1-Second Flat Folding:** Folds down completely flat in seconds with a single smooth motion, storing easily in any car trunk or closet.
+- **Heavy-Duty Reinforced Fabric:** Seat and backrest are crafted from tough, high-tension striped outdoor fabric built to support weight and resist wear while looking stylish.
+- **Stable Anti-Skid Rubber Feet:** Base legs are equipped with protective rubber grip caps that prevent slipping and sliding on ceramic tiles, sand, or lawn grass.`,
+    descriptionAr: `عشان القعدة تحلى قدام الشواية او على البحر، الكرسي ده هو الحل. مريح، خفيف، وبيطبق معاك بسهولة عشان تاخده في اي رحلة او مصيف او حتى تحطه في البلكونة من غير ما ياخد مكان.
+
+### ليه الكرسي ده اختيار ممتاز؟ (المميزات بتاعته):
+
+- **تصميم مريح للظهر:** الكرسي مصمم عشان يريحك في القعدة لفترات طويلة، وفيه مسند للظهر بيخليك قاعد مرتاح ومسترخي وانت بتشوي او بتستمتع بالجو.
+- **خفيف وعملي في الشيل:** الهيكل بتاعه معدن متين بس وزنه خفيف في نفس الوقت، يعني تقدر تشيله وتحركه معاك في اي مكان من غير تعب.
+- **سهل التخزين والطي:** بيتلم ويتطبق في ثواني بحركة واحدة، ولما بيتقفل بيبقى رفيع ومش بياخد اي مساحة في شنطة العربية او في البيت.
+- **قماش قوي ومتين:** القاعدة والظهر معمولين من قماش مقلم متين ومشدود كويس، بيستحمل الوزن ويعيش معاك، وشكله شيك وعملي.
+- **ثابت على الارض:** رجلين الكرسي متغطية بقطع كاوتش من تحت عشان تثبت كويس وماتتزحلقش بيك سواء كنت قاعد على سيراميك، رمل، او نجيل.`,
     pricePiasters: 395000, // 3,950 EGP
     compareAtPricePiasters: 460000, // 4,600 EGP
     images: JSON.stringify([
@@ -139,36 +151,38 @@ Designed with an ergonomic reclining angle and reinforced mechanical pivot joint
     category: "CHAIR",
     mainCategory: "OUTDOOR_FURNITURE",
     subCategory: "CHAIR",
-    materialEn: "304 Stainless Steel Tubular Frame + 1000D Waterproof Cordura Canvas",
-    materialAr: "هيكل أنبوبي من الستانلس ستيل ٣٠٤ + قماش كوردورا عسكري مضاد للماء",
-    foldedDimensions: "58 x 12 x 12 cm",
-    openDimensions: "55 x 58 x 82 cm (Seat Height: 42 cm)",
-    weight: "3.4 kg",
-    weightKg: 3.4,
+    materialEn: "Lightweight Durable Metal Frame + Heavy-Duty Striped High-Tension Fabric + Rubber Anti-Skid Feet",
+    materialAr: "هيكل معدني متين خفيف الوزن + قماش مقلم قوي عالي التحمل + قواعد كاوتش مانعة للانزلاق",
+    foldedDimensions: "75 x 48 x 5 cm",
+    openDimensions: "48 x 45 x 78 cm (Seat Height: 42 cm)",
+    weight: "2.1 kg",
+    weightKg: 2.1,
     stock: 45,
     isFeatured: true,
     isBestSeller: true,
     whatsIncludedEn: JSON.stringify([
-      "Foldable 304 Stainless Steel Luxury Chair",
-      "Reinforced Heavy-Duty Shoulder Sling Carry Sleeve",
-      "4x Anti-Sink Sand Foot Guards",
+      "Foldable Camping Chair with Ergonomic Backrest",
+      "Integrated Non-Slip Protective Rubber Foot Caps",
     ]),
     whatsIncludedAr: JSON.stringify([
-      "كرسي تخييم فاخر قابل للطي من الستانلس ستيل ٣٠٤",
-      "جراب حمل مبطن مع حزام كتف مريح",
-      "٤ قواعد مانعة للغوص في الرمال الناعمة",
+      "كرسي رحلات قابل للطي بمسند ظهر مريح",
+      "قواعد كاوتش سفلية مانعة للانزلاق مدمجة",
     ]),
     specsEn: JSON.stringify({
-      "Fabric": "1000D Ballistic PU-Coated Waterproof Cordura",
-      "Load Capacity": "180 kg (396 lbs)",
-      "Seat Height": "42 cm",
-      "UV Resistance": "Grade 5 UV-Proof",
+      "Back Support": "Ergonomic angled backrest for extended relaxation",
+      "Frame": "High-Strength Lightweight Metal Tubular Chassis",
+      "Fabric": "Reinforced Striped Outdoor Fabric (Sag & Wear Resistant)",
+      "Folding Speed": "Instant 1-second ultra-flat fold",
+      "Feet Caps": "Heavy-Duty Anti-Skid Rubber Base Protection",
+      "Origin": "Engineered & Manufactured in Cairo, Egypt",
     }),
     specsAr: JSON.stringify({
-      "مادة القماش": "نايلون كوردورا تكتيكي ١٠٠٠ دي مقاوم للماء",
-      "قدرة التحمل": "١٨٠ كجم",
-      "ارتفاع المقعد": "٤٢ سم",
-      "مقاومة أشعة الشمس": "درجة ٥ مقاومة للبهتان",
+      "مسند الظهر": "تصميم مريح يدعم الظهر لفترات جلوس طويلة",
+      "الهيكل": "هيكل معدني متين وفائق الخفة لسهولة الحمل",
+      "القماش": "قماش مقلم مشدود عالي التحمل ومقاوم للتمزق",
+      "آلية الطي": "طي مسطح فوري بحركة واحدة سريعة",
+      "القواعد": "أغطية كاوتش مطاطية مانعة للانزلاق على مختلف الأسطح",
+      "بلد المنشأ": "تصنيع وهندسة في القاهرة، مصر",
     }),
   });
 
@@ -502,8 +516,8 @@ Buying separately costs EGP 15,950. With our signature collection bundle, you re
 
 ### What is Included in the Set:
 1. **Steelora Foldable Grill:** With heavy-duty grilling grate and upper warming rack.
-2. **Foldable Outdoor Luxury Chair:** Stainless steel tubular frame with 1000D ballistic waterproof canvas.
-3. **Foldable Side Table & Stool:** Brushed 304 steel laser-perforated multi-purpose surface.
+2. **Folding Camping Chair:** High-strength lightweight metal frame with comfortable striped fabric backrest.
+3. **Mini Folding Table & Stool:** High-stability X-frame structure with reinforced webbed straps.
 4. **Steelora Grill Bag:** Heavy-duty protective transport bag with reinforced handles.`,
       descriptionAr: `تجربة الفخامة الخارجية المتنقلة المتكاملة بلا منازع. يجمع طقم الفخامة الخارجية من ستيلورا القطع الأربع الأساسية لتميزنا الهندسي في باقة متناغمة ومثالية.
 
@@ -511,7 +525,7 @@ Buying separately costs EGP 15,950. With our signature collection bundle, you re
 
 ### محتويات المجموعة المتكاملة:
 ١. **شواية ستيلورا القابلة للطي:** تشمل شبكة الشواء الثقيلة ورف التسخين العلوي المدمج.
-٢. **كرسي التخييم الفاخر القابل للطي:** هيكل ستانلس ستيل ٣٠٤ مع قماش كوردورا مقاوم للماء.
+٢. **كرسي رحلات قابل للطي:** هيكل معدني خفيف ومتين مع مسند ظهر مريح وقماش مقلم عالي التحمل.
 ٣. **ترابيزة الرحلات الصغيرة القابلة للطي:** هيكل معدني بتصميم حرف X عالي الثبات مع شرايط قماش معززة.
 ٤. **شنطة شواية ستيلورا:** قماش متين للحماية والنقل مع مقابض مريحة ومعززة.`,
       pricePiasters: 1360000, // 13,600 EGP
@@ -533,7 +547,7 @@ Buying separately costs EGP 15,950. With our signature collection bundle, you re
       isBestSeller: true,
       whatsIncludedEn: JSON.stringify([
         "Steelora Foldable Grill (with Grill Grate & Warming Rack)",
-        "Foldable Outdoor Luxury Chair",
+        "Folding Camping Chair (with Back Support)",
         "Mini Folding Camp Table & Stool",
         "Steelora Grill Bag (Heavy-Duty Carry & Storage Bag)",
         "Complimentary Stainless Steel Multi-Tool & Tongs",
@@ -541,7 +555,7 @@ Buying separately costs EGP 15,950. With our signature collection bundle, you re
       ]),
       whatsIncludedAr: JSON.stringify([
         "شواية ستيلورا القابلة للطي (مع شبكة الشواء ورف التسخين العلوي)",
-        "كرسي تخييم فاخر قابل للطي",
+        "كرسي رحلات قابل للطي (بمسند ظهر مريح)",
         "ترابيزة الرحلات الصغيرة القابلة للطي والمقعد",
         "شنطة شواية ستيلورا (قماش متين ومقابض مريحة)",
         "ملقط وأداة شواء متعددة الوظائف من الستانلس ستيل مجاناً",

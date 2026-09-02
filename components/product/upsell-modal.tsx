@@ -109,8 +109,8 @@ export const UpsellModal: React.FC<UpsellModalProps> = ({ locale }) => {
               },
               {
                 slug: "foldable-outdoor-chair",
-                name: isArabic ? "كرسي التخييم الفاخر" : "Luxury Outdoor Chair",
-                img: "/images/products/chair-main.jpg",
+                name: isArabic ? "كرسي رحلات قابل للطي" : "Folding Camping Chair",
+                img: "/images/products/chair-1.png",
                 price: 395000,
               },
               {
