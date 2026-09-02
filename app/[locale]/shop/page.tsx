@@ -132,9 +132,6 @@ export default async function ShopPage({
           <h1 className="font-heading font-extrabold text-3xl sm:text-5xl text-charcoal-black">
             {dict.shop.title}
           </h1>
-          <p className="text-xs sm:text-sm text-steel-600 leading-relaxed">
-            {dict.shop.subtitle}
-          </p>
         </div>
 
         {/* Featured Bundle Banner Spotlight */}
@@ -155,10 +152,10 @@ export default async function ShopPage({
           <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
             <div className="text-end hidden sm:block">
               <span className="text-[11px] text-steel-gray block line-through">
-                {formatEGP(1595000, locale)}
+                {formatEGP(297000, locale)}
               </span>
               <span className="text-xl font-heading font-bold text-gold">
-                {formatEGP(1360000, locale)}
+                {formatEGP(257000, locale)}
               </span>
             </div>
             <Link

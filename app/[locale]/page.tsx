@@ -175,14 +175,14 @@ export default async function HomePage({
                     <div>
                       <span className="text-xs text-steel-gray block">
                         {dict.bundleSpotlight.regularPrice}{" "}
-                        <span className="line-through">{formatEGP(1595000, locale)}</span>
+                        <span className="line-through">{formatEGP(bundleProduct.compareAtPricePiasters || 297000, locale)}</span>
                       </span>
                       <div className="flex items-baseline gap-2">
                         <span className="text-2xl sm:text-3xl font-heading font-extrabold text-gold">
                           {formatEGP(bundleProduct.pricePiasters, locale)}
                         </span>
                         <span className="text-xs text-gold font-bold px-2 py-0.5 bg-gold/20 rounded">
-                          {locale === "ar" ? "وفر ٢,٣٥٠ ج.م" : "Save EGP 2,350"}
+                          {locale === "ar" ? "وفر ٤٠٠ ج.م" : "Save EGP 400"}
                         </span>
                       </div>
                     </div>

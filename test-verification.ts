@@ -8,9 +8,11 @@ async function runVerification() {
   const cartPayload = {
     items: [
       { productId: "grill", slug: "foldable-charcoal-bbq-grill", quantity: 1 },
+      { productId: "bag", slug: "heavy-duty-tactical-carry-bag", quantity: 1 },
       { productId: "chair", slug: "foldable-outdoor-chair", quantity: 1 },
       { productId: "table", slug: "foldable-side-table-stool", quantity: 1 },
-      { productId: "bag", slug: "heavy-duty-tactical-carry-bag", quantity: 1 },
+      { productId: "tongs", slug: "premium-stainless-steel-bbq-tongs", quantity: 1 },
+      { productId: "brush", slug: "3-in-1-bbq-cleaning-brush-scraper", quantity: 1 },
     ],
   };
 
@@ -30,8 +32,8 @@ async function runVerification() {
     isBundleEligible: calcData.isBundleEligible,
   });
 
-  if (calcData.hasBundleDiscount && calcData.discountPiasters === 235000) {
-    console.log("✔ PASS: Bundle 15% discount (EGP 2,350) correctly calculated!");
+  if (calcData.hasBundleDiscount && calcData.discountPiasters === 40000) {
+    console.log("✔ PASS: Grand Opening Bundle discount (EGP 400) correctly calculated!");
   } else {
     throw new Error("FAIL: Bundle discount calculation failed");
   }

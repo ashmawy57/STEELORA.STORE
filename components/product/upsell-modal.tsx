@@ -98,14 +98,20 @@ export const UpsellModal: React.FC<UpsellModalProps> = ({ locale }) => {
             </p>
           </div>
 
-          {/* 4 Bundle Items Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {/* 6 Bundle Items Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {[
               {
                 slug: "foldable-charcoal-bbq-grill",
                 name: isArabic ? "شواية ستيلورا" : "Steelora Grill",
                 img: "/images/products/grill-1.png",
                 price: 170000,
+              },
+              {
+                slug: "heavy-duty-tactical-carry-bag",
+                name: isArabic ? "شنطة شواية ستيلورا" : "Steelora Grill Bag",
+                img: "/images/products/bag-1.png",
+                price: 17000,
               },
               {
                 slug: "foldable-outdoor-chair",
@@ -120,10 +126,16 @@ export const UpsellModal: React.FC<UpsellModalProps> = ({ locale }) => {
                 price: 30000,
               },
               {
-                slug: "heavy-duty-tactical-carry-bag",
-                name: isArabic ? "شنطة شواية ستيلورا" : "Steelora Grill Bag",
-                img: "/images/products/bag-1.png",
-                price: 17000,
+                slug: "premium-stainless-steel-bbq-tongs",
+                name: isArabic ? "ملقط شواء" : "BBQ Tongs",
+                img: "/images/products/tongs.png",
+                price: 15000,
+              },
+              {
+                slug: "3-in-1-bbq-cleaning-brush-scraper",
+                name: isArabic ? "فرشاة تنظيف ٣ في ١" : "3-in-1 BBQ Brush",
+                img: "/images/products/brush.png",
+                price: 15000,
               },
             ].map((item, idx) => (
               <div
@@ -160,20 +172,20 @@ export const UpsellModal: React.FC<UpsellModalProps> = ({ locale }) => {
               <div>
                 <span className="text-steel-gray block">{dict.upsellModal.originalTotal}:</span>
                 <span className="text-steel-300 font-semibold line-through text-sm">
-                  {formatEGP(1595000, locale)}
+                  {formatEGP(297000, locale)}
                 </span>
               </div>
               <div className="h-8 w-px bg-steel-gray/30" />
               <div>
                 <span className="text-gold block font-semibold">{dict.upsellModal.bundleTotal}:</span>
                 <span className="text-gold font-extrabold text-lg sm:text-xl font-heading">
-                  {formatEGP(1360000, locale)}
+                  {formatEGP(257000, locale)}
                 </span>
               </div>
             </div>
 
             <div className="px-3 py-1 rounded-full bg-gold/20 text-gold border border-gold/40 text-xs font-bold">
-              {locale === "ar" ? "وفر ٢,٣٥٠ ج.م فوري" : "Save EGP 2,350 Instantly"}
+              {locale === "ar" ? "وفر ٤٠٠ ج.م فوري" : "Save EGP 400 Instantly"}
             </div>
           </div>
 

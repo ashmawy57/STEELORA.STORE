@@ -72,20 +72,22 @@ export async function POST(req: NextRequest) {
     // Calculate bundle discounts
     const bundleSlugs = [
       "foldable-charcoal-bbq-grill",
+      "heavy-duty-tactical-carry-bag",
       "foldable-outdoor-chair",
       "foldable-side-table-stool",
-      "heavy-duty-tactical-carry-bag",
+      "premium-stainless-steel-bbq-tongs",
+      "3-in-1-bbq-cleaning-brush-scraper",
     ];
     const presentSlugs = new Set(items.map((i: { slug: string; quantity: number }) => (i.quantity > 0 ? i.slug : "")));
     const hasPrebuiltBundle = items.some((i: { slug: string }) => i.slug === "outdoor-luxury-set");
-    const hasAll4 = bundleSlugs.every((s) => presentSlugs.has(s));
+    const hasAll6 = bundleSlugs.every((s) => presentSlugs.has(s));
 
     let discountPiasters = 0;
-    if (hasAll4 && !hasPrebuiltBundle) {
+    if (hasAll6 && !hasPrebuiltBundle) {
       const bundleSetsCount = Math.min(
         ...bundleSlugs.map((s) => items.find((i: { slug: string }) => i.slug === s)?.quantity || 0)
       );
-      discountPiasters = 235000 * bundleSetsCount;
+      discountPiasters = 40000 * bundleSetsCount;
     }
 
     const discountedSubtotal = Math.max(0, subtotalPiasters - discountPiasters);

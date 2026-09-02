@@ -31,7 +31,7 @@ export const CATEGORY_TREE: MainCategory[] = [
       {
         id: "CHARCOAL_GRILL",
         slug: "charcoal-grill",
-        nameEn: "Charcoal Grill",
+        nameEn: "Charcoal BBQ",
         nameAr: "شوايات الفحم",
         descriptionEn: "Foldable 304 food-grade stainless steel charcoal grills with warming rack.",
         descriptionAr: "شوايات فحم متطورة قابلة للطي مع شبكة ثقيلة ورف تسخين مدمج.",
