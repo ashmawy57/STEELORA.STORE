@@ -334,8 +334,8 @@ This size is the perfect sweet spot. It's large enough to cook a feast for famil
 
   const tongs = await createProduct({
     slug: "premium-stainless-steel-bbq-tongs",
-    nameEn: "Premium Stainless Steel BBQ Tongs with Spatula & Locking Ring",
-    nameAr: "ملقط شواء ستانلس ستيل فاخر مع ملعقة تقليب وقفل حلقي",
+    nameEn: "BBQ Tongs",
+    nameAr: "ملقط شواء",
     shortDescriptionEn:
       "Premium stainless steel BBQ tongs designed for easy and precise food handling while grilling. Featuring a convenient spatula end, scalloped gripping edges, a comfortable non-slip grip, and a locking ring for compact storage.",
     shortDescriptionAr:
@@ -374,8 +374,8 @@ Whether you're grilling meat, flipping burgers, serving vegetables, or handling 
 - ✋ **مقبض مريح مانع للانزلاق:** يوفر تحكماً آمناً ومريحاً يمنع الانزلاق أثناء تقليب الأطعمة الساخنة.
 - 🍖 **حواف إمساك مسننة:** تصميم مقوس يمسك مختلف الأطعمة بإحكام ودون تمزيق.
 - 🔥 **مثالي للشواء والمطبخ:** الأداة المتكاملة لكافة أعمال الشواء والطهي والتقديم.`,
-    pricePiasters: 85000, // 850 EGP
-    compareAtPricePiasters: 110000, // 1,100 EGP
+    pricePiasters: 15000, // 150 EGP
+    compareAtPricePiasters: 20000, // 200 EGP
     images: JSON.stringify([
       "/images/products/tongs-main.png",
     ]),
@@ -423,8 +423,8 @@ Whether you're grilling meat, flipping burgers, serving vegetables, or handling 
 
   const grillBrush = await createProduct({
     slug: "3-in-1-bbq-cleaning-brush-scraper",
-    nameEn: "3-in-1 BBQ Cleaning Brush with Scraper & Scrubbing Pad",
-    nameAr: "فرشاة تنظيف الشوايات ٣ في ١ مع شفرة كشط وإسفنجة فرك",
+    nameEn: "3-in-1 BBQ Cleaning Brush",
+    nameAr: "فرشاة تنظيف الشوايات ٣ في 1",
     shortDescriptionEn:
       "Keep your grill clean and always ready to use with this all-in-one BBQ cleaning brush. A practical design combining 3 tools in 1: a built-in scraper for tough grease, sturdy metal bristles for deep cleaning, and a powerful scrubbing pad, complete with a comfortable grip for perfect, non-slip control.",
     shortDescriptionAr:
@@ -457,8 +457,8 @@ Thanks to the comfortable, dual-arch, non-slip handle design, you can apply stro
 - 🔪 **شفرة كشط مدمجة:** شفرة فولاذية أمامية قوية لكشط الدهون المتفحمة وبقايا الطعام المستعصية.
 - 🧹 **شعيرات معدنية متينة:** شعيرات صلبة تصل بين أسلاك الشبكة للتنظيف العميق والشامل.
 - 🔥 **تحافظ على الشواية جاهزة ونظيفة:** تضمن بقاء معدات الشواء نظيفة ولامعة وتطيل عمرها الافتراضي.`,
-    pricePiasters: 75000, // 750 EGP
-    compareAtPricePiasters: 95000, // 950 EGP
+    pricePiasters: 15000, // 150 EGP
+    compareAtPricePiasters: 20000, // 200 EGP
     images: JSON.stringify([
       "/images/products/grill-brush-main.png",
     ]),
