@@ -111,7 +111,7 @@ export const UpsellModal: React.FC<UpsellModalProps> = ({ locale }) => {
                 slug: "foldable-outdoor-chair",
                 name: isArabic ? "كرسي رحلات قابل للطي" : "Folding Camping Chair",
                 img: "/images/products/chair-1.png",
-                price: 395000,
+                price: 50000,
               },
               {
                 slug: "foldable-side-table-stool",

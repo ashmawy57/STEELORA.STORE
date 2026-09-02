@@ -142,8 +142,8 @@ This size is the perfect sweet spot. It's large enough to cook a feast for famil
 - **سهل التخزين والطي:** بيتلم ويتطبق في ثواني بحركة واحدة، ولما بيتقفل بيبقى رفيع ومش بياخد اي مساحة في شنطة العربية او في البيت.
 - **قماش قوي ومتين:** القاعدة والظهر معمولين من قماش مقلم متين ومشدود كويس، بيستحمل الوزن ويعيش معاك، وشكله شيك وعملي.
 - **ثابت على الارض:** رجلين الكرسي متغطية بقطع كاوتش من تحت عشان تثبت كويس وماتتزحلقش بيك سواء كنت قاعد على سيراميك، رمل، او نجيل.`,
-    pricePiasters: 395000, // 3,950 EGP
-    compareAtPricePiasters: 460000, // 4,600 EGP
+    pricePiasters: 50000, // 500 EGP
+    compareAtPricePiasters: 55000, // 550 EGP
     images: JSON.stringify([
       "/images/products/chair-1.png",
       "/images/products/chair-2.png",
