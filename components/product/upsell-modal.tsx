@@ -115,9 +115,9 @@ export const UpsellModal: React.FC<UpsellModalProps> = ({ locale }) => {
               },
               {
                 slug: "foldable-side-table-stool",
-                name: isArabic ? "طاولة جانبية ومقعد" : "Side Table / Stool",
-                img: "/images/products/table-main.jpg",
-                price: 285000,
+                name: isArabic ? "ترابيزة رحلات قابلة للطي" : "Mini Folding Table",
+                img: "/images/products/mini-chair.png",
+                price: 30000,
               },
               {
                 slug: "heavy-duty-tactical-carry-bag",

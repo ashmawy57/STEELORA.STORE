@@ -69,7 +69,7 @@ export const en = {
     eyebrow: "The Signature Collection",
     title: "The Outdoor Luxury Set",
     description:
-      "The ultimate all-in-one mobile outdoor suite. Includes the Steelora Grill (with Upper Warming Rack), Foldable Outdoor Chair, Foldable Side Table/Stool, and the Steelora Grill Bag.",
+      "The ultimate all-in-one mobile outdoor suite. Includes the Steelora Grill (with Upper Warming Rack), Foldable Outdoor Chair, Mini Folding Table/Stool, and the Steelora Grill Bag.",
     regularPrice: "Regular Price:",
     bundlePrice: "Bundle Price:",
     savings: "You Save 15% (EGP 2,400)",
@@ -77,7 +77,7 @@ export const en = {
     includedList: [
       "Steelora Foldable Grill (with Upper Warming Rack & Grates)",
       "Foldable Outdoor Luxury Chair (Stainless Steel + Heavy Canvas)",
-      "Foldable Side Table & Stool",
+      "Mini Folding Table & Stool (Dual-Use X-Frame)",
       "Steelora Grill Bag (Heavy-Duty Carry & Storage Bag)",
     ],
   },
