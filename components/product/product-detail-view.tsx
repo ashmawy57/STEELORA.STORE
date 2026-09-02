@@ -52,6 +52,78 @@ interface ProductDetailViewProps {
   locale: Locale;
 }
 
+function renderFormattedDescription(content: string) {
+  if (!content) return null;
+
+  const paragraphs = content.split(/\n\s*\n/);
+
+  return (
+    <div className="space-y-4 text-xs sm:text-sm text-charcoal-800 leading-relaxed">
+      {paragraphs.map((para, pIdx) => {
+        const trimmed = para.trim();
+        if (!trimmed) return null;
+
+        // If paragraph is a heading (starts with ### or ## or #)
+        if (trimmed.startsWith("#")) {
+          const headingText = trimmed.replace(/^#+\s*/, "");
+          return (
+            <h4
+              key={pIdx}
+              className="font-heading font-bold text-sm sm:text-base text-charcoal-black pt-3 border-b border-steel-gray/20 pb-1.5 flex items-center gap-2"
+            >
+              <Sparkles className="w-4 h-4 text-gold shrink-0" />
+              <span>{headingText}</span>
+            </h4>
+          );
+        }
+
+        // If paragraph contains list lines
+        const lines = trimmed.split("\n");
+        const isList = lines.some((l) => /^\s*([-*]|\d+\.)\s+/.test(l));
+
+        if (isList) {
+          return (
+            <ul key={pIdx} className="space-y-2.5 my-2">
+              {lines.map((line, lIdx) => {
+                const cleanLine = line.replace(/^\s*([-*]|\d+\.)\s+/, "").trim();
+                if (!cleanLine) return null;
+
+                const boldMatch = cleanLine.match(/^\*\*(.*?)\*\*(.*)/);
+                if (boldMatch) {
+                  return (
+                    <li key={lIdx} className="flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-2" />
+                      <div>
+                        <strong className="font-bold text-charcoal-black font-heading">
+                          {boldMatch[1]}
+                        </strong>
+                        <span className="text-steel-800">{boldMatch[2]}</span>
+                      </div>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li key={lIdx} className="flex items-start gap-2.5 text-steel-800">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-2" />
+                    <span>{cleanLine}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          );
+        }
+
+        return (
+          <p key={pIdx} className="text-charcoal-700 leading-relaxed">
+            {trimmed}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
 export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
   product,
   relatedProducts,
@@ -184,9 +256,9 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-steel-200">
                     <div className="p-3 rounded-lg bg-charcoal-900 border border-steel-gray/20 space-y-1">
-                      <Box className="w-4 h-4 text-gold" />
+                      <Layers className="w-4 h-4 text-gold" />
                       <span className="font-bold text-white block">
-                        {isArabic ? "حقيبة كوردورا مبطنة" : "Custom Carry Bag"}
+                        {isArabic ? "رف علوي وشبكة مزدوجة" : "Dual-Tier Grates"}
                       </span>
                       <p className="text-[11px] text-steel-gray">
                         {dict.product.grillHighlight1}
@@ -195,16 +267,16 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                     <div className="p-3 rounded-lg bg-charcoal-900 border border-steel-gray/20 space-y-1">
                       <Flame className="w-4 h-4 text-gold" />
                       <span className="font-bold text-white block">
-                        {isArabic ? "شبكة شواء ستانلس ٣٠٤" : "304 Grill Grate"}
+                        {isArabic ? "صلب يتحمل الحرارة" : "High-Heat Steel"}
                       </span>
                       <p className="text-[11px] text-steel-gray">
                         {dict.product.grillHighlight2}
                       </p>
                     </div>
                     <div className="p-3 rounded-lg bg-charcoal-900 border border-steel-gray/20 space-y-1">
-                      <Layers className="w-4 h-4 text-gold" />
+                      <ShieldCheck className="w-4 h-4 text-gold" />
                       <span className="font-bold text-white block">
-                        {isArabic ? "رف تسخين علوي مدمج" : "Upper Warming Rack"}
+                        {isArabic ? "طي سريع ومقاومة الصدأ" : "Easy Fold & Rust-Proof"}
                       </span>
                       <p className="text-[11px] text-steel-gray">
                         {dict.product.grillHighlight3}
@@ -326,9 +398,9 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                 </div>
               </div>
 
-              {/* Description Markdown */}
-              <div className="prose prose-sm max-w-none text-charcoal-700 leading-relaxed space-y-3 whitespace-pre-line text-xs sm:text-sm">
-                {description}
+              {/* Description Content */}
+              <div className="pt-2">
+                {renderFormattedDescription(description)}
               </div>
             </div>
           </div>

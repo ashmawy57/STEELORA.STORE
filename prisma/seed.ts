@@ -23,32 +23,46 @@ async function main() {
   // Products
   const grill = await createProduct({
       slug: "foldable-charcoal-bbq-grill",
-      nameEn: "Foldable Charcoal BBQ Grill",
-      nameAr: "شواية فحم فاخرة قابلة للطي",
+      nameEn: "Steelora Grill",
+      nameAr: "شواية ستيلورا",
       shortDescriptionEn:
-        "Precision-engineered 304 stainless steel foldable barbecue system with upper warming rack and custom carry bag.",
+        "If you love grilling and road trips, this grill is about to be your go-to companion. The Steelora Grill is designed to make your life easier and last for years. Built from heavy-duty steel, it folds and unfolds in seconds with zero hassle.",
       shortDescriptionAr:
-        "نظام شواء متطور من الستانلس ستيل ٣٠٤ قابل للطي بالكامل مع رف تسخين علوي وحقيبة حمل فاخرة.",
-      descriptionEn: `Engineered without compromise for outdoor culinary masters. The STEELORA Foldable Charcoal BBQ Grill merges aerospace-grade precision with heavy-gauge 304 food-grade stainless steel.
+        "لو غاوي شوي ورحلات، الشواية دي هتبقى صاحبتك في كل خروجة. شواية ستيلورا مصممة عشان تريحك وتعيش معاك، مصنوعة من صلب قوي يستحمل، وبتتلم وتتفرد في ثواني من غير غلبة.",
+      descriptionEn: `If you love grilling and road trips, this grill is about to be your go-to companion. The Steelora Grill is designed to make your life easier and last for years. Built from heavy-duty steel, it folds and unfolds in seconds with zero hassle.
 
-Featuring our patented instant-fold chassis, this grill transitions from a full-sized dual-zone pitmaster station into a 4.5cm flat profile in under 10 seconds.
+### Why Choose the Steelora Grill? (Key Features):
 
-### Key Included Components:
-1. **Foldable 304 Stainless Steel Chassis:** Laser-perforated airflow geometry guarantees optimal oxygen feed to charcoal embers with zero flare-ups.
-2. **Heavy-Duty 304 Stainless Steel Grill Grate:** Massive 2.0mm food-grade bars provide superior thermal retention and perfect sear marks.
-3. **Elevated Upper Warming Rack:** Keeps cooked steaks, skewers, and vegetables warm and resting above the coals while grilling a second batch below.
-4. **Custom 1000D Tactical Carry Bag:** Ballistic water-repellent Cordura with reinforced stitching and STEELORA gold metal emblem.`,
-      descriptionAr: `صُممت بلا أي مساومة لعشاق ومحترفي الشواء في الطبيعة. تجمع شواية فحم ستيلورا القابلة للطي بين دقة الصناعات الثقيلة وأعلى درجات الفولاذ المقاوم للصدأ ٣٠٤ الصالح لملامسة الأغذية.
+- **Dual-Tier Grates with a Top Rack:** The top rack is a total game-changer. You can use it to keep your cooked food warm or for slow-cooking, while the main bottom grate handles the heavy-duty direct grilling. More food, less time!
+- **High-Heat Steel Construction:** The grill’s body is crafted from thick, durable steel built to withstand the intense heat of charcoal without warping or taking damage.
+- **Easy to Fold & Pack:** Save space in your car and at home. Its smart, practical design lets you fold it flat, take it anywhere, and set it up in just two quick steps.
+- **Long-Lasting, Rust-Resistant Coating:** Finished with a premium powder coating to protect against rust and harsh weather. It keeps its sleek look and color no matter how much you use it in humid or breezy conditions.
+- **Comfortable Built-in Handles:** Specially designed side cutouts make carrying and moving the grill safe, easy, and totally comfortable.
 
-بفضل نظام الطي الفوري المبتكر، تتحول هذه الشواية من محطة طهي متكاملة متعددة المناطق إلى مسطح نحيف بسماكة ٤٫٥ سم في أقل من ١٠ ثوانٍ.
+### Dimensions:
+- **Length:** 45 cm
+- **Width:** 35 cm
+- **Height:** 55 cm
 
-### أبرز المكونات المرفقة:
-١. **هيكل ستانلس ستيل ٣٠٤ قابل للطي:** فتحات تهوية مدروسة بالليزر تضمن تدفق الهواء المثالي للجمر دون تطاير الرماد.
-٢. **شبكة شواء ثقيلة من الستانلس ستيل ٣٠٤:** قضبان صلبة بسماكة ٢ ملم تمنحك علامات الشواء الاحترافية وحفظاً هائلاً للحرارة.
-٣. **رف تسخين علوي مدمج:** يحافظ على اللحوم والمشويات دافئة وعصارية في الأعلى أثناء استكمال شواء الوجبة التالية بالأسفل.
-٤. **حقيبة حمل تكتيكية مخصصة ١٠٠٠ دي:** مصنوعة من قماش الكوردورا الفاخر المقاوم للماء مع شعار ستيلورا الذهبي.`,
-      pricePiasters: 795000, // 7,950 EGP
-      compareAtPricePiasters: 950000, // 9,500 EGP
+This size is the perfect sweet spot. It's large enough to cook a feast for family and friends, but compact enough not to take up annoying storage space.`,
+      descriptionAr: `لو غاوي شوي ورحلات، الشواية دي هتبقى صاحبتك في كل خروجة. شواية ستيلورا مصممة عشان تريحك وتعيش معاك، مصنوعة من صلب قوي يستحمل، وبتتلم وتتفرد في ثواني من غير غلبة.
+
+### ليه تختار شواية ستيلورا؟ (المميزات بتاعتها):
+
+- **شبكة شوي وفيها رف علوي:** بص يا سيدي، الرف اللي فوق ده حكاية، تقدر تركن عليه الاكل اللي استوى عشان يفضل سخن، او تشوي عليه الحاجات اللي محتاجة نار هادية، والشبكة اللي تحت شغالة معاك في الشوي الاساسي. يعني هتنجز وتعمل اكل اكتر وتوفر وقتك.
+- **صلب يستحمل النار العالية:** جسم الشواية مصنوع من خامات تقيلة وصلب متين قوي عشان يتحمل اعلى درجات الحرارة بتاعت الفحم من غير ما يقوس او يتأثر.
+- **بتطبق وتتلم بسهولة:** وفر مساحة في عربيتك ومكان تخزينك. تصميمها العملي بيخليك تطويها وتاخدها معاك اي مكان وتجهزها للشوي في خطوتين بس ومن غير اي تعقيد.
+- **دهان يعيش ويقاوم الصدأ:** الشواية واخدة طبقة دهان محترمة عشان تحميها من الصدأ والعوامل الجوية، وتفضل محافظة على شكلها ولونها مهما استخدمتها في الرطوبة او الهواء.
+- **مقابض مريحة في الشيل:** الشواية فيها فتحات معمولة مخصوص في الجنب عشان تعرف تشيلها وتنقلها من مكان للتاني بكل سهولة وامان.
+
+### المقاسات بتاعتها:
+- **الطول:** 45 سم
+- **العرض:** 35 سم
+- **الارتفاع:** 55 سم
+
+المقاس ده ممتاز قوي، هيكفي معاك اكل كتير للعيلة والصحاب، وفي نفس الوقت مش هياخد مساحة كبيرة ومزعجة في التخزين.`,
+      pricePiasters: 170000, // 1,700 EGP
+      compareAtPricePiasters: 190000, // 1,900 EGP
       images: JSON.stringify([
         "/images/products/grill-1.png",
         "/images/products/grill-2.png",
@@ -57,47 +71,47 @@ Featuring our patented instant-fold chassis, this grill transitions from a full-
       category: "CHARCOAL_GRILL",
       mainCategory: "BBQ",
       subCategory: "CHARCOAL_GRILL",
-      materialEn: "100% 304 Food-Grade Marine Stainless Steel (2.0mm gauge)",
-      materialAr: "ستانلس ستيل نقي ٣٠٤ صالح للأغذية ومقاوم للملوحة والصدأ (سماكة ٢ ملم)",
-      foldedDimensions: "45 x 30 x 4.5 cm",
-      openDimensions: "45 x 30 x 38 cm (Warming Rack at 52 cm)",
+      materialEn: "Heavy-Duty High-Heat Steel with Rust-Resistant Coating",
+      materialAr: "صلب متين عالي التحمل للحرارة مع دهان مقاوم للصدأ والعوامل الجوية",
+      foldedDimensions: "45 x 35 x 5 cm",
+      openDimensions: "45 x 35 x 55 cm",
       weight: "6.8 kg",
       weightKg: 6.8,
       stock: 35,
       isFeatured: true,
       isBestSeller: true,
       whatsIncludedEn: JSON.stringify([
-        "Foldable 304 Stainless Steel BBQ Grill Chassis",
-        "Heavy-Duty Food-Grade 304 Stainless Steel Main Grill Grate",
-        "Elevated Secondary Warming & Resting Rack",
-        "Custom Padded 1000D Tactical Carry Bag",
-        "Removable Stainless Steel Ash Catch Plate",
-        "Dual Multi-Position Heat Level Handles",
+        "Steelora Heavy-Duty Foldable Grill Body",
+        "Main Heavy-Duty Grilling Grate",
+        "Elevated Top Warming & Resting Rack",
+        "Ventilated Charcoal Base Tray with Airflow Slots",
+        "Ergonomic Built-in Side Cutout Carrying Handles",
       ]),
       whatsIncludedAr: JSON.stringify([
-        "هيكل شواية فحم ستانلس ستيل ٣٠٤ قابل للطي بالكامل",
-        "شبكة شواء رئيسية ثقيلة من الستانلس ستيل ٣٠٤ الصالح للأغذية",
-        "رف تسخين وراحة علوي إضافي مدمج",
-        "حقيبة حمل تكتيكية مبطنة ومخصصة من قماش الكوردورا ١٠٠٠ دي",
-        "صينية رماد ستانلس ستيل قابلة للفك لسهولة التنظيف",
-        "مقابض تحكم ثنائية لضبط مستويات الحرارة والتحريك",
+        "هيكل شواية ستيلورا القابل للطي من الصلب المتين",
+        "شبكة شوي رئيسية ثقيلة ومقاومة للحرارة العالية",
+        "رف علوي مدمج لتسخين المشويات والطهي على نار هادئة",
+        "صينية فحم سفلية بفتحات تهوية مدروسة",
+        "فتحات ومقابض جانبية مدمجة لسهولة الشيل والنقل",
       ]),
       specsEn: JSON.stringify({
-        "Steel Grade": "AISI 304 (18/8 Stainless)",
-        "Grilling Surface": "1,350 sq cm",
-        "Warming Rack Surface": "540 sq cm",
-        "Heat Resistance": "Up to 800°C (1,472°F)",
+        "Material": "Heavy-Duty High-Heat Resistant Steel",
+        "Coating": "Premium Weather & Rust-Resistant Protective Finish",
+        "Grate System": "Dual-Tier Grates (Main Grilling Grate + Top Warming Rack)",
+        "Dimensions (L x W x H)": "45 x 35 x 55 cm",
+        "Folding Design": "Fast 2-step folding & compact pack-down",
+        "Handles": "Ergonomic built-in side cutout carry handles",
         "Fuel Compatibility": "Lump Charcoal, Briquettes, Hardwood",
-        "Fold Time": "< 10 Seconds",
         "Origin": "Engineered & Manufactured in Cairo, Egypt",
       }),
       specsAr: JSON.stringify({
-        "درجة الفولاذ": "ستانلس ستيل AISI 304 (18/8)",
-        "مساحة سطح الشواء": "١,٣٥٠ سم مربع",
-        "مساحة رف التسخين": "٥٤٠ سم مربع",
-        "مقاومة درجات الحرارة": "حتى ٨٠٠ درجة مئوية",
-        "نوع الوقود المناسب": "فحم نباتي نقي، قوالب فحم، أخشاب صلبة",
-        "زمن الطي": "أقل من ١٠ ثوانٍ",
+        "الخامة": "صلب متين عالي التحمل لدرجات الحرارة",
+        "نوع الطلاء": "دهان فاخر واقٍ ومقاوم للصدأ والعوامل الجوية",
+        "نظام الشواء": "شبكة سفلية رئيسية + رف تسخين علوي متعدد الاستخدامات",
+        "المقاسات (طول × عرض × ارتفاع)": "٤٥ × ٣٥ × ٥٥ سم",
+        "آلية الطي": "تصميم عملي قابل للطي والتجهيز في خطوتين",
+        "المقابض": "فتحات جانبية مدمجة لسهولة الشيل والأمان",
+        "نوع الوقود المناسب": "فحم نباتي، قوالب فحم، أخشاب صلبة",
         "بلد المنشأ": "تصنيع وهندسة متطورة في القاهرة، مصر",
       }),
   });
@@ -447,7 +461,7 @@ Thanks to the comfortable, dual-arch, non-slip handle design, you can apply stro
 Buying separately costs EGP 15,950. With our signature collection bundle, you receive the full 4-piece suite for just EGP 13,600 (Saving EGP 2,350 / 15% OFF) plus complimentary white-glove shipping anywhere in Egypt.
 
 ### What is Included in the Set:
-1. **Foldable Charcoal BBQ Grill:** With heavy-duty 304 stainless grill grate and upper warming rack.
+1. **Steelora Foldable Grill:** With heavy-duty grilling grate and upper warming rack.
 2. **Foldable Outdoor Luxury Chair:** Stainless steel tubular frame with 1000D ballistic waterproof canvas.
 3. **Foldable Side Table & Stool:** Brushed 304 steel laser-perforated multi-purpose surface.
 4. **Tactical Reinforced Carry Bag:** Padded 1000D Cordura transport bag with shoulder strap.`,
@@ -456,7 +470,7 @@ Buying separately costs EGP 15,950. With our signature collection bundle, you re
 شراء القطع منفصلة يكلف ١٥,٩٥٠ ج.م. مع هذه المجموعة الحصرية، تحصل على الطقم الكامل المكون من ٤ قطع بسعر ١٣,٦٠٠ ج.م فقط (توفير ٢,٣٥٠ ج.م / خصم ١٥٪) مع شحن مجاني فاخر لكافة محافظات مصر.
 
 ### محتويات المجموعة المتكاملة:
-١. **شواية الفحم الفاخرة القابلة للطي:** تشمل شبكة الشواء الثقيلة ورف التسخين العلوي المدمج.
+١. **شواية ستيلورا القابلة للطي:** تشمل شبكة الشواء الثقيلة ورف التسخين العلوي المدمج.
 ٢. **كرسي التخييم الفاخر القابل للطي:** هيكل ستانلس ستيل ٣٠٤ مع قماش كوردورا مقاوم للماء.
 ٣. **الطاولة الجانبية والمقعد القابل للطي:** سطح ستانلس ستيل مخرم بالليزر متعدد الاستخدامات.
 ٤. **حقيبة الحمل التكتيكية المعززة:** قماش كوردورا ١٠٠٠ دي المبطن مع حزام الكتف.`,
@@ -478,7 +492,7 @@ Buying separately costs EGP 15,950. With our signature collection bundle, you re
       isFeatured: true,
       isBestSeller: true,
       whatsIncludedEn: JSON.stringify([
-        "Foldable Charcoal BBQ Grill (with Grill Grate & Warming Rack)",
+        "Steelora Foldable Grill (with Grill Grate & Warming Rack)",
         "Foldable Outdoor Luxury Chair",
         "Foldable Side Table & Stool",
         "Reinforced 1000D Tactical Carry Bag",
@@ -486,7 +500,7 @@ Buying separately costs EGP 15,950. With our signature collection bundle, you re
         "10-Year Craftsmanship Warranty Certificate",
       ]),
       whatsIncludedAr: JSON.stringify([
-        "شواية فحم فاخرة قابلة للطي (مع شبكة الشواء ورف التسخين العلوي)",
+        "شواية ستيلورا القابلة للطي (مع شبكة الشواء ورف التسخين العلوي)",
         "كرسي تخييم فاخر قابل للطي",
         "طاولة جانبية ومقعد صلب قابل للطي",
         "حقيبة حمل تكتيكية معززة من قماش الكوردورا",

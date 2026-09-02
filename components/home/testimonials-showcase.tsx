@@ -18,8 +18,8 @@ export const TestimonialsShowcase: React.FC<TestimonialsShowcaseProps> = ({ loca
       titleEn: "Pitmaster & Desert Expedition Leader — Giza",
       authorAr: "طارق منصور",
       titleAr: "خبير شواء وقائد رحلات سفاري — الجيزة",
-      productEn: "Foldable Charcoal BBQ Grill (Upper Rack)",
-      productAr: "شواية الفحم القابلة للطي (رف تسخين علوي)",
+      productEn: "Steelora Grill (Upper Rack)",
+      productAr: "شواية ستيلورا (رف تسخين علوي)",
       initials: "TM",
       textEn:
         "The upper warming rack is an absolute game changer during desert cookouts. We seared tomahawks over direct coals while resting smoked meats on the upper tier. It folds flat into the bag in 5 seconds and 304 steel cleans up effortlessly.",

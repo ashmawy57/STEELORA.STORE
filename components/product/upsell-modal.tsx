@@ -103,9 +103,9 @@ export const UpsellModal: React.FC<UpsellModalProps> = ({ locale }) => {
             {[
               {
                 slug: "foldable-charcoal-bbq-grill",
-                name: isArabic ? "شواية الفحم + رف التسخين" : "BBQ Grill + Warming Rack",
-                img: "/images/products/grill-main.jpg",
-                price: 795000,
+                name: isArabic ? "شواية ستيلورا" : "Steelora Grill",
+                img: "/images/products/grill-1.png",
+                price: 170000,
               },
               {
                 slug: "foldable-outdoor-chair",
