@@ -231,48 +231,76 @@ This size is the perfect sweet spot. It's large enough to cook a feast for famil
   {
     id: "prod_bag_04",
     slug: "heavy-duty-tactical-carry-bag",
-    nameEn: "Reinforced Tactical Carry Bag",
-    nameAr: "حقيبة حمل تكتيكية معززة",
+    nameEn: "Steelora Grill Bag",
+    nameAr: "شنطة شواية ستيلورا",
     shortDescriptionEn:
-      "1000D ballistic Cordura gear transport bag with gold hardware, Molle straps, and reinforced interior padding.",
+      "Complete your grilling setup and make transport effortless with the custom-designed Steelora Grill Bag. Sleek and heavy-duty, it protects your grill while keeping your car and home clean from ash and residue after every cookout.",
     shortDescriptionAr:
-      "حقيبة نقل معدات فاخرة من قماش الكوردورا ١٠٠٠ دي مع بطانة داخلية سميكة وسحابات يابانية مزدوجة.",
-    descriptionEn: `Crafted to protect your investment. The STEELORA Tactical Carry Bag features military-grade 1000D Cordura fabric, heavy-duty interior thermal-resistant lining, and champagne gold metal hardware.`,
-    descriptionAr: `صُنعت لحماية تجهيزاتك الفولاذية الثمينة. تتميز الحقيبة بقماش كوردورا عسكري ١٠٠٠ دي المقاوم للتمزق، مع بطانة داخلية معززة لمقاومة الحرارة وسحابات معدنية متينة.`,
-    pricePiasters: 120000,
-    compareAtPricePiasters: 150000,
+      "عشان تكمل طقم الشوي بتاعك وتريح نفسك في الشيل والحط، عملنالك الشنطة دي مخصوص لشواية ستيلورا. شنطة متينة وشكلها شيك، هتحافظ على الشواية وتخلي عربيتك نظيفة من اي رماد او تراب بعد ما تخلص شوي.",
+    descriptionEn: `Complete your grilling setup and make transport effortless with the custom-designed Steelora Grill Bag. Sleek and heavy-duty, it protects your grill while keeping your car and home clean from ash and residue after every cookout.
+
+### Why Choose the Steelora Grill Bag? (Key Features):
+
+- **Tailored Precision Fit:** Custom-sized to fit the folded Steelora Grill perfectly (45 cm length × 35 cm width), making packing and unpacking completely effortless.
+- **Heavy-Duty Durable Fabric:** Crafted from high-strength heavy-duty fabric to easily support the grill's weight through years of road trips and camping adventures without tearing.
+- **Cleanliness & Car Trunk Protection:** The ultimate solution to prevent soot, ash, and charcoal residue from dirtying your vehicle's trunk or storage space at home.
+- **Sleek Premium Design:** Practical black finish with the distinguished gold STEELORA emblem for a stylish, professional look on the go.
+- **Comfortable Reinforced Handles:** Double-stitched heavy-duty carry handles designed for a comfortable grip, letting you carry your grill just like a regular bag.
+
+### Dimensions & Details:
+- **Length:** 45 cm
+- **Width:** 35 cm`,
+    descriptionAr: `عشان تكمل طقم الشوي بتاعك وتريح نفسك في الشيل والحط، عملنالك الشنطة دي مخصوص لشواية ستيلورا. شنطة متينة وشكلها شيك، هتحافظ على الشواية وتخلي عربيتك نظيفة من اي رماد او تراب بعد ما تخلص شوي.
+
+### ليه تشتري شنطة ستيلورا؟ (المميزات بتاعتها):
+
+- **مقاس مظبوط بالملي:** الشنطة متفصلة على مقاس الشواية بالظبط وهي متطبقة (الطول 45 سم والعرض 35 سم)، يعني الشواية هتدخل وتخرج براحتها خالص من غير اي تعب.
+- **خامة تقيلة وتستحمل:** معمولة من قماش قوي ومتين عشان يستحمل وزن الشواية الحديد ويعيش معاك في السفر والرحلات من غير ما يتقطع او يتبهدل.
+- **نظافة وحماية لعربيتك:** الشنطة دي هي الحل السحري اللي هيمنع اي هباب او بواقي فحم انها توسخ شنطة عربيتك او مكان التخزين في البيت.
+- **شياكة وتصميم مميز:** لونها اسود عملي ومطبوع عليها لوجو ستيلورا الفخم، عشان تبان شيك واحترافية وانت شايلها.
+- **ايد مريحة في الشيل:** مقابض الشنطة متخيطة كويس ومتينة ومريحة في الايد، عشان تنقل الشواية بسهولة كانك شايل شنطة عادية.
+
+### المقاسات والتفاصيل:
+- **الطول:** 45 سم
+- **العرض:** 35 سم`,
+    pricePiasters: 17000,
+    compareAtPricePiasters: 20000,
     images: JSON.stringify(["/images/products/bag-1.png"]),
     category: "BBQ_ACCESSORY",
     mainCategory: "BBQ",
     subCategory: "BBQ_ACCESSORY",
-    materialEn: "1000D Ballistic Cordura + YKK Dual Zippers + High-Density Foam",
-    materialAr: "قماش كوردورا ١٠٠٠ دي مضاد للماء + سحابات YKK مزدوجة + إسفنج عالي الكثافة",
-    foldedDimensions: "48 x 32 x 4 cm",
-    openDimensions: "48 x 32 x 18 cm",
-    weight: "0.7 kg",
-    weightKg: 0.7,
+    materialEn: "Heavy-Duty High-Strength Dust-Resistant Fabric",
+    materialAr: "قماش متين عالي التحمل ومقاوم للأتربة والأوساخ",
+    foldedDimensions: "45 x 35 x 3 cm",
+    openDimensions: "45 x 35 x 15 cm",
+    weight: "0.5 kg",
+    weightKg: 0.5,
     stock: 60,
     isFeatured: false,
     isBestSeller: false,
     whatsIncludedEn: JSON.stringify([
-      "1000D Reinforced Tactical Carry Bag",
-      "Padded Adjustable Ergonomic Shoulder Strap",
+      "Original Steelora Grill Bag with Gold Emblem",
+      "Reinforced Heavy-Duty Double Carry Handles",
     ]),
     whatsIncludedAr: JSON.stringify([
-      "حقيبة حمل تكتيكية معززة بقماش كوردورا ١٠٠٠ دي",
-      "حزام كتف مبطن وقابل للتعديل",
+      "شنطة شواية ستيلورا الأصلية باللوجو الذهبي",
+      "مقابض يد مزدوجة متينة ومعززة بالخياطة",
     ]),
     specsEn: JSON.stringify({
-      Fabric: "1000D Ballistic PU-Coated Cordura",
-      Zippers: "YKK #10 Heavy Duty Steel Dual Zippers",
-      Hardware: "Champagne Gold Metal Alloy Buckles",
-      Capacity: "Grill + Grate + Warming Rack + Accessories",
+      Material: "Heavy-Duty High-Strength Tear-Resistant Fabric",
+      Color: "Classic Black with Gold STEELORA Emblem",
+      "Dimensions (L x W)": "45 x 35 cm (Tailored to Folded Grill)",
+      Handles: "Reinforced Double-Stitched Ergonomic Carry Handles",
+      Function: "Protects grill and keeps car trunk/home free from ash and soot",
+      Origin: "Engineered & Manufactured in Cairo, Egypt",
     }),
     specsAr: JSON.stringify({
-      "نوع القماش": "كوردورا ١٠٠٠ دي معالج لمقاومة الماء",
-      "نوع السحابات": "سحابات فولاذية مزدوجة YKK رقم ١٠",
-      الإكسسوارات: "أبازيم وحلقات معدنية بلون الذهب الشامبانيا",
-      السعة: "تستوعب الشواية والشبكة ورف التسخين والإكسسوارات بالكامل",
+      "الخامة": "قماش ثقيل ومتين عالي التحمل ومقاوم للتمزق",
+      "اللون": "أسود أنيق مع شعار ستيلورا الذهبي",
+      "المقاسات (طول × عرض)": "٤٥ × ٣٥ سم (متطابقة تماماً مع الشواية)",
+      "المقابض": "مقابض حمل يد مريحة ومعززة بخياطة مزدوجة",
+      "الاستخدام": "حفظ ونقل شواية ستيلورا وحماية السيارة والمنزل من الرماد",
+      "بلد المنشأ": "تصنيع وهندسة في القاهرة، مصر",
     }),
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -419,7 +447,7 @@ This size is the perfect sweet spot. It's large enough to cook a feast for famil
       "Steelora Foldable Grill (with Main Grate & Warming Rack)",
       "Foldable Outdoor Luxury Chair",
       "Foldable Side Table & Stool",
-      "Reinforced 1000D Tactical Carry Bag",
+      "Steelora Grill Bag (Protective Storage & Carry Bag)",
       "Complimentary Stainless Steel Multi-Tool & Tongs",
       "10-Year Craftsmanship Warranty Certificate",
     ]),
@@ -427,7 +455,7 @@ This size is the perfect sweet spot. It's large enough to cook a feast for famil
       "شواية ستيلورا القابلة للطي (مع شبكة الشواء ورف التسخين العلوي)",
       "كرسي تخييم فاخر قابل للطي",
       "طاولة جانبية ومقعد صلب قابل للطي",
-      "حقيبة حمل تكتيكية معززة من قماش الكوردورا",
+      "شنطة شواية ستيلورا (قماش متين ومقابض مريحة)",
       "ملقط وأداة شواء متعددة الوظائف من الستانلس ستيل مجاناً",
       "شهادة الضمان الشامل لمدة ١٠ سنوات",
     ]),

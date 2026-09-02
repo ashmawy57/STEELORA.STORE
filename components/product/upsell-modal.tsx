@@ -121,9 +121,9 @@ export const UpsellModal: React.FC<UpsellModalProps> = ({ locale }) => {
               },
               {
                 slug: "heavy-duty-tactical-carry-bag",
-                name: isArabic ? "حقيبة حمل تكتيكية" : "Tactical Carry Bag",
-                img: "/images/products/bag-main.jpg",
-                price: 120000,
+                name: isArabic ? "شنطة شواية ستيلورا" : "Steelora Grill Bag",
+                img: "/images/products/bag-1.png",
+                price: 17000,
               },
             ].map((item, idx) => (
               <div
