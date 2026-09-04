@@ -247,7 +247,7 @@ export const en = {
   },
   contact: {
     title: "Concierge & Inquiries",
-    subtitle: "Have a question about our gear, custom corporate orders, or need assistance? Our Cairo concierge team is at your service.",
+    subtitle: "",
     formTitle: "Send a Direct Message",
     nameLabel: "Your Full Name",
     emailLabel: "Email Address",
@@ -257,11 +257,11 @@ export const en = {
     sendButton: "Send Inquiry",
     sending: "Transmitting...",
     successMessage: "Thank you! Your message has been received. A concierge specialist will respond within 24 hours.",
-    officeTitle: "Cairo Headquarters & Showroom",
+    officeTitle: "Concierge & Support",
     address: "Industrial Zone 3, New Cairo, Egypt",
     email: "concierge@steelora.com",
     phone: "+20 110 775 4111",
-    hours: "Sunday – Thursday: 9:00 AM – 6:00 PM (EET)",
+    hours: "24 Hours / 7 Days a Week",
     faqTitle: "Frequently Asked Questions",
   },
   footer: {

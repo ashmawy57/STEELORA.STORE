@@ -21,6 +21,7 @@ import { TrustPillars } from "@/components/home/trust-pillars";
 import { TestimonialsShowcase } from "@/components/home/testimonials-showcase";
 import { CtaShowcase } from "@/components/home/cta-showcase";
 import { TypewriterHeading } from "@/components/home/typewriter-heading";
+import { HeroBackgroundVideo } from "@/components/home/hero-background-video";
 import { Reveal } from "@/components/ui/reveal";
 import { getDictionary, isValidLocale, type Locale } from "@/lib/dictionaries";
 import { formatEGP } from "@/lib/currency";
@@ -50,22 +51,8 @@ export default async function HomePage({
     <div className="flex flex-col w-full">
       {/* 1. HERO SECTION: Full-Bleed Dark Cinematic Hero */}
       <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden bg-charcoal-950 text-white">
-        {/* Background Image with Dynamic Mobile & Desktop Responsive Framing */}
-        <div className="absolute inset-0 z-0 pointer-events-none select-none">
-          <Image
-            src="/hero-bg.jpg"
-            alt="STEELORA Luxury Outdoor Gear"
-            fill
-            priority
-            className="object-cover object-[center_55%] sm:object-center opacity-90 sm:opacity-95 transform scale-100 sm:scale-105 animate-in fade-in zoom-in duration-1000 pointer-events-none"
-            sizes="100vw"
-          />
-          {/* Multi-layer luxury contrast gradients tailored for mobile clarity */}
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950/80 via-charcoal-950/45 to-charcoal-950/95 pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.25)_0%,rgba(10,10,10,0.75)_100%)] pointer-events-none" />
-          {/* Shadow gradient only at the end / bottom of the section */}
-          <div className="absolute bottom-0 inset-x-0 h-36 sm:h-64 bg-gradient-to-t from-charcoal-950 via-charcoal-950/80 to-transparent pointer-events-none" />
-        </div>
+        {/* Background Video with Dynamic Mobile & Desktop Responsive Framing */}
+        <HeroBackgroundVideo />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-32 flex flex-col items-center text-center space-y-6 sm:space-y-8 pointer-events-auto">
